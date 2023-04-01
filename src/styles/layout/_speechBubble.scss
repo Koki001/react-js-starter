@@ -4,7 +4,8 @@
 
 .userNameContainer p,
 .userPhoneContainer p,
-.userAddressContainer p {
+.userAddressContainer p,
+.infoComplete p {
   transform: translatey(0px);
   animation: float 5s ease-in-out infinite;
   mix-blend-mode: multiply;
@@ -23,9 +24,13 @@
   font-family: "Baloo 2", cursive;
   max-width: 500px;
 }
+.infoComplete p {
+  padding: 20px 30px;
+}
 .userNameContainer p:after,
 .userPhoneContainer p:after,
-.userAddressContainer p:after {
+.userAddressContainer p:after,
+.infoComplete p:after {
   transform: translatey(0px);
   animation: float2 5s ease-in-out infinite;
   content: ".";
@@ -45,7 +50,14 @@
   left: 0;
   box-shadow: 22px 22px $color-blue;
   z-index: -2;
-  
+}
+.scrollText {
+  position: relative;
+}
+.scrollTextIcon {
+  svg {
+    animation: size 1s linear infinite;
+  }
 }
 
 @keyframes float {
@@ -74,5 +86,20 @@
   100% {
     line-height: 30px;
     transform: translatey(0px);
+  }
+}
+
+@keyframes size {
+  0% {
+    transform: scale(1);
+    color: $color-brown;
+  }
+  50% {
+    transform: scale(1.2);
+    color: $color-green;
+  }
+  100% {
+    transform: scale(1);
+    color: $color-brown;
   }
 }

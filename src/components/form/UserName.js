@@ -22,30 +22,30 @@ const UserName = () => {
         sx={{
           display: "flex",
           alignSelf: "center",
-          justifyContent: "center",
-          width: "100%",
+          justifyContent: "space-between",
           backgroundColor: "#ece5ce8c",
           borderRadius: "10px",
           padding: "5px",
+          width: "auto",
         }}
       >
         <TextField
           required
           focused={errorMessage && name.first === ""}
-          sx={{ width: "40%" }}
+          sx={{ width: "50%" }}
           id="input-first-name"
           label="First name"
-          variant="standard"
+          variant="outlined"
           onChange={(e) => dispatch(firstName(e.target.value))}
           value={useSelector((state) => state.user.name.first)}
         />
         <TextField
           required
           focused={errorMessage && name.last === ""}
-          sx={{ marginLeft: "20px", width: "40%" }}
+          sx={{ marginLeft: "20px", width: "50%" }}
           id="input-last-name"
           label="Last name"
-          variant="standard"
+          variant="outlined"
           onChange={(e) => dispatch(lastName(e.target.value))}
           value={useSelector((state) => state.user.name.last)}
         />

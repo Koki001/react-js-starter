@@ -8,6 +8,7 @@ const initialState = {
   phone: "",
   address: "",
   errorMessage: false,
+  errorMessagePhone: false,
   progress: 0,
   step: 0,
   completed: false,
@@ -35,11 +36,17 @@ export const userSlice = createSlice({
     nextStep: (state) => {
       state.step = state.step + 1;
     },
+    forceStep: (state, action) => {
+      state.step = action.payload;
+    },
     prevStep: (state) => {
       state.step = state.step - 1;
     },
     errorMessage: (state, action) => {
       state.errorMessage = action.payload;
+    },
+    errorMessagePhone: (state, action) => {
+      state.errorMessagePhone = action.payload;
     },
     completed: (state, action) => {
       state.completed = action.payload;
@@ -57,7 +64,9 @@ export const {
   progress,
   nextStep,
   prevStep,
+  forceStep,
   errorMessage,
+  errorMessagePhone,
   completed,
 } = userSlice.actions;
 

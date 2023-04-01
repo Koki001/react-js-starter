@@ -7,12 +7,14 @@ import {
   nextStep,
   prevStep,
   errorMessage,
+  errorMessagePhone,
 } from "../redux/slices/userSlice";
 // Component imports
 import UserAddress from "../components/form/UserAddress";
 import UserName from "../components/form/UserName";
 import UserPhone from "../components/form/UserPhone";
 import ProgressBar from "../components/ProgressBar";
+import InfoComplete from "../components/form/InfoComplete";
 // MUI imports
 import Button from "@mui/material/Button";
 import KeyboardDoubleArrowRightIcon from "@mui/icons-material/KeyboardDoubleArrowRight";
@@ -22,15 +24,19 @@ const ContactInfo = () => {
   const dispatch = useDispatch();
   const step = useSelector((state) => state.user.step);
   const user = useSelector((state) => state.user);
-  const components = [<UserName />, <UserPhone />, <UserAddress />];
+  const components = [
+    <UserName />,
+    <UserPhone />,
+    <UserAddress />,
+    <InfoComplete />,
+  ];
 
   useEffect(() => {
     const weight = 100 / 5;
     const value = weight * step;
     dispatch(progress(value));
   }, [step]);
-  console.log(step);
-  const handleNextStep = () => {
+  const handleNextStep = (e) => {
     if (step === 0) {
       if (
         (step === 0 && user.name.first === "") ||
@@ -43,8 +49,13 @@ const ContactInfo = () => {
       }
     } else if (step === 1) {
       if (step === 1 && user.phone === "") {
+        dispatch(errorMessagePhone(false));
         dispatch(errorMessage(true));
+      } else if (step === 1 && user.phone.length < 10) {
+        dispatch(errorMessage(false));
+        dispatch(errorMessagePhone(true));
       } else {
+        dispatch(errorMessagePhone(false));
         dispatch(errorMessage(false));
         dispatch(nextStep());
       }
@@ -89,15 +100,16 @@ const ContactInfo = () => {
           </Button>
         )}
         {step === 3 && (
-          <div className="infoComplete">
-            <p>explain next steps</p>
-            <Button variant="outlined">
-              <Link to={"/pokemon-picker"}>Complete</Link>
-            </Button>
-          </div>
+          <Button className="completeButton" variant="outlined">
+            <Link to={"/pokemon-picker"}>Let's go !</Link>
+          </Button>
         )}
-        <Button onClick={() => dispatch(clear())} variant="outlined">
-          clear testing
+        <Button
+          className="testClearButton"
+          onClick={() => dispatch(clear())}
+          variant="outlined"
+        >
+          dev
         </Button>
       </div>
     </div>

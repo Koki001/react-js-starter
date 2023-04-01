@@ -45,7 +45,7 @@ const theme = createTheme({
           backgroundColor: "#f9cdad9d",
         },
         bar: {
-          backgroundColor: "#76c4a1ad",
+          backgroundColor: "#6bb67d",
         },
       },
     },

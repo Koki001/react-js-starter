@@ -2,7 +2,7 @@
 
 .progressBarContainer {
   position: fixed;
-  top: 10px;
+  top: 30px;
   left: 0;
   right: 0;
   display: flex;
@@ -25,6 +25,10 @@
   }
   .milestoneIcon {
     position: absolute;
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    justify-content: flex-end;
     transform: translate(-50%, -50%);
     top: 50%;
     z-index: 10;
@@ -37,12 +41,16 @@
     background-color: white;
     svg {
       border-radius: 50%;
+      pointer-events: none;
       &:hover {
         background-color: $color-beige;
       }
     }
     &:hover {
       background-color: $color-beige;
+    }
+    p {
+      font-size: 0.7rem;
     }
   }
   .milestoneName {
@@ -59,6 +67,6 @@
   }
   button {
     color: black;
-    background-color: transparent;
+    background-color: $color-beige;
   }
 }

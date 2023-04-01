@@ -291,6 +291,10 @@ p {
   margin: 0 auto;
 }
 
+.MuiOutlinedInput-notchedOutline {
+  border-color: grey !important;
+}
+
 body {
   font-family: "Baloo 2", cursive;
 }
@@ -309,7 +313,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 100px;
+  margin-top: 120px;
   width: 600px;
   min-width: 350px;
 }
@@ -340,7 +344,8 @@ body {
 
 .pikaGif,
 .charGif,
-.cuboneGif {
+.cuboneGif,
+.politoedGif {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -350,7 +355,8 @@ body {
 }
 .pikaGif img,
 .charGif img,
-.cuboneGif img {
+.cuboneGif img,
+.politoedGif img {
   margin-top: 30px;
 }
 
@@ -358,12 +364,17 @@ body {
   margin-left: 100px;
 }
 
+.politoedGif img {
+  width: 250px;
+  margin-top: 10px;
+}
+
 .contactButtons {
   width: 100%;
   max-width: 600px;
   display: flex;
   justify-content: center;
-  background-color: rgba(236, 229, 206, 0.5490196078);
+  background-color: rgba(236, 229, 206, 0.6980392157);
   border-bottom-right-radius: 10px;
   border-bottom-left-radius: 10px;
 }
@@ -382,8 +393,8 @@ body {
 }
 .contactButtons button:hover {
   color: #774f38;
-  background-color: rgba(236, 229, 206, 0.5490196078);
-  border: 2px solid rgba(236, 229, 206, 0.5490196078);
+  background-color: rgba(236, 229, 206, 0.6980392157);
+  border: 2px solid rgba(236, 229, 206, 0.6980392157);
 }
 .contactButtons .buttonNext {
   right: 0;
@@ -393,10 +404,22 @@ body {
   left: 0;
   bottom: 100px;
 }
+.contactButtons .testClearButton {
+  top: 0;
+  right: -100px;
+  height: 50px;
+  width: 50px;
+}
+.contactButtons .completeButton {
+  width: 200px;
+  height: 50px;
+  border-radius: 10px;
+  padding: 10px 20px;
+}
 
 .progressBarContainer {
   position: fixed;
-  top: 10px;
+  top: 30px;
   left: 0;
   right: 0;
   display: flex;
@@ -420,6 +443,10 @@ body {
 }
 .progressBarContainer .milestoneIcon {
   position: absolute;
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+  justify-content: flex-end;
   transform: translate(-50%, -50%);
   top: 50%;
   z-index: 10;
@@ -433,12 +460,16 @@ body {
 }
 .progressBarContainer .milestoneIcon svg {
   border-radius: 50%;
+  pointer-events: none;
 }
 .progressBarContainer .milestoneIcon svg:hover {
-  background-color: rgba(236, 229, 206, 0.5490196078);
+  background-color: rgba(236, 229, 206, 0.6980392157);
 }
 .progressBarContainer .milestoneIcon:hover {
-  background-color: rgba(236, 229, 206, 0.5490196078);
+  background-color: rgba(236, 229, 206, 0.6980392157);
+}
+.progressBarContainer .milestoneIcon p {
+  font-size: 0.7rem;
 }
 .progressBarContainer .milestoneName {
   left: 20%;
@@ -454,12 +485,13 @@ body {
 }
 .progressBarContainer button {
   color: black;
-  background-color: transparent;
+  background-color: rgba(236, 229, 206, 0.6980392157);
 }
 
 .userNameContainer p,
 .userPhoneContainer p,
-.userAddressContainer p {
+.userAddressContainer p,
+.infoComplete p {
   transform: translatey(0px);
   animation: float 5s ease-in-out infinite;
   mix-blend-mode: multiply;
@@ -470,7 +502,7 @@ body {
   line-height: 1.3rem;
   font-size: 15px;
   color: #774f38;
-  background-color: rgba(236, 229, 206, 0.5490196078);
+  background-color: rgba(236, 229, 206, 0.6980392157);
   padding: 30px 40px;
   border-radius: 11px;
   position: relative;
@@ -479,14 +511,19 @@ body {
   max-width: 500px;
 }
 
+.infoComplete p {
+  padding: 20px 30px;
+}
+
 .userNameContainer p:after,
 .userPhoneContainer p:after,
-.userAddressContainer p:after {
+.userAddressContainer p:after,
+.infoComplete p:after {
   transform: translatey(0px);
   animation: float2 5s ease-in-out infinite;
   content: ".";
   font-weight: bold;
-  -webkit-text-fill-color: rgba(236, 229, 206, 0.5490196078);
+  -webkit-text-fill-color: rgba(236, 229, 206, 0.6980392157);
   text-shadow: 22px 22px rgba(131, 175, 155, 0.6117647059);
   text-align: left;
   font-size: 55px;
@@ -494,13 +531,21 @@ body {
   height: 11px;
   line-height: 30px;
   border-radius: 11px;
-  background-color: rgba(236, 229, 206, 0.5490196078);
+  background-color: rgba(236, 229, 206, 0.6980392157);
   position: absolute;
   display: block;
   bottom: -30px;
   left: 0;
   box-shadow: 22px 22px rgba(131, 175, 155, 0.6117647059);
   z-index: -2;
+}
+
+.scrollText {
+  position: relative;
+}
+
+.scrollTextIcon svg {
+  animation: size 1s linear infinite;
 }
 
 @keyframes float {
@@ -529,6 +574,29 @@ body {
     line-height: 30px;
     transform: translatey(0px);
   }
+}
+@keyframes size {
+  0% {
+    transform: scale(1);
+    color: #774f38;
+  }
+  50% {
+    transform: scale(1.2);
+    color: #c8c8a9;
+  }
+  100% {
+    transform: scale(1);
+    color: #774f38;
+  }
+}
+.pickContainer {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 120px;
+  width: 600px;
+  min-width: 350px;
 }
 
 /*# sourceMappingURL=App.css.map */

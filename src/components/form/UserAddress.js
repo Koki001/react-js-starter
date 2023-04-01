@@ -30,7 +30,6 @@ const UserAddress = () => {
           display: "flex",
           alignItems: "flex-end",
           justifyContent: "center",
-          width: "80%",
           width: "100%",
           backgroundColor: "#ece5ce8c",
           borderRadius: "10px",
@@ -50,7 +49,7 @@ const UserAddress = () => {
               required
               focused={user.errorMessage && user.address === ""}
               label="Address"
-              variant="standard"
+              variant="outlined"
               onChange={(e) => dispatch(address(e.target.value))}
             />
           )}
