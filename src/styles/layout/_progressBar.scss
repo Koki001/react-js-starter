@@ -1,0 +1,64 @@
+@use "../base//variables" as *;
+
+.progressBarContainer {
+  position: fixed;
+  top: 10px;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  .progressBarContact,
+  .progressBarPicks {
+    width: 100%;
+    position: relative;
+  }
+  .contactMilestone {
+    min-width: 50px;
+    min-height: 50px;
+    margin: 0 10px;
+    border-radius: 50%;
+    border: 5px solid green;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .milestoneIcon {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    z-index: 10;
+    width: 30px;
+    min-width: 30px;
+    height: 30px;
+    min-height: 30px;
+    border-radius: 50%;
+    padding: 0;
+    background-color: white;
+    svg {
+      border-radius: 50%;
+      &:hover {
+        background-color: $color-beige;
+      }
+    }
+    &:hover {
+      background-color: $color-beige;
+    }
+  }
+  .milestoneName {
+    left: 20%;
+  }
+  .milestonePhone {
+    left: 40%;
+  }
+  .milestoneAddress {
+    left: 60%;
+  }
+  .milestoneComplete {
+    left: 100%;
+  }
+  button {
+    color: black;
+    background-color: transparent;
+  }
+}

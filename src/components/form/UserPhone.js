@@ -22,6 +22,10 @@ const UserPhone = () => {
           display: "flex",
           alignSelf: "center",
           justifyContent: "center",
+          width: "100%",
+          backgroundColor: "#ece5ce8c",
+          borderRadius: "10px",
+          padding: "5px",
         }}
       >
         <TextField

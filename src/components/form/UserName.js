@@ -23,11 +23,16 @@ const UserName = () => {
           display: "flex",
           alignSelf: "center",
           justifyContent: "center",
+          width: "100%",
+          backgroundColor: "#ece5ce8c",
+          borderRadius: "10px",
+          padding: "5px",
         }}
       >
         <TextField
           required
           focused={errorMessage && name.first === ""}
+          sx={{ width: "40%" }}
           id="input-first-name"
           label="First name"
           variant="standard"
@@ -37,7 +42,7 @@ const UserName = () => {
         <TextField
           required
           focused={errorMessage && name.last === ""}
-          sx={{ marginLeft: "20px" }}
+          sx={{ marginLeft: "20px", width: "40%" }}
           id="input-last-name"
           label="Last name"
           variant="standard"

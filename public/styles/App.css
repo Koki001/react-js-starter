@@ -304,37 +304,17 @@ body {
   min-width: 100vh;
 }
 
-.progressBarContainer {
-  position: fixed;
-  top: 10px;
-  left: 0;
-  right: 0;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.progressBarContainer .progressBarContact,
-.progressBarContainer .progressBarPicks {
-  width: 100%;
-}
-.progressBarContainer .contactMilestone {
-  min-width: 100px;
-  min-height: 100px;
-  border-radius: 50%;
-  border: 5px solid green;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
 .formContainer {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-top: 100px;
+  width: 600px;
+  min-width: 350px;
 }
 .formContainer form {
-  width: 70%;
+  width: 100%;
   margin-top: 20px;
   display: flex;
   justify-content: center;
@@ -345,6 +325,7 @@ body {
 .userPhoneContainer,
 .userAddressContainer {
   width: 100%;
+  min-width: 350px;
   min-height: 200px;
   display: flex;
   flex-direction: column;
@@ -364,8 +345,8 @@ body {
   flex-direction: column;
   justify-content: flex-end;
   align-items: center;
-  margin-bottom: 30px;
-  height: 500px;
+  margin-bottom: 50px;
+  height: 450px;
 }
 .pikaGif img,
 .charGif img,
@@ -379,11 +360,101 @@ body {
 
 .contactButtons {
   width: 100%;
+  max-width: 600px;
   display: flex;
   justify-content: center;
+  background-color: rgba(236, 229, 206, 0.5490196078);
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
 }
 .contactButtons button {
-  margin: 30px 10px;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #774f38;
+  border: 2px solid #c8c8a9;
+  font-weight: bold;
+  height: 110px;
+  width: 110px;
+  border-radius: 50%;
+}
+.contactButtons button:hover {
+  color: #774f38;
+  background-color: rgba(236, 229, 206, 0.5490196078);
+  border: 2px solid rgba(236, 229, 206, 0.5490196078);
+}
+.contactButtons .buttonNext {
+  right: 0;
+  bottom: 100px;
+}
+.contactButtons .buttonBack {
+  left: 0;
+  bottom: 100px;
+}
+
+.progressBarContainer {
+  position: fixed;
+  top: 10px;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.progressBarContainer .progressBarContact,
+.progressBarContainer .progressBarPicks {
+  width: 100%;
+  position: relative;
+}
+.progressBarContainer .contactMilestone {
+  min-width: 50px;
+  min-height: 50px;
+  margin: 0 10px;
+  border-radius: 50%;
+  border: 5px solid green;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.progressBarContainer .milestoneIcon {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  z-index: 10;
+  width: 30px;
+  min-width: 30px;
+  height: 30px;
+  min-height: 30px;
+  border-radius: 50%;
+  padding: 0;
+  background-color: white;
+}
+.progressBarContainer .milestoneIcon svg {
+  border-radius: 50%;
+}
+.progressBarContainer .milestoneIcon svg:hover {
+  background-color: rgba(236, 229, 206, 0.5490196078);
+}
+.progressBarContainer .milestoneIcon:hover {
+  background-color: rgba(236, 229, 206, 0.5490196078);
+}
+.progressBarContainer .milestoneName {
+  left: 20%;
+}
+.progressBarContainer .milestonePhone {
+  left: 40%;
+}
+.progressBarContainer .milestoneAddress {
+  left: 60%;
+}
+.progressBarContainer .milestoneComplete {
+  left: 100%;
+}
+.progressBarContainer button {
+  color: black;
+  background-color: transparent;
 }
 
 .userNameContainer p,
@@ -403,7 +474,7 @@ body {
   padding: 30px 40px;
   border-radius: 11px;
   position: relative;
-  box-shadow: 20px 20px rgba(131, 175, 155, 0.6784313725);
+  box-shadow: 20px 20px rgba(131, 175, 155, 0.6117647059);
   font-family: "Baloo 2", cursive;
   max-width: 500px;
 }
@@ -416,7 +487,7 @@ body {
   content: ".";
   font-weight: bold;
   -webkit-text-fill-color: rgba(236, 229, 206, 0.5490196078);
-  text-shadow: 22px 22px rgba(131, 175, 155, 0.6784313725);
+  text-shadow: 22px 22px rgba(131, 175, 155, 0.6117647059);
   text-align: left;
   font-size: 55px;
   width: 55px;
@@ -428,7 +499,7 @@ body {
   display: block;
   bottom: -30px;
   left: 0;
-  box-shadow: 22px 22px rgba(131, 175, 155, 0.6784313725);
+  box-shadow: 22px 22px rgba(131, 175, 155, 0.6117647059);
   z-index: -2;
 }
 

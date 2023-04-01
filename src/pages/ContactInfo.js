@@ -15,6 +15,8 @@ import UserPhone from "../components/form/UserPhone";
 import ProgressBar from "../components/ProgressBar";
 // MUI imports
 import Button from "@mui/material/Button";
+import KeyboardDoubleArrowRightIcon from "@mui/icons-material/KeyboardDoubleArrowRight";
+import KeyboardDoubleArrowLeftIcon from "@mui/icons-material/KeyboardDoubleArrowLeft";
 
 const ContactInfo = () => {
   const dispatch = useDispatch();
@@ -23,7 +25,7 @@ const ContactInfo = () => {
   const components = [<UserName />, <UserPhone />, <UserAddress />];
 
   useEffect(() => {
-    const weight = 100 / 3;
+    const weight = 100 / 5;
     const value = weight * step;
     dispatch(progress(value));
   }, [step]);
@@ -67,13 +69,23 @@ const ContactInfo = () => {
 
       <div className="contactButtons">
         {step > 0 && step < 3 && (
-          <Button onClick={handlePrevStep} variant="outlined">
+          <Button
+            className="buttonBack"
+            onClick={handlePrevStep}
+            variant="outlined"
+          >
             back
+            <KeyboardDoubleArrowLeftIcon />
           </Button>
         )}
         {step < 3 && (
-          <Button onClick={handleNextStep} variant="outlined">
+          <Button
+            className="buttonNext"
+            onClick={handleNextStep}
+            variant="outlined"
+          >
             next
+            <KeyboardDoubleArrowRightIcon />
           </Button>
         )}
         {step === 3 && (

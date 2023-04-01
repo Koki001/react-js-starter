@@ -5,15 +5,11 @@ const theme = createTheme({
     fontFamily: `"Baloo 2", cursive`,
   },
   components: {
-    MuiTextField: {
-      styleOverrides: {
-        root: {},
-      },
-    },
     MuiFormLabel: {
       styleOverrides: {
         root: {
-          color: "black",
+          textAlign: "center",
+          color: "grey",
           "&.Mui-focused": {
             color: "red",
           },
@@ -23,6 +19,9 @@ const theme = createTheme({
     MuiFormControl: {
       styleOverrides: {
         root: {
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
           color: "black",
         },
       },
@@ -30,9 +29,10 @@ const theme = createTheme({
     MuiInput: {
       styleOverrides: {
         root: {
-          borderColor: "orange",
+          color: "#774f38",
+          minWidth: "100px",
           "&::after": {
-            borderColor: "orange",
+            border: "none",
           },
         },
       },
@@ -40,10 +40,12 @@ const theme = createTheme({
     MuiLinearProgress: {
       styleOverrides: {
         root: {
-          border: "2px solid black",
+          border: "1px solid black",
+          borderRadius: "20px",
+          backgroundColor: "#f9cdad9d",
         },
         bar: {
-          backgroundColor: "green",
+          backgroundColor: "#76c4a1ad",
         },
       },
     },

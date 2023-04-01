@@ -31,6 +31,10 @@ const UserAddress = () => {
           alignItems: "flex-end",
           justifyContent: "center",
           width: "80%",
+          width: "100%",
+          backgroundColor: "#ece5ce8c",
+          borderRadius: "10px",
+          padding: "5px",
         }}
       >
         <Autocomplete
