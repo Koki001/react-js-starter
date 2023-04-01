@@ -286,9 +286,30 @@ p {
 }
 
 .wrapper {
-  width: 1400px;
+  width: 1200px;
   max-width: 90%;
   margin: 0 auto;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  min-width: 100vh;
+}
+
+.formContainer {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.formContainer form {
+  width: 50%;
+  height: auto;
 }
 
 /*# sourceMappingURL=App.css.map */

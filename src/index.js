@@ -1,10 +1,15 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
+import React from "react";
+import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import reportWebVitals from './reportWebVitals';
+import reportWebVitals from "./reportWebVitals";
+// Redux imports
+import { Provider } from "react-redux";
+import { persistor, store } from "./redux/store";
+import { PersistGate } from "redux-persist/integration/react";
 // Component imports
-import App from './App';
-import PageNotFound from './components/Errors/PageNotFound';
+import App from "./App";
+import ContactInfo from "./pages/ContactInfo";
+import PageNotFound from "./components/errors/PageNotFound";
 
 const router = createBrowserRouter([
   {
@@ -12,12 +17,21 @@ const router = createBrowserRouter([
     element: <App />,
     errorElement: <PageNotFound />,
   },
+  {
+    path: "/get-started",
+    element: <ContactInfo />,
+    errorElement: <PageNotFound />,
+  },
 ]);
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <Provider store={store}>
+      <PersistGate loading={null} persistor={persistor}>
+        <RouterProvider router={router} />
+      </PersistGate>
+    </Provider>
   </React.StrictMode>
 );
 
