@@ -12,7 +12,7 @@ const useAxios = (input) => {
         url: "https://www.mapquestapi.com/search/v3/prediction",
         params: {
           key: "pXPeEb8fKG1bWJTjmqYRZoLhF0sGhYUW",
-          q: `${input}`,
+          q: input,
           collection: `${["adminArea", "address", "airport"]}`,
           limit: 5,
           countryCode: "CA",

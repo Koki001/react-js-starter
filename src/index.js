@@ -9,7 +9,11 @@ import { PersistGate } from "redux-persist/integration/react";
 // Component imports
 import App from "./App";
 import ContactInfo from "./pages/ContactInfo";
+import PokemonPick from "./pages/PokemonPick";
 import PageNotFound from "./components/errors/PageNotFound";
+// MUI imports
+import theme from "./theme/muiStyles";
+import { ThemeProvider } from "@mui/material/styles";
 
 const router = createBrowserRouter([
   {
@@ -22,16 +26,23 @@ const router = createBrowserRouter([
     element: <ContactInfo />,
     errorElement: <PageNotFound />,
   },
+  {
+    path: "/pokemon-picker",
+    element: <PokemonPick />,
+    errorElement: <PageNotFound />,
+  },
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <Provider store={store}>
-      <PersistGate loading={null} persistor={persistor}>
-        <RouterProvider router={router} />
-      </PersistGate>
-    </Provider>
+    <ThemeProvider theme={theme}>
+      <Provider store={store}>
+        <PersistGate loading={null} persistor={persistor}>
+          <RouterProvider router={router} />
+        </PersistGate>
+      </Provider>
+    </ThemeProvider>
   </React.StrictMode>
 );
 

@@ -3,12 +3,14 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   name: {
     first: "",
-    last: ""
+    last: "",
   },
   phone: "",
   address: "",
-  completed: 0,
+  errorMessage: false,
+  progress: 0,
   step: 0,
+  completed: false,
 };
 
 export const userSlice = createSlice({
@@ -28,7 +30,7 @@ export const userSlice = createSlice({
       state.address = action.payload;
     },
     progress: (state, action) => {
-      state.completed = action.payload;
+      state.progress = action.payload;
     },
     nextStep: (state) => {
       state.step = state.step + 1;
@@ -36,10 +38,27 @@ export const userSlice = createSlice({
     prevStep: (state) => {
       state.step = state.step - 1;
     },
+    errorMessage: (state, action) => {
+      state.errorMessage = action.payload;
+    },
+    completed: (state, action) => {
+      state.completed = action.payload;
+    },
     clear: () => initialState,
   },
 });
 
-export const { firstName, lastName, phone, address, clear, progress, nextStep, prevStep } = userSlice.actions;
+export const {
+  firstName,
+  lastName,
+  phone,
+  address,
+  clear,
+  progress,
+  nextStep,
+  prevStep,
+  errorMessage,
+  completed,
+} = userSlice.actions;
 
 export default userSlice.reducer;

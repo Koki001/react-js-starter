@@ -1,0 +1,78 @@
+// created by kirsten allen -- edited
+// codepen link: https://codepen.io/kirstenallen/pen/MWwPYYm
+@use "../base/variables" as *;
+
+.userNameContainer p,
+.userPhoneContainer p,
+.userAddressContainer p {
+  transform: translatey(0px);
+  animation: float 5s ease-in-out infinite;
+  mix-blend-mode: multiply;
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: bold;
+  letter-spacing: 3px;
+  line-height: 1.3rem;
+  font-size: 15px;
+  color: $color-brown;
+  background-color: $color-beige;
+  padding: 30px 40px;
+  border-radius: 11px;
+  position: relative;
+  box-shadow: 20px 20px $color-blue;
+  font-family: "Baloo 2", cursive;
+  max-width: 500px;
+}
+.userNameContainer p:after,
+.userPhoneContainer p:after,
+.userAddressContainer p:after {
+  transform: translatey(0px);
+  animation: float2 5s ease-in-out infinite;
+  content: ".";
+  font-weight: bold;
+  -webkit-text-fill-color: $color-beige;
+  text-shadow: 22px 22px $color-blue;
+  text-align: left;
+  font-size: 55px;
+  width: 55px;
+  height: 11px;
+  line-height: 30px;
+  border-radius: 11px;
+  background-color: $color-beige;
+  position: absolute;
+  display: block;
+  bottom: -30px;
+  left: 0;
+  box-shadow: 22px 22px $color-blue;
+  z-index: -2;
+  
+}
+
+@keyframes float {
+  0% {
+    transform: translatey(0px);
+  }
+  50% {
+    transform: translatey(-20px);
+  }
+  100% {
+    transform: translatey(0px);
+  }
+}
+
+@keyframes float2 {
+  0% {
+    line-height: 30px;
+    transform: translatey(0px);
+  }
+  55% {
+    transform: translatey(-20px);
+  }
+  60% {
+    line-height: 10px;
+  }
+  100% {
+    line-height: 30px;
+    transform: translatey(0px);
+  }
+}

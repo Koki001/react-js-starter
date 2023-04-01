@@ -1,11 +1,72 @@
+.progressBarContainer {
+  position: fixed;
+  top: 10px;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  .progressBarContact,
+  .progressBarPicks {
+    width: 100%;
+  }
+  .contactMilestone {
+    min-width: 100px;
+    min-height: 100px;
+    border-radius: 50%;
+    border: 5px solid green;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
 .formContainer {
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
+  margin-top: 100px;
   form {
-    width: 50%;
-    height: auto;
+    width: 70%;
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+.userNameContainer,
+.userPhoneContainer,
+.userAddressContainer {
+  width: 100%;
+  min-height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  img {
+    width: 250px;
+  }
+}
+.pikaGif,
+.charGif,
+.cuboneGif {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  margin-bottom: 30px;
+  height: 500px;
+  img {
+    margin-top: 30px;
+  }
+}
+.pikaGif img {
+  margin-left: 100px;
+}
+.contactButtons {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  button {
+    margin: 30px 10px;
   }
 }

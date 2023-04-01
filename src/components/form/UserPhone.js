@@ -6,23 +6,35 @@ import TextField from "@mui/material/TextField";
 
 const UserPhone = () => {
   const dispatch = useDispatch();
+  const user = useSelector((state) => state.user);
   return (
-    <Box
-      sx={{
-        display: "flex",
-        alignItems: "flex-end",
-        justifyContent: "center",
-      }}
-    >
-      <TextField
-        required
-        id="input-phone-number"
-        label="Phone number"
-        variant="standard"
-        onChange={(e) => dispatch(phone(e.target.value))}
-        value={useSelector((state) => state.user.phone)}
-      />
-    </Box>
+    <div className="userPhoneContainer">
+      <div className="charGif">
+        <p>
+          {user.errorMessage
+            ? "Please give me your phone number! I won't prank call you."
+            : `What's your phone number, ${user.name.first} ?`}
+        </p>
+        <img src="./assets/intro/charmander.gif" alt="" />
+      </div>
+      <Box
+        sx={{
+          display: "flex",
+          alignSelf: "center",
+          justifyContent: "center",
+        }}
+      >
+        <TextField
+          required
+          focused={user.errorMessage && user.phone === ""}
+          id="input-phone-number"
+          label="Phone number"
+          variant="standard"
+          onChange={(e) => dispatch(phone(e.target.value))}
+          value={user.phone}
+        />
+      </Box>
+    </div>
   );
 };
 

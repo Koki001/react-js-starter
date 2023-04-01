@@ -291,6 +291,10 @@ p {
   margin: 0 auto;
 }
 
+body {
+  font-family: "Baloo 2", cursive;
+}
+
 .App {
   display: flex;
   flex-direction: column;
@@ -300,16 +304,160 @@ p {
   min-width: 100vh;
 }
 
-.formContainer {
-  min-height: 100vh;
+.progressBarContainer {
+  position: fixed;
+  top: 10px;
+  left: 0;
+  right: 0;
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+.progressBarContainer .progressBarContact,
+.progressBarContainer .progressBarPicks {
+  width: 100%;
+}
+.progressBarContainer .contactMilestone {
+  min-width: 100px;
+  min-height: 100px;
+  border-radius: 50%;
+  border: 5px solid green;
+  display: flex;
   justify-content: center;
   align-items: center;
 }
+
+.formContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 100px;
+}
 .formContainer form {
-  width: 50%;
-  height: auto;
+  width: 70%;
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.userNameContainer,
+.userPhoneContainer,
+.userAddressContainer {
+  width: 100%;
+  min-height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.userNameContainer img,
+.userPhoneContainer img,
+.userAddressContainer img {
+  width: 250px;
+}
+
+.pikaGif,
+.charGif,
+.cuboneGif {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  margin-bottom: 30px;
+  height: 500px;
+}
+.pikaGif img,
+.charGif img,
+.cuboneGif img {
+  margin-top: 30px;
+}
+
+.pikaGif img {
+  margin-left: 100px;
+}
+
+.contactButtons {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.contactButtons button {
+  margin: 30px 10px;
+}
+
+.userNameContainer p,
+.userPhoneContainer p,
+.userAddressContainer p {
+  transform: translatey(0px);
+  animation: float 5s ease-in-out infinite;
+  mix-blend-mode: multiply;
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: bold;
+  letter-spacing: 3px;
+  line-height: 1.3rem;
+  font-size: 15px;
+  color: #774f38;
+  background-color: rgba(236, 229, 206, 0.5490196078);
+  padding: 30px 40px;
+  border-radius: 11px;
+  position: relative;
+  box-shadow: 20px 20px rgba(131, 175, 155, 0.6784313725);
+  font-family: "Baloo 2", cursive;
+  max-width: 500px;
+}
+
+.userNameContainer p:after,
+.userPhoneContainer p:after,
+.userAddressContainer p:after {
+  transform: translatey(0px);
+  animation: float2 5s ease-in-out infinite;
+  content: ".";
+  font-weight: bold;
+  -webkit-text-fill-color: rgba(236, 229, 206, 0.5490196078);
+  text-shadow: 22px 22px rgba(131, 175, 155, 0.6784313725);
+  text-align: left;
+  font-size: 55px;
+  width: 55px;
+  height: 11px;
+  line-height: 30px;
+  border-radius: 11px;
+  background-color: rgba(236, 229, 206, 0.5490196078);
+  position: absolute;
+  display: block;
+  bottom: -30px;
+  left: 0;
+  box-shadow: 22px 22px rgba(131, 175, 155, 0.6784313725);
+  z-index: -2;
+}
+
+@keyframes float {
+  0% {
+    transform: translatey(0px);
+  }
+  50% {
+    transform: translatey(-20px);
+  }
+  100% {
+    transform: translatey(0px);
+  }
+}
+@keyframes float2 {
+  0% {
+    line-height: 30px;
+    transform: translatey(0px);
+  }
+  55% {
+    transform: translatey(-20px);
+  }
+  60% {
+    line-height: 10px;
+  }
+  100% {
+    line-height: 30px;
+    transform: translatey(0px);
+  }
 }
 
 /*# sourceMappingURL=App.css.map */
