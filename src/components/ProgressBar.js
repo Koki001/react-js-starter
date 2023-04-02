@@ -32,35 +32,24 @@ const ProgressBar = () => {
       }
     }
   };
+  const handleHome = () => {
+    navigate("/")
+  }
   return (
     <div className="progressBarContainer wrapper">
       <div className="progressBarContact">
-        <Button className="milestoneStart milestoneIcon">
+        <Button onClick={handleHome} className="milestoneStart milestoneIcon">
           <PlayCircleFilledWhiteTwoToneIcon sx={{ color: "green" }} />
         </Button>
         <Button
           onClick={handleRevisit}
-          value={0}
+          value={1}
           className="milestoneName milestoneIcon"
         >
           <p>name</p>
-          {progress >= 20 && step > 0 ? (
+          {progress >= 20 && step > 1 ? (
             <CheckCircleTwoToneIcon sx={{ color: "green" }} />
-          ) : progress < 20 && step === 0 ? (
-            <HelpTwoToneIcon />
-          ) : (
-            <CatchingPokemonTwoToneIcon />
-          )}
-        </Button>
-        <Button
-          onClick={handleRevisit}
-          value={1}
-          className="milestonePhone milestoneIcon"
-        >
-          <p>phone</p>
-          {progress >= 40 ? (
-            <CheckCircleTwoToneIcon sx={{ color: "green" }} />
-          ) : progress < 40 && step === 1 ? (
+          ) : progress === 20 && step === 1 ? (
             <HelpTwoToneIcon />
           ) : (
             <CatchingPokemonTwoToneIcon />
@@ -69,12 +58,26 @@ const ProgressBar = () => {
         <Button
           onClick={handleRevisit}
           value={2}
+          className="milestonePhone milestoneIcon"
+        >
+          <p>phone</p>
+          {progress >= 40 && step > 2 ? (
+            <CheckCircleTwoToneIcon sx={{ color: "green" }} />
+          ) : progress === 40 && step === 2 ? (
+            <HelpTwoToneIcon />
+          ) : (
+            <CatchingPokemonTwoToneIcon />
+          )}
+        </Button>
+        <Button
+          onClick={handleRevisit}
+          value={3}
           className="milestoneAddress milestoneIcon"
         >
           <p>address</p>
-          {progress >= 60 ? (
+          {progress >= 60 && step > 3 ? (
             <CheckCircleTwoToneIcon sx={{ color: "green" }} />
-          ) : progress < 60 && step === 2 ? (
+          ) : progress === 60 && step === 3 ? (
             <HelpTwoToneIcon />
           ) : (
             <CatchingPokemonTwoToneIcon />

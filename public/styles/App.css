@@ -1,6 +1,7 @@
 html {
   font-size: 125%;
   line-height: 1.15;
+  min-height: 100vh;
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
 }
@@ -295,6 +296,62 @@ p {
   border-color: grey !important;
 }
 
+.loader {
+  position: absolute;
+  top: 25%;
+  display: flex !important;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.loader span {
+  display: block;
+  margin-top: 20px;
+}
+
+.pokeball {
+  width: 60px;
+  height: 60px;
+  background-color: #fff;
+  border-radius: 50%;
+  position: relative;
+  overflow: hidden;
+  border: 3px solid;
+  animation: frames 0.8s linear 0s infinite;
+}
+
+.pokeball:after {
+  content: "";
+  position: absolute;
+  width: 60px;
+  height: 30px;
+  background-color: red;
+  border-bottom: 4px solid;
+  top: -4px;
+}
+
+.pokeball:before {
+  content: "";
+  position: absolute;
+  background-color: #fff;
+  width: 10px;
+  height: 10px;
+  border: 4px solid;
+  border-radius: 50%;
+  bottom: 18px;
+  right: 18px;
+  z-index: 1;
+}
+
+/* AnimationFrames */
+@keyframes frames {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
 body {
   font-family: "Baloo 2", cursive;
 }
@@ -328,6 +385,7 @@ body {
 .userNameContainer,
 .userPhoneContainer,
 .userAddressContainer {
+  position: relative;
   width: 100%;
   min-width: 350px;
   min-height: 200px;
@@ -352,6 +410,7 @@ body {
   align-items: center;
   margin-bottom: 50px;
   height: 450px;
+  transition: opacity 0.5s linear;
 }
 .pikaGif img,
 .charGif img,
@@ -410,11 +469,28 @@ body {
   height: 50px;
   width: 50px;
 }
-.contactButtons .completeButton {
-  width: 200px;
-  height: 50px;
-  border-radius: 10px;
-  padding: 10px 20px;
+.contactButtons .completeButtons {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.contactButtons .quizButton,
+.contactButtons .skipButton {
+  width: 50%;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: static;
+}
+.contactButtons .quizButton:hover,
+.contactButtons .skipButton:hover {
+  background-color: #774f38;
+}
+.contactButtons .quizButton:hover a,
+.contactButtons .skipButton:hover a {
+  color: rgba(236, 229, 206, 0.6980392157);
 }
 
 .progressBarContainer {
@@ -499,7 +575,7 @@ body {
   text-transform: uppercase;
   font-weight: bold;
   letter-spacing: 3px;
-  line-height: 1.3rem;
+  line-height: 1.2rem;
   font-size: 15px;
   color: #774f38;
   background-color: rgba(236, 229, 206, 0.6980392157);
@@ -509,6 +585,7 @@ body {
   box-shadow: 20px 20px rgba(131, 175, 155, 0.6117647059);
   font-family: "Baloo 2", cursive;
   max-width: 500px;
+  font-size: 0.77rem;
 }
 
 .infoComplete p {
@@ -597,6 +674,23 @@ body {
   margin-top: 120px;
   width: 600px;
   min-width: 350px;
+}
+
+.quizContainer {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 120px;
+  width: 600px;
+  min-width: 350px;
+}
+.quizContainer quiz {
+  width: 100%;
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 /*# sourceMappingURL=App.css.map */

@@ -10,7 +10,7 @@ const initialState = {
   errorMessage: false,
   errorMessagePhone: false,
   progress: 0,
-  step: 0,
+  step: 1,
   completed: false,
 };
 

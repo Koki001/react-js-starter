@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { firstName, lastName } from "../../redux/slices/userSlice";
 // MUI imports
@@ -5,18 +6,28 @@ import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 
 const UserName = () => {
+  const [load, setLoad] = useState(true);
   const dispatch = useDispatch();
   const errorMessage = useSelector((state) => state.user.errorMessage);
   const name = useSelector((state) => state.user.name);
   return (
     <div className="userNameContainer">
-      <div className="pikaGif">
+      {/* loader works, but usally just flashes, will return to it another time */}
+      {/* <div style={{ visibility: load ? "visible" : "hidden" }} className="loader">
+        <div className="pokeball"></div>
+        <span className="pokeballSpan">Loading ...</span>
+      </div> */}
+      <div style={{ opacity: load ? "0" : "1" }} className="pikaGif">
         <p>
           {errorMessage
             ? "Please tell me your full name so we can be friends."
             : "Hey! What's your name??"}
         </p>
-        <img src="./assets/intro/pikachu.gif" alt="" />
+        <img
+          onLoad={() => setLoad(false)}
+          src="./assets/intro/pikachu.gif"
+          alt=""
+        />
       </div>
       <Box
         sx={{

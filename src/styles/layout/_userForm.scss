@@ -19,6 +19,7 @@
 .userNameContainer,
 .userPhoneContainer,
 .userAddressContainer {
+  position: relative;
   width: 100%;
   min-width: 350px;
   min-height: 200px;
@@ -40,6 +41,7 @@
   align-items: center;
   margin-bottom: 50px;
   height: 450px;
+  transition: opacity 0.5s linear;
   img {
     margin-top: 30px;
   }
@@ -48,8 +50,8 @@
   margin-left: 100px;
 }
 .politoedGif img {
-   width: 250px;
-   margin-top: 10px;
+  width: 250px;
+  margin-top: 10px;
 }
 
 .contactButtons {
@@ -73,9 +75,9 @@
     width: 110px;
     border-radius: 50%;
     &:hover {
-    color: $color-brown;
-    background-color: $color-beige;
-    border: 2px solid $color-beige;
+      color: $color-brown;
+      background-color: $color-beige;
+      border: 2px solid $color-beige;
     }
   }
   .buttonNext {
@@ -92,10 +94,25 @@
     height: 50px;
     width: 50px;
   }
-  .completeButton {
-    width: 200px;
-    height: 50px;
-    border-radius: 10px;
-    padding: 10px 20px;
+  .completeButtons {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+  .quizButton,
+  .skipButton {
+    width: 50%;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: static;
+    &:hover {
+      background-color: $color-brown;
+      a {
+        color: $color-beige;
+      }
+    }
   }
 }

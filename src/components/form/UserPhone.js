@@ -1,10 +1,12 @@
 import { useDispatch, useSelector } from "react-redux";
 import { phone } from "../../redux/slices/userSlice";
+import { useState } from "react";
 // MUI imports
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 
 const UserPhone = () => {
+  const [load, setLoad] = useState(true)
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user);
   const regexPhone = /^[0-9\b]{0,10}$/;
@@ -17,7 +19,7 @@ const UserPhone = () => {
 
   return (
     <div className="userPhoneContainer">
-      <div className="charGif">
+      <div style={{ opacity: load ? "0" : "1" }} className="charGif">
         <p>
           {user.errorMessage
             ? "Please give me your phone number! I won't prank call you."
@@ -25,7 +27,11 @@ const UserPhone = () => {
             ? "Well, at least give me a 10 digit fake number please..."
             : `What's your phone number, ${user.name.first} ?`}
         </p>
-        <img src="./assets/intro/charmander.gif" alt="" />
+        <img
+          onLoad={() => setLoad(false)}
+          src="./assets/intro/charmander.gif"
+          alt=""
+        />
       </div>
       <Box
         sx={{

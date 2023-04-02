@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {
   clear,
@@ -10,6 +10,7 @@ import {
   errorMessagePhone,
 } from "../redux/slices/userSlice";
 // Component imports
+import App from "../App";
 import UserAddress from "../components/form/UserAddress";
 import UserName from "../components/form/UserName";
 import UserPhone from "../components/form/UserPhone";
@@ -21,10 +22,12 @@ import KeyboardDoubleArrowRightIcon from "@mui/icons-material/KeyboardDoubleArro
 import KeyboardDoubleArrowLeftIcon from "@mui/icons-material/KeyboardDoubleArrowLeft";
 
 const ContactInfo = () => {
+  const navigate = useNavigate()
   const dispatch = useDispatch();
   const step = useSelector((state) => state.user.step);
   const user = useSelector((state) => state.user);
   const components = [
+    <App />,
     <UserName />,
     <UserPhone />,
     <UserAddress />,
@@ -34,24 +37,26 @@ const ContactInfo = () => {
   useEffect(() => {
     const weight = 100 / 5;
     const value = weight * step;
-    dispatch(progress(value));
+    if (step < 4) {
+      dispatch(progress(value));
+    }
   }, [step]);
   const handleNextStep = (e) => {
-    if (step === 0) {
+    if (step === 1) {
       if (
-        (step === 0 && user.name.first === "") ||
-        (step === 0 && user.name.last === "")
+        (step === 1 && user.name.first === "") ||
+        (step === 1 && user.name.last === "")
       ) {
         dispatch(errorMessage(true));
       } else {
         dispatch(errorMessage(false));
         dispatch(nextStep());
       }
-    } else if (step === 1) {
-      if (step === 1 && user.phone === "") {
+    } else if (step === 2) {
+      if (step === 2 && user.phone === "") {
         dispatch(errorMessagePhone(false));
         dispatch(errorMessage(true));
-      } else if (step === 1 && user.phone.length < 10) {
+      } else if (step === 2 && user.phone.length < 10) {
         dispatch(errorMessage(false));
         dispatch(errorMessagePhone(true));
       } else {
@@ -59,8 +64,8 @@ const ContactInfo = () => {
         dispatch(errorMessage(false));
         dispatch(nextStep());
       }
-    } else if (step === 2) {
-      if (step === 2 && user.address === "") {
+    } else if (step === 3) {
+      if (step === 3 && user.address === "") {
         dispatch(errorMessage(true));
       } else {
         dispatch(errorMessage(false));
@@ -72,14 +77,17 @@ const ContactInfo = () => {
     dispatch(errorMessage(false));
     dispatch(prevStep());
   };
-
+  const handleDev = () => {
+    dispatch(clear())
+    navigate("/")
+  }
   return (
     <div className="formContainer wrapper">
       <ProgressBar />
       <form>{components[step]}</form>
 
       <div className="contactButtons">
-        {step > 0 && step < 3 && (
+        {step > 1 && step < 4 && (
           <Button
             className="buttonBack"
             onClick={handlePrevStep}
@@ -89,7 +97,7 @@ const ContactInfo = () => {
             <KeyboardDoubleArrowLeftIcon />
           </Button>
         )}
-        {step < 3 && (
+        {step < 4 && (
           <Button
             className="buttonNext"
             onClick={handleNextStep}
@@ -99,14 +107,19 @@ const ContactInfo = () => {
             <KeyboardDoubleArrowRightIcon />
           </Button>
         )}
-        {step === 3 && (
-          <Button className="completeButton" variant="outlined">
-            <Link to={"/pokemon-picker"}>Let's go !</Link>
-          </Button>
+        {step === 4 && (
+          <div className="completeButtons">
+            <Button className="quizButton" variant="outlined">
+              <Link to={"/pokemon-quiz"}>Take quiz</Link>
+            </Button>
+            <Button className="skipButton" variant="outlined">
+              <Link to={"/pokemon-picker"}>Let me pick</Link>
+            </Button>
+          </div>
         )}
         <Button
           className="testClearButton"
-          onClick={() => dispatch(clear())}
+          onClick={handleDev}
           variant="outlined"
         >
           dev
