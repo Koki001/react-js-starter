@@ -1,6 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { nextStep } from "./redux/slices/progressSlice";
+import { nextStep } from "./redux/slices/userSlice";
 // MUI imports
 import { Button } from "@mui/material";
 

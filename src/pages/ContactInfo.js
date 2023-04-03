@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {
   clear,
-  progress,
+  progressCurrent,
   nextStep,
   prevStep,
   errorMessage,
@@ -22,7 +22,7 @@ import KeyboardDoubleArrowRightIcon from "@mui/icons-material/KeyboardDoubleArro
 import KeyboardDoubleArrowLeftIcon from "@mui/icons-material/KeyboardDoubleArrowLeft";
 
 const ContactInfo = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const step = useSelector((state) => state.user.step);
   const user = useSelector((state) => state.user);
@@ -34,13 +34,6 @@ const ContactInfo = () => {
     <InfoComplete />,
   ];
 
-  useEffect(() => {
-    const weight = 100 / 5;
-    const value = weight * step;
-    if (step < 4) {
-      dispatch(progress(value));
-    }
-  }, [step]);
   const handleNextStep = (e) => {
     if (step === 1) {
       if (
@@ -78,9 +71,9 @@ const ContactInfo = () => {
     dispatch(prevStep());
   };
   const handleDev = () => {
-    dispatch(clear())
-    navigate("/")
-  }
+    dispatch(clear());
+    navigate("/");
+  };
   return (
     <div className="formContainer wrapper">
       <ProgressBar />
@@ -109,12 +102,12 @@ const ContactInfo = () => {
         )}
         {step === 4 && (
           <div className="completeButtons">
-            <Button className="quizButton" variant="outlined">
-              <Link to={"/pokemon-quiz"}>Take quiz</Link>
-            </Button>
-            <Button className="skipButton" variant="outlined">
-              <Link to={"/pokemon-picker"}>Let me pick</Link>
-            </Button>
+            <Link className="quizButton" to={"/pokemon-quiz"}>
+              Take quiz
+            </Link>
+            <Link onClick={() => dispatch(nextStep())} className="skipButton" to={"/pokemon-picker"}>
+              Let me pick
+            </Link>
           </div>
         )}
         <Button

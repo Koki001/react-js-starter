@@ -16,3 +16,61 @@
     align-items: center;
   }
 }
+.quiz {
+  transform: translatey(0px);
+  mix-blend-mode: multiply;
+  text-align: center;
+  // text-transform: uppercase;
+  font-weight: bold;
+  letter-spacing: 3px;
+  line-height: 1.2rem;
+  color: $color-brown;
+  background-color: $color-beige;
+  padding: 30px 40px;
+  border-radius: 11px;
+  position: relative;
+  box-shadow: 20px 20px $color-blue;
+  font-family: "Baloo 2", cursive;
+  width: 600px;
+  font-size: 1rem;
+  height: 600px;
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  p {
+    width: 100%;
+    border-bottom: 3px solid $color-brown;
+    padding-bottom: 30px;
+  }
+  .questions {
+    width: 100%;
+  }
+  .answers {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-end;
+    width: 100%;
+    button {
+      width: calc(100% / 2 - 10px);
+      padding: 10px 10px;
+      margin: 5px;
+      color: black;
+      border: 1px solid $color-brown;
+      &:hover {
+        background-color: $color-brown;
+        color: white;
+      }
+    }
+  }
+  .pokemon {
+    width: 200px;
+  }
+  .loader {
+    transform: translate(-50%, 50%);
+    left: 50%;
+    top: 40%;
+  }
+}

@@ -8,8 +8,17 @@ import TextField from "@mui/material/TextField";
 const UserName = () => {
   const [load, setLoad] = useState(true);
   const dispatch = useDispatch();
-  const errorMessage = useSelector((state) => state.user.errorMessage);
   const name = useSelector((state) => state.user.name);
+  const errorMessage = useSelector((state) => state.user.errorMessage);
+  const regexName = /^[a-zA-Z\b]*$/;
+
+  const handleFirst = (e) => {
+    if (regexName.test(e.target.value)){
+      dispatch(firstName(e.target.value));
+    } else {
+      
+    }
+  }
   return (
     <div className="userNameContainer">
       {/* loader works, but usally just flashes, will return to it another time */}
@@ -47,7 +56,7 @@ const UserName = () => {
           id="input-first-name"
           label="First name"
           variant="outlined"
-          onChange={(e) => dispatch(firstName(e.target.value))}
+          onChange={handleFirst}
           value={useSelector((state) => state.user.name.first)}
         />
         <TextField

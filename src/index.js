@@ -28,13 +28,13 @@ const router = createBrowserRouter([
     errorElement: <PageNotFound />,
   },
   {
-    path: "/pokemon-picker",
-    element: <PokemonPick />,
+    path: "/pokemon-quiz",
+    element: <PokeQuiz />,
     errorElement: <PageNotFound />,
   },
   {
-    path: "/pokemon-quiz",
-    element: <PokeQuiz />,
+    path: "/pokemon-picker",
+    element: <PokemonPick />,
     errorElement: <PageNotFound />,
   },
 ]);

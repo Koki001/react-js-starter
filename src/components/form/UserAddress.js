@@ -1,4 +1,4 @@
-import useAxios from "../../api/useAxios";
+import {useAutocomplete} from "../../api/useAxios";
 import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
 import { address } from "../../redux/slices/userSlice";
@@ -11,7 +11,7 @@ const UserAddress = () => {
   const [load, setLoad] = useState(true)
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user);
-  const { result, error, loading } = useAxios(
+  const { result, error, loading } = useAutocomplete(
     useSelector((state) => state.user.address)
   );
   if (error) {

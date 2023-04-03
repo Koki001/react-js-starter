@@ -10,8 +10,32 @@ const initialState = {
   errorMessage: false,
   errorMessagePhone: false,
   progress: 0,
-  step: 1,
+  step: 0,
   completed: false,
+  prompt: {
+    incomplete: false,
+    name: false,
+    phone: false,
+  },
+  stages: {
+    0: {
+      visited: false,
+      complete: false,
+    },
+    1: {
+      visited: false,
+      complete: false,
+    },
+    2: {
+      visited: false,
+      complete: false,
+    },
+    3: {
+      visited: false,
+      complete: false,
+    },
+  },
+  quizPick: {},
 };
 
 export const userSlice = createSlice({
@@ -19,10 +43,18 @@ export const userSlice = createSlice({
   initialState,
   reducers: {
     firstName: (state, action) => {
-      state.name.first = action.payload;
+      if (state.name.first === "") {
+        state.name.first = action.payload.toUpperCase();
+      } else {
+        state.name.first = action.payload;
+      }
     },
     lastName: (state, action) => {
-      state.name.last = action.payload;
+      if (state.name.last === "") {
+        state.name.last = action.payload.toUpperCase();
+      } else {
+        state.name.last = action.payload;
+      }
     },
     phone: (state, action) => {
       state.phone = action.payload;
@@ -30,7 +62,7 @@ export const userSlice = createSlice({
     address: (state, action) => {
       state.address = action.payload;
     },
-    progress: (state, action) => {
+    progressCurrent: (state, action) => {
       state.progress = action.payload;
     },
     nextStep: (state) => {
@@ -51,6 +83,9 @@ export const userSlice = createSlice({
     completed: (state, action) => {
       state.completed = action.payload;
     },
+    quizPick: (state, action) => {
+      state.quizPick = action.payload;
+    },
     clear: () => initialState,
   },
 });
@@ -61,13 +96,14 @@ export const {
   phone,
   address,
   clear,
-  progress,
+  progressCurrent,
   nextStep,
   prevStep,
   forceStep,
   errorMessage,
   errorMessagePhone,
   completed,
+  quizPick,
 } = userSlice.actions;
 
 export default userSlice.reducer;

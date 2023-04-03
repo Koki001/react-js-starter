@@ -556,6 +556,9 @@ body {
 .progressBarContainer .milestoneAddress {
   left: 60%;
 }
+.progressBarContainer .milestoneQuiz {
+  left: 80%;
+}
 .progressBarContainer .milestoneComplete {
   left: 100%;
 }
@@ -691,6 +694,64 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.quiz {
+  transform: translatey(0px);
+  mix-blend-mode: multiply;
+  text-align: center;
+  font-weight: bold;
+  letter-spacing: 3px;
+  line-height: 1.2rem;
+  color: #774f38;
+  background-color: rgba(236, 229, 206, 0.6980392157);
+  padding: 30px 40px;
+  border-radius: 11px;
+  position: relative;
+  box-shadow: 20px 20px rgba(131, 175, 155, 0.6117647059);
+  font-family: "Baloo 2", cursive;
+  width: 600px;
+  font-size: 1rem;
+  height: 600px;
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+.quiz p {
+  width: 100%;
+  border-bottom: 3px solid #774f38;
+  padding-bottom: 30px;
+}
+.quiz .questions {
+  width: 100%;
+}
+.quiz .answers {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-end;
+  width: 100%;
+}
+.quiz .answers button {
+  width: calc(50% - 10px);
+  padding: 10px 10px;
+  margin: 5px;
+  color: black;
+  border: 1px solid #774f38;
+}
+.quiz .answers button:hover {
+  background-color: #774f38;
+  color: white;
+}
+.quiz .pokemon {
+  width: 200px;
+}
+.quiz .loader {
+  transform: translate(-50%, 50%);
+  left: 50%;
+  top: 40%;
 }
 
 /*# sourceMappingURL=App.css.map */

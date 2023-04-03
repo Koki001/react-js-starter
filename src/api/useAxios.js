@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
 
-const useAxios = (input) => {
+const useAutocomplete = (input) => {
   const [result, setResult] = useState([]);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -31,4 +31,27 @@ const useAxios = (input) => {
   return { result, error, loading };
 };
 
-export default useAxios;
+// const useQuizResult = (choice, count) => {
+//   const [result, setResult] = useState(null);
+//   useEffect(() => {
+//     if (count) {
+//       axios({
+//         url: `https://pokeapi.co/api/v2/type/${choice}`,
+//       })
+//         .then((res) => {
+//           setResult(res.data.pokemon);
+//         })
+//         .catch((error) => {
+//           console.log(error);
+//         });
+//     } else {
+//       console.log("no axios call")
+//     }
+//   }, [choice]);
+//   return result
+// };
+
+export {
+  useAutocomplete,
+  // useQuizResult
+};
