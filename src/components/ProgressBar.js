@@ -44,6 +44,7 @@ const ProgressBar = () => {
     }
   };
   const handleHome = () => {
+     dispatch(forceStep(0));
     navigate("/");
   };
   return (

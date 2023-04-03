@@ -719,7 +719,7 @@ body {
   justify-content: space-between;
   align-items: center;
 }
-.quiz p {
+.quiz h3 {
   width: 100%;
   border-bottom: 3px solid #774f38;
   padding-bottom: 30px;
@@ -746,7 +746,29 @@ body {
   color: white;
 }
 .quiz .pokemon {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  max-height: 520px;
+}
+.quiz .pokemon img {
   width: 200px;
+  max-height: 400px;
+}
+.quiz .pokemon .quizStats {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+.quiz .pokemon .quizStats span {
+  margin-left: auto;
+}
+.quiz .pokemon .quizStats p {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
 }
 .quiz .loader {
   transform: translate(-50%, 50%);

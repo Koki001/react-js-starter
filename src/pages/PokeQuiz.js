@@ -16,7 +16,7 @@ const PokeQuiz = () => {
   const [load, setLoad] = useState(false);
 
   const dispatch = useDispatch();
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const handleAnswer = (e) => {
     if (count < 2) {
       setChoice(e.target.id);
@@ -43,48 +43,44 @@ const PokeQuiz = () => {
         url: pokeUrl,
       }).then((res) => {
         setResult(res.data);
+        dispatch(nextStep())
       });
     }
   }, [pokeUrl]);
   const handleNextStep = () => {
-    dispatch(nextStep())
-    navigate("/pokemon-picker")
-  }
+    // dispatch(nextStep());
+    navigate("/pokemon-picker");
+  };
   const handleSubmit = () => {
-    console.log(result)
-  }
+    console.log(result);
+  };
   return (
     <div className="quizContainer wrapper">
       <ProgressBar />
       <div className="quiz">
         <div className="questions">
-          {
-            !load && !result ?
+          {!load && !result ? (
             <p>{QuizTime(choice).question}</p>
-            :
-            result ?
-            <p>Here's {result.name ? result.name : "who was this again??"} !!</p>
-            : null
-          }
-        </div>
-        <div className="answers">
-          {QuizTime(choice).choices.map((answer, index) => {
-            return (
-              <Button
-                id={QuizTime(choice).values[index]}
-                key={index}
-                onClick={handleAnswer}
-              >
-                {answer}
-              </Button>
-            );
-          })}
+          ) : result ? (
+            <h3 >
+              Here's {result.name ? result.name : "who was this again??"} !!
+            </h3>
+          ) : null}
         </div>
         <div className="pokemon">
           {load && (
             <div className="loader">
               <div className="pokeball"></div>
               <span className="pokeballSpan">Loading ...</span>
+            </div>
+          )}
+          {!load && result && (
+            <div className="quizStats">
+              <p>id:<span> {result.id}</span></p>
+              <p>hp:<span> {result.stats[0].base_stat}</span></p>
+              <p>attack:<span> {result.stats[1].base_stat}</span></p>
+              <p>defense: <span>{result.stats[2].base_stat}</span></p>
+              <p>weight:<span> {result.stats[5].base_stat}</span></p>
             </div>
           )}
           <img
@@ -97,13 +93,26 @@ const PokeQuiz = () => {
             alt=""
           />
         </div>
-        {
-          result !== null && !load && 
-        <div className="quizCompleteButtons">
-          <button onClick={handleNextStep}>picker</button>
-          <button onClick={handleSubmit}>submit</button>
+        <div style={{ display: !result ? "flex" : "none" }} className="answers">
+          {QuizTime(choice).choices.map((answer, index) => {
+            return (
+              <Button
+                id={QuizTime(choice).values[index]}
+                key={index}
+                onClick={handleAnswer}
+              >
+                {answer}
+              </Button>
+            );
+          })}
         </div>
-        }
+
+        {result !== null && !load && (
+          <div className="quizCompleteButtons">
+            <button onClick={handleNextStep}>picker</button>
+            <button onClick={handleSubmit}>submit</button>
+          </div>
+        )}
       </div>
     </div>
   );

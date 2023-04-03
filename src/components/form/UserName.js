@@ -15,10 +15,13 @@ const UserName = () => {
   const handleFirst = (e) => {
     if (regexName.test(e.target.value)){
       dispatch(firstName(e.target.value));
-    } else {
-      
     }
   }
+    const handleLast = (e) => {
+      if (regexName.test(e.target.value)) {
+        dispatch(lastName(e.target.value));
+      }
+    };
   return (
     <div className="userNameContainer">
       {/* loader works, but usally just flashes, will return to it another time */}
@@ -66,7 +69,7 @@ const UserName = () => {
           id="input-last-name"
           label="Last name"
           variant="outlined"
-          onChange={(e) => dispatch(lastName(e.target.value))}
+          onChange={handleLast}
           value={useSelector((state) => state.user.name.last)}
         />
       </Box>

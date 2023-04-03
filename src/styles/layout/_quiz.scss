@@ -39,7 +39,7 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  p {
+  h3 {
     width: 100%;
     border-bottom: 3px solid $color-brown;
     padding-bottom: 30px;
@@ -66,7 +66,29 @@
     }
   }
   .pokemon {
-    width: 200px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    max-height: 520px;
+    img {
+      width: 200px;
+      max-height: 400px;
+    }
+    .quizStats {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      span {
+        margin-left: auto;
+      }
+      p {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+      }
+    }
   }
   .loader {
     transform: translate(-50%, 50%);
