@@ -102,7 +102,7 @@ const ContactInfo = () => {
         )}
         {step === 4 && (
           <div className="completeButtons">
-            <Link className="quizButton" to={"/pokemon-quiz"}>
+            <Link disabled className="quizButton" to={"/pokemon-quiz"}>
               Take quiz
             </Link>
             <Link onClick={() => dispatch(nextStep())} className="skipButton" to={"/pokemon-picker"}>
