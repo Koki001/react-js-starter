@@ -11,7 +11,7 @@ import App from "./App";
 import Intro from "./pages/Intro";
 import PokemonPick from "./pages/PokemonPick";
 import PokeQuiz from "./pages/PokeQuiz";
-import PageNotFound from "./components/errors/PageNotFound";
+import PageNotFound from "./components/Errors/PageNotFound";
 // MUI imports
 import theme from "./theme/muiStyles";
 import { ThemeProvider } from "@mui/material/styles";
