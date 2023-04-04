@@ -11,7 +11,7 @@ const useAutocomplete = (input) => {
       axios({
         url: "https://www.mapquestapi.com/search/v3/prediction",
         params: {
-          key: "pXPeEb8fKG1bWJTjmqYRZoLhF0sGhYUW",
+          key: process.env.REACT_APP_MAPQUEST,
           q: input,
           collection: `${["adminArea", "address", "airport"]}`,
           limit: 5,
