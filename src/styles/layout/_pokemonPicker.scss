@@ -5,7 +5,248 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 120px;
-  width: 600px;
+  margin-top: 150px;
   min-width: 350px;
+  background-color: $color-beige-light;
+  border-radius: 10px;
+}
+
+.pokemonContainer {
+  width: 100%;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: flex-end;
+  padding: 20px;
+  .pokemonCount {
+    height: 35px;
+    width: 9%;
+    min-width: 70px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    position: absolute;
+    left: 20px;
+    top: 20px;
+  }
+  .pokemonFilters {
+    width: 90%;
+    // padding-bottom: 20px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    transition: opacity 0.2s linear;
+  }
+  .sort {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-width: 260px;
+    p {
+      margin: 0 5px;
+    }
+    div {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    input:checked + label {
+      border-color: $color-beige-light;
+      color: white;
+      background-color: $color-brown;
+    }
+    label {
+      cursor: pointer;
+      transition: all 0.1s linear;
+      height: 100%;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: $color-beige-light;
+      border-radius: 5px;
+      border: 1px solid $color-brown;
+      color: $color-brown;
+      &:hover,
+      &:focus,
+      &:active {
+        border-color: $color-beige-light;
+        color: $color-beige-light;
+        background-color: $color-brown;
+      }
+    }
+  }
+  .search {
+    input {
+      padding: 5px 10px;
+      border-radius: 5px;
+      border: 1px solid $color-brown;
+      min-width: 100px;
+      max-width: 210px;
+    }
+    margin-right: 50px;
+  }
+}
+.pokeGenButtons {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 10%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  .genRadio {
+    margin: 0;
+    height: calc(100% / 9);
+    text-transform: capitalize;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    input:checked + label {
+      border-color: $color-beige-light;
+      color: white;
+      background-color: $color-brown;
+    }
+    label {
+      cursor: pointer;
+      transition: all 0.1s linear;
+      height: 100%;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: $color-beige-light;
+      border-radius: 5px;
+      border: 1px solid $color-brown;
+      color: $color-brown;
+      &:hover,
+      &:focus,
+      &:active {
+        border-color: $color-beige-light;
+        color: $color-beige-light;
+        background-color: $color-brown;
+      }
+    }
+  }
+  .selected {
+    border-color: $color-beige;
+    color: $color-beige;
+    background-color: $color-brown;
+  }
+}
+.pokemonList {
+  width: 90%;
+  min-height: 500px;
+  background-color: $color-beige;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  max-height: 500px;
+  overflow-y: scroll;
+  padding: 10px;
+  margin: 0;
+  .loader {
+    border-radius: 10px;
+    width: 101%;
+    height: 101%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 100;
+    cursor: wait;
+  }
+  .pokemonCard {
+    width: calc(100% / 5 - 20px);
+    // *************saving styles in case I get rid of tilt*********
+    // border-radius: 10px;
+    // background-color: white;
+    // text-align: center;
+    // display: flex;
+    // flex-direction: column;
+    // justify-content: flex-end;
+    // align-items: center;
+    // font-size: 0.8rem;
+    // padding: 5px;
+    // border: 1px solid $color-brown;
+    margin: 10px;
+    p {
+      text-transform: capitalize;
+    }
+    .tiltStyles {
+      width: 100%;
+      height: 100%;
+      border-radius: 10px;
+      background-color: white;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      align-items: center;
+      font-size: 0.8rem;
+      padding: 5px;
+      // margin: 5px;
+      border: 1px solid $color-brown;
+    }
+    img {
+      cursor: pointer;
+      transition: all 0.2s linear;
+      border-radius: 10px;
+      &:hover {
+        border: 1px solid $color-brown;
+        background-color: $color-beige-light;
+      }
+    }
+  }
+}
+
+.bottomContainer {
+  width: 100%;
+  display: flex;
+  position: relative;
+  justify-content: flex-end;
+  margin-top: 20px;
+  .pickerMessage {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    top: 25%;
+    left: 20%;
+    * {
+      margin-bottom: 10px;
+    }
+  }
+}
+.singlePokemon {
+  position: absolute;
+  border-radius: 10px;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 100;
+  backdrop-filter: blur(5px);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: rgba(0, 0, 0, 0.8);
+  .singleTop {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .singleImage {
+    width: 45%;
+    max-height: 480px;
+  }
+  .singleStats {
+    width: 45%;
+    color: white;
+  }
 }

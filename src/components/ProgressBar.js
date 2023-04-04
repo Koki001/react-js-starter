@@ -102,15 +102,15 @@ const ProgressBar = () => {
         >
           <p>quiz</p>
           {progress >= 80 && step > 4 ? (
-            <CheckCircleTwoToneIcon sx={{ color: "green" }} />
+            <CheckCircleTwoToneIcon sx={{ color: "blue" }} />
           ) : progress === 80 && step === 4 ? (
             <HelpTwoToneIcon />
           ) : (
-            <CatchingPokemonTwoToneIcon />
+            <CatchingPokemonTwoToneIcon sx={{ color: "blue" }} />
           )}
         </Button>
         <Button
-          onClick={handleRevisit}
+          onClick={() => navigate("/pokemon-picker")}
           value={5}
           className="milestoneComplete milestoneIcon"
         >

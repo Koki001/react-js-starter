@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import ProgressBar from "../components/ProgressBar";
 import { QuizTime } from "../helpers/quizQuestions";
 import { nextStep, quizPick } from "../redux/slices/userSlice";
+import Loader from "../components/Loader"
 // MUI imports
 import { Button } from "@mui/material";
 
@@ -52,7 +53,7 @@ const PokeQuiz = () => {
     navigate("/pokemon-picker");
   };
   const handleSubmit = () => {
-    console.log(result);
+    
   };
   return (
     <div className="quizContainer wrapper">
@@ -68,12 +69,7 @@ const PokeQuiz = () => {
           ) : null}
         </div>
         <div className="pokemon">
-          {load && (
-            <div className="loader">
-              <div className="pokeball"></div>
-              <span className="pokeballSpan">Loading ...</span>
-            </div>
-          )}
+          {load && <Loader />}
           {!load && result && (
             <div className="quizStats">
               <p>id:<span> {result.id}</span></p>

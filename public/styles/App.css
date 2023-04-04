@@ -674,9 +674,235 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 120px;
-  width: 600px;
+  margin-top: 150px;
   min-width: 350px;
+  background-color: rgba(236, 229, 206, 0.4588235294);
+  border-radius: 10px;
+}
+
+.pokemonContainer {
+  width: 100%;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: flex-end;
+  padding: 20px;
+}
+.pokemonContainer .pokemonCount {
+  height: 35px;
+  width: 9%;
+  min-width: 70px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  position: absolute;
+  left: 20px;
+  top: 20px;
+}
+.pokemonContainer .pokemonFilters {
+  width: 90%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  transition: opacity 0.2s linear;
+}
+.pokemonContainer .sort {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-width: 260px;
+}
+.pokemonContainer .sort p {
+  margin: 0 5px;
+}
+.pokemonContainer .sort div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.pokemonContainer .sort input:checked + label {
+  border-color: rgba(236, 229, 206, 0.4588235294);
+  color: white;
+  background-color: #774f38;
+}
+.pokemonContainer .sort label {
+  cursor: pointer;
+  transition: all 0.1s linear;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(236, 229, 206, 0.4588235294);
+  border-radius: 5px;
+  border: 1px solid #774f38;
+  color: #774f38;
+}
+.pokemonContainer .sort label:hover, .pokemonContainer .sort label:focus, .pokemonContainer .sort label:active {
+  border-color: rgba(236, 229, 206, 0.4588235294);
+  color: rgba(236, 229, 206, 0.4588235294);
+  background-color: #774f38;
+}
+.pokemonContainer .search {
+  margin-right: 50px;
+}
+.pokemonContainer .search input {
+  padding: 5px 10px;
+  border-radius: 5px;
+  border: 1px solid #774f38;
+  min-width: 100px;
+  max-width: 210px;
+}
+
+.pokeGenButtons {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 10%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+.pokeGenButtons .genRadio {
+  margin: 0;
+  height: 11.1111111111%;
+  text-transform: capitalize;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.pokeGenButtons .genRadio input:checked + label {
+  border-color: rgba(236, 229, 206, 0.4588235294);
+  color: white;
+  background-color: #774f38;
+}
+.pokeGenButtons .genRadio label {
+  cursor: pointer;
+  transition: all 0.1s linear;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(236, 229, 206, 0.4588235294);
+  border-radius: 5px;
+  border: 1px solid #774f38;
+  color: #774f38;
+}
+.pokeGenButtons .genRadio label:hover, .pokeGenButtons .genRadio label:focus, .pokeGenButtons .genRadio label:active {
+  border-color: rgba(236, 229, 206, 0.4588235294);
+  color: rgba(236, 229, 206, 0.4588235294);
+  background-color: #774f38;
+}
+.pokeGenButtons .selected {
+  border-color: rgba(236, 229, 206, 0.6980392157);
+  color: rgba(236, 229, 206, 0.6980392157);
+  background-color: #774f38;
+}
+
+.pokemonList {
+  width: 90%;
+  min-height: 500px;
+  background-color: rgba(236, 229, 206, 0.6980392157);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  max-height: 500px;
+  overflow-y: scroll;
+  padding: 10px;
+  margin: 0;
+}
+.pokemonList .loader {
+  border-radius: 10px;
+  width: 101%;
+  height: 101%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 100;
+  cursor: wait;
+}
+.pokemonList .pokemonCard {
+  width: calc(20% - 20px);
+  margin: 10px;
+}
+.pokemonList .pokemonCard p {
+  text-transform: capitalize;
+}
+.pokemonList .pokemonCard .tiltStyles {
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  background-color: white;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  font-size: 0.8rem;
+  padding: 5px;
+  border: 1px solid #774f38;
+}
+.pokemonList .pokemonCard img {
+  cursor: pointer;
+  transition: all 0.2s linear;
+  border-radius: 10px;
+}
+.pokemonList .pokemonCard img:hover {
+  border: 1px solid #774f38;
+  background-color: rgba(236, 229, 206, 0.4588235294);
+}
+
+.bottomContainer {
+  width: 100%;
+  display: flex;
+  position: relative;
+  justify-content: flex-end;
+  margin-top: 20px;
+}
+.bottomContainer .pickerMessage {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  top: 25%;
+  left: 20%;
+}
+.bottomContainer .pickerMessage * {
+  margin-bottom: 10px;
+}
+
+.singlePokemon {
+  position: absolute;
+  border-radius: 10px;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 100;
+  backdrop-filter: blur(5px);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+.singlePokemon .singleTop {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.singlePokemon .singleImage {
+  width: 45%;
+  max-height: 480px;
+}
+.singlePokemon .singleStats {
+  width: 45%;
+  color: white;
 }
 
 .quizContainer {
