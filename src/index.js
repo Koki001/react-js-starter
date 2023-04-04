@@ -8,10 +8,10 @@ import { persistor, store } from "./redux/store";
 import { PersistGate } from "redux-persist/integration/react";
 // Component imports
 import App from "./App";
-import ContactInfo from "./pages/ContactInfo";
+import Intro from "./pages/Intro";
 import PokemonPick from "./pages/PokemonPick";
 import PokeQuiz from "./pages/PokeQuiz";
-import PageNotFound from "./components/Errors/PageNotFound";
+import PageNotFound from "./components/errors/PageNotFound";
 // MUI imports
 import theme from "./theme/muiStyles";
 import { ThemeProvider } from "@mui/material/styles";
@@ -24,7 +24,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/get-started",
-    element: <ContactInfo />,
+    element: <Intro />,
     errorElement: <PageNotFound />,
   },
   {

@@ -713,6 +713,9 @@ body {
   align-items: center;
   min-width: 260px;
 }
+.pokemonContainer .sort svg {
+  pointer-events: none;
+}
 .pokemonContainer .sort p {
   margin: 0 5px;
 }
@@ -893,7 +896,7 @@ body {
 }
 .singlePokemon .singleTop {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
 }
 .singlePokemon .singleImage {
@@ -903,6 +906,10 @@ body {
 .singlePokemon .singleStats {
   width: 45%;
   color: white;
+}
+.singlePokemon .singleButtons {
+  display: flex;
+  justify-content: center;
 }
 
 .quizContainer {

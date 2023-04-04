@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import ProgressBar from "../components/ProgressBar";
 import { QuizTime } from "../helpers/quizQuestions";
 import { nextStep, quizPick } from "../redux/slices/userSlice";
-import Loader from "../components/Loader"
+import Loader from "../helpers/Loader"
 // MUI imports
 import { Button } from "@mui/material";
 

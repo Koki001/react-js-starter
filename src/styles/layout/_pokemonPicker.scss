@@ -43,6 +43,9 @@
     justify-content: space-between;
     align-items: center;
     min-width: 260px;
+    svg {
+      pointer-events: none;
+    }
     p {
       margin: 0 5px;
     }
@@ -129,6 +132,7 @@
         color: $color-beige-light;
         background-color: $color-brown;
       }
+
     }
   }
   .selected {
@@ -238,7 +242,7 @@
   background-color: rgba(0, 0, 0, 0.8);
   .singleTop {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
   }
   .singleImage {
@@ -248,5 +252,9 @@
   .singleStats {
     width: 45%;
     color: white;
+  }
+  .singleButtons {
+    display: flex;
+    justify-content: center;
   }
 }

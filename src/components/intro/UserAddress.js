@@ -1,4 +1,4 @@
-import {useAutocomplete} from "../../api/useAxios";
+import {useAutocomplete} from "../../helpers/autoCompleteApi";
 import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
 import { address } from "../../redux/slices/userSlice";

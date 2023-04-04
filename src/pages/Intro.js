@@ -11,11 +11,11 @@ import {
 } from "../redux/slices/userSlice";
 // Component imports
 import App from "../App";
-import UserAddress from "../components/form/UserAddress";
-import UserName from "../components/form/UserName";
-import UserPhone from "../components/form/UserPhone";
+import UserAddress from "../components/intro/UserAddress";
+import UserName from "../components/intro/UserName";
+import UserPhone from "../components/intro/UserPhone";
 import ProgressBar from "../components/ProgressBar";
-import InfoComplete from "../components/form/InfoComplete";
+import IntroComplete from "../components/intro/IntroComplete";
 // MUI imports
 import Button from "@mui/material/Button";
 import KeyboardDoubleArrowRightIcon from "@mui/icons-material/KeyboardDoubleArrowRight";
@@ -31,7 +31,7 @@ const ContactInfo = () => {
     <UserName />,
     <UserPhone />,
     <UserAddress />,
-    <InfoComplete />,
+    <IntroComplete />,
   ];
 
   const handleNextStep = (e) => {
@@ -102,9 +102,10 @@ const ContactInfo = () => {
         )}
         {step === 4 && (
           <div className="completeButtons">
-            <Link disabled className="quizButton" to={"/pokemon-quiz"}>
+            {/* <Link disabled className="quizButton" to={"/pokemon-quiz"}>
               Take quiz
-            </Link>
+            </Link> */}
+            <p>take quiz option</p>
             <Link onClick={() => dispatch(nextStep())} className="skipButton" to={"/pokemon-picker"}>
               Let me pick
             </Link>
