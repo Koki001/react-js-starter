@@ -177,6 +177,7 @@
     // padding: 5px;
     // border: 1px solid $color-brown;
     margin: 10px;
+    min-width: 140px;
     p {
       text-transform: capitalize;
     }
@@ -240,6 +241,7 @@
   flex-direction: column;
   justify-content: space-between;
   background-color: rgba(0, 0, 0, 0.8);
+  animation: fadeInCard 0.2s 1;
   .singleTop {
     display: flex;
     justify-content: center;
@@ -257,4 +259,9 @@
     display: flex;
     justify-content: center;
   }
+}
+
+@keyframes fadeInCard {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
 }

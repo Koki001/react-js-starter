@@ -1,4 +1,6 @@
 // single pokemon detailed view
+import Loader from "../../helpers/Loader";
+
 const SingleCard = (props) => {
   if (props.pokemon.single.name) {
     return (
@@ -29,7 +31,7 @@ const SingleCard = (props) => {
         </div>
       </div>
     );
-  } 
+  }
 };
 
 export default SingleCard;

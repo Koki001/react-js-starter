@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 const CompletionPrompts = (count) => {
   const user = useSelector((state) => state.user);
   const array = [
-    `Thanks for allowing us to get to know you, ${user.name.first} ${user.name.last}. Now, it's your turn to have some fun!`,
+    `Thanks for allowing us to get to know you, ${user.name.first}. Now, it's your turn to have some fun!`,
     `If you already have a Pokemon in mind (maybe you are looking at them right now??) you can jump straight to the point by choosing 'let me pick' below`,
     `Otherwise, choose 'take quiz' and depending on your answers there, we will try to match you with an appropriate Pokemon.`,
     `The ultimate goal here, aside from having fun, is to see which pokemon will have the honour of being your favourite!`,
@@ -16,6 +16,7 @@ const NamePrompts = (count) => {
     "Hey! What's your name ??",
     "Please tell me your full name so we can be friends.",
     "Hmmmm... I don't think you can have numbers in your name.",
+    ""
   ];
   return array[count];
 };

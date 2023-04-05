@@ -9,7 +9,7 @@ const initialState = {
   address: "",
   errorMessage: false,
   errorMessagePhone: false,
-  progress: 0,
+  progress: 20,
   step: 0,
   completed: false,
   prompt: {
@@ -17,23 +17,29 @@ const initialState = {
     name: false,
     phone: false,
   },
-  stages: {
-    0: {
+  records: {
+    name: {
       visited: false,
       complete: false,
     },
-    1: {
+    phone: {
       visited: false,
       complete: false,
     },
-    2: {
+    address: {
       visited: false,
       complete: false,
     },
-    3: {
+    quiz: {
       visited: false,
       complete: false,
     },
+  },
+  view: {
+    0: "home",
+    1: "name",
+    2: "phone",
+    3: "address",
   },
   quizPick: {},
 };

@@ -365,6 +365,81 @@ body {
   min-width: 100vh;
 }
 
+.progressBarContainer {
+  position: fixed;
+  top: 30px;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.progressBarContainer .progressBarContact,
+.progressBarContainer .progressBarPicks {
+  width: 100%;
+  position: relative;
+}
+.progressBarContainer .contactMilestone {
+  min-width: 50px;
+  min-height: 50px;
+  margin: 0 10px;
+  border-radius: 50%;
+  border: 5px solid green;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.progressBarContainer .milestoneIcon {
+  position: absolute;
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+  justify-content: flex-end;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  z-index: 10;
+  width: 30px;
+  min-width: 30px;
+  height: 30px;
+  min-height: 30px;
+  border-radius: 50%;
+  padding: 0;
+  background-color: white;
+}
+.progressBarContainer .milestoneIcon svg {
+  border-radius: 50%;
+  pointer-events: none;
+}
+.progressBarContainer .milestoneIcon svg:hover {
+  background-color: rgba(236, 229, 206, 0.6980392157);
+}
+.progressBarContainer .milestoneIcon:hover {
+  background-color: rgba(236, 229, 206, 0.6980392157);
+}
+.progressBarContainer .milestoneIcon p {
+  font-size: 0.7rem;
+  pointer-events: none;
+}
+.progressBarContainer .milestoneName {
+  left: 20%;
+}
+.progressBarContainer .milestonePhone {
+  left: 40%;
+}
+.progressBarContainer .milestoneAddress {
+  left: 60%;
+}
+.progressBarContainer .milestoneQuiz {
+  left: 80%;
+}
+.progressBarContainer .milestoneComplete {
+  left: 100%;
+}
+.progressBarContainer button {
+  color: black;
+  background-color: rgba(236, 229, 206, 0.6980392157);
+}
+
 .formContainer {
   position: relative;
   display: flex;
@@ -493,80 +568,6 @@ body {
   color: rgba(236, 229, 206, 0.6980392157);
 }
 
-.progressBarContainer {
-  position: fixed;
-  top: 30px;
-  left: 0;
-  right: 0;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.progressBarContainer .progressBarContact,
-.progressBarContainer .progressBarPicks {
-  width: 100%;
-  position: relative;
-}
-.progressBarContainer .contactMilestone {
-  min-width: 50px;
-  min-height: 50px;
-  margin: 0 10px;
-  border-radius: 50%;
-  border: 5px solid green;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.progressBarContainer .milestoneIcon {
-  position: absolute;
-  display: flex;
-  flex-direction: column-reverse;
-  align-items: center;
-  justify-content: flex-end;
-  transform: translate(-50%, -50%);
-  top: 50%;
-  z-index: 10;
-  width: 30px;
-  min-width: 30px;
-  height: 30px;
-  min-height: 30px;
-  border-radius: 50%;
-  padding: 0;
-  background-color: white;
-}
-.progressBarContainer .milestoneIcon svg {
-  border-radius: 50%;
-  pointer-events: none;
-}
-.progressBarContainer .milestoneIcon svg:hover {
-  background-color: rgba(236, 229, 206, 0.6980392157);
-}
-.progressBarContainer .milestoneIcon:hover {
-  background-color: rgba(236, 229, 206, 0.6980392157);
-}
-.progressBarContainer .milestoneIcon p {
-  font-size: 0.7rem;
-}
-.progressBarContainer .milestoneName {
-  left: 20%;
-}
-.progressBarContainer .milestonePhone {
-  left: 40%;
-}
-.progressBarContainer .milestoneAddress {
-  left: 60%;
-}
-.progressBarContainer .milestoneQuiz {
-  left: 80%;
-}
-.progressBarContainer .milestoneComplete {
-  left: 100%;
-}
-.progressBarContainer button {
-  color: black;
-  background-color: rgba(236, 229, 206, 0.6980392157);
-}
-
 .userNameContainer p,
 .userPhoneContainer p,
 .userAddressContainer p,
@@ -669,6 +670,113 @@ body {
     color: #774f38;
   }
 }
+.encounterContainer {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 150px;
+  width: 600px;
+  min-width: 350px;
+}
+
+.quizContainer {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 120px;
+  width: 600px;
+  min-width: 350px;
+}
+.quizContainer quiz {
+  width: 100%;
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.quiz {
+  transform: translatey(0px);
+  mix-blend-mode: multiply;
+  text-align: center;
+  font-weight: bold;
+  letter-spacing: 3px;
+  line-height: 1.2rem;
+  color: #774f38;
+  background-color: rgba(236, 229, 206, 0.6980392157);
+  padding: 30px 40px;
+  border-radius: 11px;
+  position: relative;
+  box-shadow: 20px 20px rgba(131, 175, 155, 0.6117647059);
+  font-family: "Baloo 2", cursive;
+  width: 600px;
+  font-size: 1rem;
+  height: 600px;
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+.quiz h3 {
+  width: 100%;
+  border-bottom: 3px solid #774f38;
+  padding-bottom: 30px;
+}
+.quiz .questions {
+  width: 100%;
+}
+.quiz .answers {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-end;
+  width: 100%;
+}
+.quiz .answers button {
+  width: calc(50% - 10px);
+  padding: 10px 10px;
+  margin: 5px;
+  color: black;
+  border: 1px solid #774f38;
+}
+.quiz .answers button:hover {
+  background-color: #774f38;
+  color: white;
+}
+.quiz .pokemon {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  max-height: 520px;
+}
+.quiz .pokemon img {
+  width: 200px;
+  max-height: 400px;
+}
+.quiz .pokemon .quizStats {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+.quiz .pokemon .quizStats span {
+  margin-left: auto;
+}
+.quiz .pokemon .quizStats p {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+.quiz .loader {
+  transform: translate(-50%, 50%);
+  left: 50%;
+  top: 40%;
+}
+
 .pickContainer {
   position: relative;
   display: flex;
@@ -831,6 +939,7 @@ body {
 .pokemonList .pokemonCard {
   width: calc(20% - 20px);
   margin: 10px;
+  min-width: 140px;
 }
 .pokemonList .pokemonCard p {
   text-transform: capitalize;
@@ -893,6 +1002,7 @@ body {
   flex-direction: column;
   justify-content: space-between;
   background-color: rgba(0, 0, 0, 0.8);
+  animation: fadeInCard 0.2s 1;
 }
 .singlePokemon .singleTop {
   display: flex;
@@ -912,101 +1022,13 @@ body {
   justify-content: center;
 }
 
-.quizContainer {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 120px;
-  width: 600px;
-  min-width: 350px;
-}
-.quizContainer quiz {
-  width: 100%;
-  margin-top: 20px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.quiz {
-  transform: translatey(0px);
-  mix-blend-mode: multiply;
-  text-align: center;
-  font-weight: bold;
-  letter-spacing: 3px;
-  line-height: 1.2rem;
-  color: #774f38;
-  background-color: rgba(236, 229, 206, 0.6980392157);
-  padding: 30px 40px;
-  border-radius: 11px;
-  position: relative;
-  box-shadow: 20px 20px rgba(131, 175, 155, 0.6117647059);
-  font-family: "Baloo 2", cursive;
-  width: 600px;
-  font-size: 1rem;
-  height: 600px;
-  margin-top: 50px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-}
-.quiz h3 {
-  width: 100%;
-  border-bottom: 3px solid #774f38;
-  padding-bottom: 30px;
-}
-.quiz .questions {
-  width: 100%;
-}
-.quiz .answers {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: flex-end;
-  width: 100%;
-}
-.quiz .answers button {
-  width: calc(50% - 10px);
-  padding: 10px 10px;
-  margin: 5px;
-  color: black;
-  border: 1px solid #774f38;
-}
-.quiz .answers button:hover {
-  background-color: #774f38;
-  color: white;
-}
-.quiz .pokemon {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  max-height: 520px;
-}
-.quiz .pokemon img {
-  width: 200px;
-  max-height: 400px;
-}
-.quiz .pokemon .quizStats {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
-}
-.quiz .pokemon .quizStats span {
-  margin-left: auto;
-}
-.quiz .pokemon .quizStats p {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-}
-.quiz .loader {
-  transform: translate(-50%, 50%);
-  left: 50%;
-  top: 40%;
+@keyframes fadeInCard {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 /*# sourceMappingURL=App.css.map */

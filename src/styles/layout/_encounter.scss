@@ -1,0 +1,11 @@
+@use "../base//variables" as *;
+
+.encounterContainer {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 150px;
+  width: 600px;
+  min-width: 350px;
+}

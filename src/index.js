@@ -9,8 +9,9 @@ import { PersistGate } from "redux-persist/integration/react";
 // Component imports
 import App from "./App";
 import Intro from "./pages/Intro";
-import PokemonPick from "./pages/PokemonPick";
 import PokeQuiz from "./pages/PokeQuiz";
+import Encounter from "./pages/Encounter";
+import PokemonPick from "./pages/PokemonPick";
 import PageNotFound from "./components/Errors/PageNotFound";
 // MUI imports
 import theme from "./theme/muiStyles";
@@ -23,17 +24,22 @@ const router = createBrowserRouter([
     errorElement: <PageNotFound />,
   },
   {
-    path: "/get-started",
+    path: "/:id/:stage",
     element: <Intro />,
     errorElement: <PageNotFound />,
   },
   {
-    path: "/pokemon-quiz",
+    path: "/:id/encounter",
+    element: <Encounter />,
+    errorElement: <PageNotFound />,
+  },
+  {
+    path: "/:id/quiz",
     element: <PokeQuiz />,
     errorElement: <PageNotFound />,
   },
   {
-    path: "/pokemon-picker",
+    path: "/:id/picker",
     element: <PokemonPick />,
     errorElement: <PageNotFound />,
   },

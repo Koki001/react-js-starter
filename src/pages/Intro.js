@@ -1,6 +1,6 @@
-import { useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import {
   clear,
   progressCurrent,
@@ -8,79 +8,89 @@ import {
   prevStep,
   errorMessage,
   errorMessagePhone,
+  forceStep,
 } from "../redux/slices/userSlice";
 // Component imports
-import App from "../App";
-import UserAddress from "../components/intro/UserAddress";
+import ProgressBar from "../components/ProgressBar";
 import UserName from "../components/intro/UserName";
 import UserPhone from "../components/intro/UserPhone";
-import ProgressBar from "../components/ProgressBar";
-import IntroComplete from "../components/intro/IntroComplete";
+import UserAddress from "../components/intro/UserAddress";
 // MUI imports
 import Button from "@mui/material/Button";
-import KeyboardDoubleArrowRightIcon from "@mui/icons-material/KeyboardDoubleArrowRight";
 import KeyboardDoubleArrowLeftIcon from "@mui/icons-material/KeyboardDoubleArrowLeft";
+import KeyboardDoubleArrowRightIcon from "@mui/icons-material/KeyboardDoubleArrowRight";
 
 const ContactInfo = () => {
+  let { id, stage } = useParams();
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const step = useSelector((state) => state.user.step);
-  const user = useSelector((state) => state.user);
   const components = [
-    <App />,
-    <UserName />,
-    <UserPhone />,
-    <UserAddress />,
-    <IntroComplete />,
+    { name: <UserName />, value: "name" },
+    { name: <UserPhone />, value: "phone" },
+    { name: <UserAddress />, value: "address" },
   ];
-
-  const handleNextStep = (e) => {
-    if (step === 1) {
-      if (
-        (step === 1 && user.name.first === "") ||
-        (step === 1 && user.name.last === "")
-      ) {
-        dispatch(errorMessage(true));
-      } else {
-        dispatch(errorMessage(false));
-        dispatch(nextStep());
-      }
-    } else if (step === 2) {
-      if (step === 2 && user.phone === "") {
-        dispatch(errorMessagePhone(false));
-        dispatch(errorMessage(true));
-      } else if (step === 2 && user.phone.length < 10) {
-        dispatch(errorMessage(false));
-        dispatch(errorMessagePhone(true));
-      } else {
-        dispatch(errorMessagePhone(false));
-        dispatch(errorMessage(false));
-        dispatch(nextStep());
-      }
-    } else if (step === 3) {
-      if (step === 3 && user.address === "") {
-        dispatch(errorMessage(true));
-      } else {
-        dispatch(errorMessage(false));
-        dispatch(nextStep());
-      }
+  // match the current step with current stage when using a link
+  useEffect(() => {
+    if (stage === "name") {
+      dispatch(forceStep(0));
+      navigate(`/${id}/${stage}`);
+    } else if (stage === "phone") {
+      dispatch(forceStep(1));
+      navigate(`/${id}/${stage}`);
+    } else if (stage === "address") {
+      dispatch(forceStep(2));
+      navigate(`/${id}/${stage}`);
     }
+  }, []);
+  const handleNextStep = (e) => {
+    dispatch(nextStep());
+    navigate(`/${id}/${components[step].value}`)
+    if (step === 2) {
+      navigate(`/${id}/encounter`);
+    }
+    // if (stage === "name") {
+    //   if (user.name.first === "" || user.name.last === "") {
+    //     dispatch(errorMessage(true));
+    //   } else {
+    //     dispatch(errorMessage(false));
+    //     navigate(`/${id}/phone`);
+    //   }
+    // } else if (stage === 2) {
+    //   if (stage === 2 && user.phone === "") {
+    //     dispatch(errorMessagePhone(false));
+    //     dispatch(errorMessage(true));
+    //   } else if (stage === 2 && user.phone.length < 10) {
+    //     dispatch(errorMessage(false));
+    //     dispatch(errorMessagePhone(true));
+    //   } else {
+    //     dispatch(errorMessagePhone(false));
+    //     dispatch(errorMessage(false));
+    //     navigate(`/${localStorage.getItem("userId")}/${user.step}`);
+    //   }
+    // } else if (stage === 3) {
+    //   if (stage === 3 && user.address === "") {
+    //     dispatch(errorMessage(true));
+    //   } else {
+    //     dispatch(errorMessage(false));
+    //     navigate(`/${localStorage.getItem("userId")}/${user.step}`);
+    //   }
+    // }
   };
   const handlePrevStep = () => {
-    dispatch(errorMessage(false));
     dispatch(prevStep());
   };
   const handleDev = () => {
     dispatch(clear());
-    navigate("/");
+    localStorage.clear();
   };
   return (
     <div className="formContainer wrapper">
       <ProgressBar />
-      <form>{components[step]}</form>
+      <form>{step < components.length && components[step].name}</form>
 
       <div className="contactButtons">
-        {step > 1 && step < 4 && (
+        {step > 0 && (
           <Button
             className="buttonBack"
             onClick={handlePrevStep}
@@ -90,7 +100,7 @@ const ContactInfo = () => {
             <KeyboardDoubleArrowLeftIcon />
           </Button>
         )}
-        {step < 4 && (
+        {step < 3 && (
           <Button
             className="buttonNext"
             onClick={handleNextStep}
@@ -100,17 +110,7 @@ const ContactInfo = () => {
             <KeyboardDoubleArrowRightIcon />
           </Button>
         )}
-        {step === 4 && (
-          <div className="completeButtons">
-            {/* <Link disabled className="quizButton" to={"/pokemon-quiz"}>
-              Take quiz
-            </Link> */}
-            <p>take quiz option</p>
-            <Link onClick={() => dispatch(nextStep())} className="skipButton" to={"/pokemon-picker"}>
-              Let me pick
-            </Link>
-          </div>
-        )}
+
         <Button
           className="testClearButton"
           onClick={handleDev}

@@ -6,6 +6,7 @@ import ProgressBar from "../components/ProgressBar";
 import { QuizTime } from "../helpers/quizQuestions";
 import { nextStep, quizPick } from "../redux/slices/userSlice";
 import Loader from "../helpers/Loader"
+import IntroComplete from "../components/intro/IntroComplete";
 // MUI imports
 import { Button } from "@mui/material";
 
@@ -50,7 +51,7 @@ const PokeQuiz = () => {
   }, [pokeUrl]);
   const handleNextStep = () => {
     // dispatch(nextStep());
-    navigate("/pokemon-picker");
+    navigate("/picker");
   };
   const handleSubmit = () => {
     

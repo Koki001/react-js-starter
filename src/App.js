@@ -1,16 +1,25 @@
+import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { nextStep } from "./redux/slices/userSlice";
+import { v4 as uuidv4 } from "uuid";
+import { useDispatch, useSelector } from "react-redux";
+import { forceStep } from "./redux/slices/userSlice";
 // MUI imports
 import { Button } from "@mui/material";
 
 function App() {
-  const dispatch = useDispatch()
-  const navigate = useNavigate()
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!localStorage.userId) {
+     localStorage.setItem("userId", uuidv4())
+    }
+  }, []);
+
   const handleStart = () => {
-    dispatch(nextStep())
-    navigate("/get-started")
-  }
+    dispatch(forceStep(0));
+    navigate(`/${localStorage.getItem("userId")}/name`);
+  };
   return (
     <div className="App wrapper">
       <h1>Pickachu</h1>

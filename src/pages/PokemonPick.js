@@ -107,7 +107,12 @@ const PokemonPick = () => {
     <div className="pickContainer wrapper">
       <ProgressBar />
       <div className="pokemonContainer">
-        <SingleCard pokemon={pokemon} exit={handleExitCard} />
+        {pokemon.single ? (
+          <SingleCard pokemon={pokemon} exit={handleExitCard} />
+        ) : (
+          <Loader />
+        )}
+
         <div className="pokemonCount">
           <SearchIcon />
           {!loader && visited && <h4>{pokemon.genResults.length}</h4>}
