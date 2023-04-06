@@ -1,12 +1,11 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import ProgressBar from "../components/ProgressBar";
 import { QuizTime } from "../helpers/quizQuestions";
-import { nextStep, quizPick } from "../redux/slices/userSlice";
-import Loader from "../helpers/Loader"
-import IntroComplete from "../components/intro/IntroComplete";
+import { nextStep } from "../redux/slices/userSlice";
+import Loader from "../helpers/Loader";
 // MUI imports
 import { Button } from "@mui/material";
 
@@ -45,7 +44,7 @@ const PokeQuiz = () => {
         url: pokeUrl,
       }).then((res) => {
         setResult(res.data);
-        dispatch(nextStep())
+        dispatch(nextStep());
       });
     }
   }, [pokeUrl]);
@@ -53,9 +52,7 @@ const PokeQuiz = () => {
     // dispatch(nextStep());
     navigate("/picker");
   };
-  const handleSubmit = () => {
-    
-  };
+  const handleSubmit = () => {};
   return (
     <div className="quizContainer wrapper">
       <ProgressBar />
@@ -64,7 +61,7 @@ const PokeQuiz = () => {
           {!load && !result ? (
             <p>{QuizTime(choice).question}</p>
           ) : result ? (
-            <h3 >
+            <h3>
               Here's {result.name ? result.name : "who was this again??"} !!
             </h3>
           ) : null}
@@ -73,11 +70,21 @@ const PokeQuiz = () => {
           {load && <Loader />}
           {!load && result && (
             <div className="quizStats">
-              <p>id:<span> {result.id}</span></p>
-              <p>hp:<span> {result.stats[0].base_stat}</span></p>
-              <p>attack:<span> {result.stats[1].base_stat}</span></p>
-              <p>defense: <span>{result.stats[2].base_stat}</span></p>
-              <p>weight:<span> {result.stats[5].base_stat}</span></p>
+              <p>
+                id:<span> {result.id}</span>
+              </p>
+              <p>
+                hp:<span> {result.stats[0].base_stat}</span>
+              </p>
+              <p>
+                attack:<span> {result.stats[1].base_stat}</span>
+              </p>
+              <p>
+                defense: <span>{result.stats[2].base_stat}</span>
+              </p>
+              <p>
+                weight:<span> {result.stats[5].base_stat}</span>
+              </p>
             </div>
           )}
           <img
@@ -105,7 +112,7 @@ const PokeQuiz = () => {
         </div>
 
         {result !== null && !load && (
-          <div className="quizCompleteButtons">
+          <div className="completionButtons">
             <button onClick={handleNextStep}>picker</button>
             <button onClick={handleSubmit}>submit</button>
           </div>

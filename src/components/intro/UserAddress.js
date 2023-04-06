@@ -1,22 +1,63 @@
-import {useAutocomplete} from "../../helpers/autoCompleteApi";
+import { useAutocomplete } from "../../helpers/autoCompleteApi";
 import { useDispatch, useSelector } from "react-redux";
-import { useState } from "react";
-import { address } from "../../redux/slices/userSlice";
+import { useState, useEffect } from "react";
+import { address, completed } from "../../redux/slices/userSlice";
+import {
+  errorMessage,
+  errorId,
+  prevStep,
+  progressCurrent,
+} from "../../redux/slices/userSlice";
+import { useNavigate, useSearchParams } from "react-router-dom";
 // MUI imports
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
+import { Button } from "@mui/material";
+import KeyboardDoubleArrowRightIcon from "@mui/icons-material/KeyboardDoubleArrowRight";
+import KeyboardDoubleArrowLeftIcon from "@mui/icons-material/KeyboardDoubleArrowLeft";
 
 const UserAddress = () => {
-  const [load, setLoad] = useState(true)
+  const navigate = useNavigate();
+  const [load, setLoad] = useState(true);
+  let [searchParams, setSearchParams] = useSearchParams({});
+  const paramsAddress = searchParams.get("address");
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user);
   const { result, error, loading } = useAutocomplete(
     useSelector((state) => state.user.address)
   );
-  if (error) {
-    alert(error);
-  }
+
+  useEffect(() => {
+    if (paramsAddress) {
+      dispatch(address(paramsAddress));
+    }
+  }, []);
+  const handleNextStep = () => {
+    if (user.address === "") {
+      dispatch(errorMessage(true));
+      dispatch(errorId(1));
+    } else {
+      dispatch(errorMessage(false));
+      dispatch(errorId(0));
+      dispatch(completed(true));
+      dispatch(progressCurrent(101));
+      searchParams.set("address", user.address);
+      setSearchParams(searchParams);
+      navigate({ pathname: "/encounter", search: searchParams.toString() });
+    }
+  };
+  const handlePrevStep = () => {
+    dispatch(prevStep());
+    dispatch(errorId(0));
+    dispatch(errorMessage(false));
+  };
+  const handleKeyNext = (e) => {
+    if (e.code === "Enter") {
+      e.preventDefault();
+      handleNextStep();
+    }
+  };
   return (
     <div className="userAddressContainer">
       <div style={{ opacity: load ? "0" : "1" }} className="cuboneGif">
@@ -31,6 +72,24 @@ const UserAddress = () => {
           alt=""
         />
       </div>
+      <div className="contactButtons">
+        <Button
+          className="buttonBack"
+          onClick={handlePrevStep}
+          variant="outlined"
+        >
+          back
+          <KeyboardDoubleArrowLeftIcon />
+        </Button>
+        <Button
+          className="buttonNext"
+          onClick={handleNextStep}
+          variant="outlined"
+        >
+          next
+          <KeyboardDoubleArrowRightIcon />
+        </Button>
+      </div>
       <Box
         sx={{
           display: "flex",
@@ -44,6 +103,7 @@ const UserAddress = () => {
       >
         <Autocomplete
           onChange={(e) => dispatch(address(e.target.textContent))}
+          onKeyDown={handleKeyNext}
           id="free-solo-demo"
           fullWidth
           freeSolo
@@ -51,6 +111,7 @@ const UserAddress = () => {
           value={user.address}
           renderInput={(params) => (
             <TextField
+              inputRef={(input) => input && input.focus()}
               {...params}
               required
               focused={user.errorMessage && user.address === ""}

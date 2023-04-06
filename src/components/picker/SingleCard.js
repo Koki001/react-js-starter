@@ -7,15 +7,62 @@ const SingleCard = (props) => {
       <div className="singlePokemon">
         <div className="singleTop">
           <div className="singleStats">
-            <p>ID: {props.pokemon.single.id}</p>
-            <p>Name: {props.pokemon.single.name}</p>
+            <div>
+              <h4>id: </h4>
+              <div className="statWrapper">
+                <span># {props.pokemon.single.id}</span>
+              </div>
+            </div>
+            <div>
+              <h4>name: </h4>
+              <div className="statWrapper">
+                <span>{props.pokemon.single.name}</span>
+              </div>
+            </div>
+            <div>
+              <h4>type:</h4>
+              <div className="typeContainer">
+                {props.pokemon.single.types.map((type, index) => {
+                  return (
+                    <div className="typeWrapper" key={index + "type"}>
+                      {index === 1 ? " , " : ""}
+                      <img
+                        className="pokeIcon"
+                        src={`./assets/iconPack/${type.type.name}.png`}
+                        alt=""
+                      />
+                      <span>{type.type.name}</span>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
             {props.pokemon.single.stats.map((stat, index) => {
               return (
-                <p key={`key${index}pokemon`}>
-                  {stat.stat.name}: {stat.base_stat}
-                </p>
+                <div key={`key${index}pokemon`}>
+                  <h4>{stat.stat.name}: </h4>
+                  <div className="statWrapper">
+                    <img
+                      className="pokeIcon"
+                      src={`./assets/iconPack/${stat.stat.name}.png`}
+                      alt=""
+                    />
+                    <span>{stat.base_stat}</span>
+                  </div>
+                </div>
               );
             })}
+            <div>
+              <h4>weight: </h4>
+              <div className="statWrapper">
+                <img
+                  className="pokeIcon"
+                  src="./assets/iconPack/weight.png"
+                  alt=""
+                />
+                <span>{props.pokemon.single.weight}</span>
+              </div>
+            </div>
           </div>
           <div className="singleImage">
             <img

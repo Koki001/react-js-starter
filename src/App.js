@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { v4 as uuidv4 } from "uuid";
 import { useDispatch, useSelector } from "react-redux";
 import { forceStep } from "./redux/slices/userSlice";
 // MUI imports
@@ -10,23 +9,24 @@ function App() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  useEffect(() => {
-    if (!localStorage.userId) {
-     localStorage.setItem("userId", uuidv4())
-    }
-  }, []);
-
   const handleStart = () => {
     dispatch(forceStep(0));
-    navigate(`/${localStorage.getItem("userId")}/name`);
+    navigate(`/get-started`);
   };
   return (
     <div className="App wrapper">
-      <h1>Pickachu</h1>
-      <p>welcome message</p>
+      <div className="landingContainer wrapper">
+        <h1>Pick-a-mon</h1>
+        <p>
+          Welcome to our Pokemon selection application! We're thrilled to help you discover and select your favorite Pokemon. With a vast
+          selection of Pokemon to choose from, we're sure you'll have a blast
+          exploring and discovering new favorites. Let's get started on this
+          exciting journey together!
+        </p>
       <Button onClick={handleStart} variant="outlined">
         Get Started
       </Button>
+      </div>
     </div>
   );
 }

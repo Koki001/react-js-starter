@@ -8,40 +8,10 @@ const initialState = {
   phone: "",
   address: "",
   errorMessage: false,
-  errorMessagePhone: false,
-  progress: 20,
+  errorId: 0,
+  progress: 0,
   step: 0,
   completed: false,
-  prompt: {
-    incomplete: false,
-    name: false,
-    phone: false,
-  },
-  records: {
-    name: {
-      visited: false,
-      complete: false,
-    },
-    phone: {
-      visited: false,
-      complete: false,
-    },
-    address: {
-      visited: false,
-      complete: false,
-    },
-    quiz: {
-      visited: false,
-      complete: false,
-    },
-  },
-  view: {
-    0: "home",
-    1: "name",
-    2: "phone",
-    3: "address",
-  },
-  quizPick: {},
 };
 
 export const userSlice = createSlice({
@@ -83,14 +53,11 @@ export const userSlice = createSlice({
     errorMessage: (state, action) => {
       state.errorMessage = action.payload;
     },
-    errorMessagePhone: (state, action) => {
-      state.errorMessagePhone = action.payload;
+    errorId: (state, action) => {
+      state.errorId = action.payload;
     },
     completed: (state, action) => {
       state.completed = action.payload;
-    },
-    quizPick: (state, action) => {
-      state.quizPick = action.payload;
     },
     clear: () => initialState,
   },
@@ -107,7 +74,7 @@ export const {
   prevStep,
   forceStep,
   errorMessage,
-  errorMessagePhone,
+  errorId,
   completed,
   quizPick,
 } = userSlice.actions;

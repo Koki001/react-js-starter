@@ -24,22 +24,22 @@ const router = createBrowserRouter([
     errorElement: <PageNotFound />,
   },
   {
-    path: "/:id/:stage",
+    path: "/get-started",
     element: <Intro />,
     errorElement: <PageNotFound />,
   },
   {
-    path: "/:id/encounter",
+    path: "/encounter",
     element: <Encounter />,
     errorElement: <PageNotFound />,
   },
   {
-    path: "/:id/quiz",
+    path: "/quiz",
     element: <PokeQuiz />,
     errorElement: <PageNotFound />,
   },
   {
-    path: "/:id/picker",
+    path: "/picker",
     element: <PokemonPick />,
     errorElement: <PageNotFound />,
   },

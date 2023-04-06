@@ -1,27 +1,19 @@
-import { useDispatch, useSelector } from "react-redux";
-import { CompletionPrompts } from "../helpers/formMessages";
-import { Link } from "react-router-dom";
+import { completionPrompts } from "../helpers/formMessages";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import { useState } from "react";
 import ProgressBar from "../components/ProgressBar";
 // MUI imports
 import IconButton from "@mui/material/IconButton";
+import { Button } from "@mui/material";
 import KeyboardDoubleArrowDownIcon from "@mui/icons-material/KeyboardDoubleArrowDown";
 
 const Encounter = () => {
-  const dispatch = useDispatch()
-  const user = useSelector((state) => state.user);
+  const navigate = useNavigate();
   const [count, setCount] = useState(0);
   const [load, setLoad] = useState(true);
-
-  // const chatOptions = [
-  //   `Thanks for allowing us to get to know you, ${user.name.first} ${user.name.last}. Now, it's your turn to have some fun!`,
-  //   `If you already have a Pokemon in mind (maybe you are looking at them right now??) you can jump straight to the point by choosing 'let me pick' below`,
-  //   `Otherwise, choose 'take quiz' and depending on your answers there, we will try to match you with an appropriate Pokemon.`,
-  //   `The ultimate goal here, aside from having fun, is to see which pokemon will have the honour of being your favourite!`,
-  //   `No one ever picks me. That's okay though. My name is Politoed if you were wondering... for whatever reason... Well, have fun!`,
-  // ];
+  const [searchParams, setSearchParams] = useSearchParams();
   const handleNextParagraph = (e) => {
-    if (count < 3) {
+    if (count < completionPrompts.length - 2) {
       setCount(count + 1);
     } else {
       setCount(count + 1);
@@ -34,7 +26,7 @@ const Encounter = () => {
       <div className="infoComplete">
         <div style={{ opacity: load ? "0" : "1" }} className="politoedGif">
           <p className="textScroll">
-            {CompletionPrompts(count)}
+            {completionPrompts[count]}
             <IconButton
               onClick={handleNextParagraph}
               className="scrollTextIcon"
@@ -54,19 +46,19 @@ const Encounter = () => {
             alt=""
           />
         </div>
-        <div className="completeButtons">
-          {/* <Link disabled className="quizButton" to={"/pokemon-quiz"}>
-              Take quiz
-            </Link> */}
-          <span>take quiz option</span>
-          <Link
-            // onClick={() => dispatch(nextStep())}
-            className="skipButton"
-            to={`/${localStorage.getItem("userId")}/picker`}
+
+        <div className="contactButtons">
+          <Button>Quiz Me</Button>
+          <Button
+            onClick={() =>
+              navigate({
+                pathname: "/picker",
+                search: searchParams.toString(),
+              })
+            }
           >
-            Let me pick
-          </Link>
-     
+            Let me Pick
+          </Button>
         </div>
       </div>
     </div>

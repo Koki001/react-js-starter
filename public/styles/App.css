@@ -362,21 +362,32 @@ body {
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  min-width: 100vh;
+  min-width: 100vw;
+  background: url("../assets/animated/pokemonBackground.gif");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.App .landingContainer {
+  max-width: 500px;
+  text-align: center;
+  background: salmon;
+  padding: 50px;
+  border-radius: 10px;
+}
+.App .landingContainer p {
+  margin: 30px 0;
 }
 
 .progressBarContainer {
-  position: fixed;
-  top: 30px;
-  left: 0;
-  right: 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin: 30px 0 100px 0;
 }
 .progressBarContainer .progressBarContact,
 .progressBarContainer .progressBarPicks {
-  width: 100%;
+  width: 50%;
   position: relative;
 }
 .progressBarContainer .contactMilestone {
@@ -414,30 +425,50 @@ body {
   background-color: rgba(236, 229, 206, 0.6980392157);
 }
 .progressBarContainer .milestoneIcon:hover {
-  background-color: rgba(236, 229, 206, 0.6980392157);
+  background-color: rgb(248, 248, 227);
 }
 .progressBarContainer .milestoneIcon p {
   font-size: 0.7rem;
   pointer-events: none;
 }
 .progressBarContainer .milestoneName {
-  left: 20%;
+  left: 0;
 }
 .progressBarContainer .milestonePhone {
-  left: 40%;
+  left: 50%;
 }
 .progressBarContainer .milestoneAddress {
-  left: 60%;
-}
-.progressBarContainer .milestoneQuiz {
-  left: 80%;
-}
-.progressBarContainer .milestoneComplete {
   left: 100%;
 }
 .progressBarContainer button {
   color: black;
   background-color: rgba(236, 229, 206, 0.6980392157);
+}
+.progressBarContainer .homeButton,
+.progressBarContainer .pickButton {
+  width: 100px;
+  height: 50px;
+  padding: 0;
+  border-radius: 10px;
+  background-color: transparent;
+}
+.progressBarContainer .homeButton img,
+.progressBarContainer .pickButton img {
+  object-fit: cover;
+  border-radius: 10px;
+  height: 100%;
+}
+.progressBarContainer .homeButton {
+  background-image: url("../assets/animated/pokeBlue.gif");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.progressBarContainer .pickButton {
+  background-image: url("../assets/animated/picker.gif");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 .formContainer {
@@ -445,13 +476,11 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 120px;
-  width: 600px;
-  min-width: 350px;
+  width: 100%;
 }
 .formContainer form {
-  width: 100%;
-  margin-top: 20px;
+  width: 600px;
+  min-width: 350px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -507,13 +536,11 @@ body {
   width: 100%;
   max-width: 600px;
   display: flex;
-  justify-content: center;
-  background-color: rgba(236, 229, 206, 0.6980392157);
-  border-bottom-right-radius: 10px;
-  border-bottom-left-radius: 10px;
+  justify-content: space-between;
+  position: absolute;
+  bottom: 100px;
 }
 .contactButtons button {
-  position: absolute;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -521,26 +548,18 @@ body {
   color: #774f38;
   border: 2px solid #c8c8a9;
   font-weight: bold;
-  height: 110px;
-  width: 110px;
   border-radius: 50%;
+  height: 100px;
+  width: 100px;
 }
 .contactButtons button:hover {
   color: #774f38;
   background-color: rgba(236, 229, 206, 0.6980392157);
   border: 2px solid rgba(236, 229, 206, 0.6980392157);
 }
-.contactButtons .buttonNext {
-  right: 0;
-  bottom: 100px;
-}
-.contactButtons .buttonBack {
-  left: 0;
-  bottom: 100px;
-}
 .contactButtons .testClearButton {
-  top: 0;
-  right: -100px;
+  top: 100px;
+  right: 0;
   height: 50px;
   width: 50px;
 }
@@ -675,9 +694,16 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 150px;
+  width: 100%;
+}
+
+.infoComplete {
   width: 600px;
   min-width: 350px;
+  margin-top: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .quizContainer {
@@ -782,10 +808,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 150px;
-  min-width: 350px;
-  background-color: rgba(236, 229, 206, 0.4588235294);
-  border-radius: 10px;
+  width: 100%;
 }
 
 .pokemonContainer {
@@ -795,7 +818,9 @@ body {
   justify-content: center;
   flex-direction: column;
   align-items: flex-end;
-  padding: 20px;
+  padding-top: 20px;
+  background-color: rgba(236, 229, 206, 0.4588235294);
+  border-radius: 10px;
 }
 .pokemonContainer .pokemonCount {
   height: 35px;
@@ -811,15 +836,36 @@ body {
 .pokemonContainer .pokemonFilters {
   width: 90%;
   display: flex;
-  justify-content: flex-end;
+  flex-wrap: wrap;
+  justify-content: space-between;
   align-items: center;
   transition: opacity 0.2s linear;
+  padding: 0 20px;
+}
+.pokemonContainer .pokemonFilters .searcherButton {
+  height: 45.75px;
+  border: 1px solid gray;
+  cursor: pointer;
+  transition: all 0.1s linear;
+  width: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(236, 229, 206, 0.4588235294);
+  border-radius: 5px;
+  color: #774f38;
+}
+.pokemonContainer .pokemonFilters .searcherButton:hover, .pokemonContainer .pokemonFilters .searcherButton:focus, .pokemonContainer .pokemonFilters .searcherButton:active {
+  border-color: rgba(236, 229, 206, 0.4588235294);
+  color: rgba(236, 229, 206, 0.4588235294);
+  background-color: #774f38;
 }
 .pokemonContainer .sort {
   display: flex;
   justify-content: space-between;
   align-items: center;
   min-width: 260px;
+  height: 45.75px;
 }
 .pokemonContainer .sort svg {
   pointer-events: none;
@@ -831,6 +877,10 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  height: 100%;
+}
+.pokemonContainer .sort .azBtn {
+  width: 40px;
 }
 .pokemonContainer .sort input:checked + label {
   border-color: rgba(236, 229, 206, 0.4588235294);
@@ -855,15 +905,16 @@ body {
   color: rgba(236, 229, 206, 0.4588235294);
   background-color: #774f38;
 }
-.pokemonContainer .search {
-  margin-right: 50px;
+.pokemonContainer .searchContainer {
+  display: flex;
+  justify-content: flex-start;
 }
-.pokemonContainer .search input {
-  padding: 5px 10px;
-  border-radius: 5px;
-  border: 1px solid #774f38;
-  min-width: 100px;
-  max-width: 210px;
+.pokemonContainer .filterContainer {
+  display: flex;
+  justify-content: flex-end;
+}
+.pokemonContainer .search {
+  width: 160px;
 }
 
 .pokeGenButtons {
@@ -1006,16 +1057,55 @@ body {
 }
 .singlePokemon .singleTop {
   display: flex;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: center;
 }
 .singlePokemon .singleImage {
-  width: 45%;
-  max-height: 480px;
+  max-width: 45%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .singlePokemon .singleStats {
-  width: 45%;
-  color: white;
+  width: auto;
+  min-width: 370px;
+  color: #774f38;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  background: rgb(236, 229, 206);
+  padding: 30px;
+  border-radius: 10px;
+}
+.singlePokemon .singleStats .pokeIcon {
+  width: 30px;
+  height: 30px;
+  display: inline-block;
+  margin: 0 5px 0 20px;
+}
+.singlePokemon .singleStats div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+.singlePokemon .singleStats div .typeContainer,
+.singlePokemon .singleStats div .statWrapper {
+  width: auto;
+}
+.singlePokemon .singleStats div .statWrapper {
+  display: flex;
+  justify-content: flex-end;
+}
+.singlePokemon .singleStats h4 {
+  text-transform: capitalize;
+  font-size: 1.3rem;
+  margin: 2px;
+}
+.singlePokemon .singleStats span {
+  text-transform: capitalize;
+  font-size: 1.3rem;
 }
 .singlePokemon .singleButtons {
   display: flex;

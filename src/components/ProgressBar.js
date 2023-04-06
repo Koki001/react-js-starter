@@ -1,71 +1,55 @@
 import { useEffect } from "react";
-import { useLocation, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { forceStep, progressCurrent } from "../redux/slices/userSlice";
+import { progressCurrent, clear } from "../redux/slices/userSlice";
 // MUI imports
 import { Button } from "@mui/material";
 import LinearProgress from "@mui/material/LinearProgress";
 import HelpTwoToneIcon from "@mui/icons-material/HelpTwoTone";
 import CheckCircleTwoToneIcon from "@mui/icons-material/CheckCircleTwoTone";
 import CatchingPokemonTwoToneIcon from "@mui/icons-material/CatchingPokemonTwoTone";
-import EmojiEventsTwoToneIcon from "@mui/icons-material/EmojiEventsTwoTone";
-import PlayCircleFilledWhiteTwoToneIcon from "@mui/icons-material/PlayCircleFilledWhiteTwoTone";
 
 const ProgressBar = () => {
   const dispatch = useDispatch();
-  const location = useLocation();
   const navigate = useNavigate();
-  const { id, stage } = useParams();
-  // const user = useSelector((state) => state.user);
+  const [searchParams, setSearchParams] = useSearchParams();
+  const user = useSelector((state) => state.user);
   const step = useSelector((state) => state.user.step);
   const progress = useSelector((state) => state.user.progress);
   useEffect(() => {
-    const weight = 100 / 5;
-    const value = weight * (step + 1);
-
-    dispatch(progressCurrent(value));
+    if (step <= 3) {
+      const weight = 100 / 2;
+      const value = weight * step;
+      dispatch(progressCurrent(value));
+    }
   }, [step]);
 
   const handleRevisit = (e) => {
-    console.log(e.target)
-    if (e.target.value === "picker") {
-      navigate(`/${id}/${e.target.value}`);
-    } else if (e.target.value === "encounter") {
-      navigate(`/${id}/${e.target.value}`);
-    } else if (e.target.value === "name") {
-      dispatch(forceStep(0));
-      navigate(`/${id}/${e.target.value}`);
-    } else if (e.target.value === "phone") {
-      dispatch(forceStep(1));
-      navigate(`/${id}/${e.target.value}`);
-    } else if (e.target.value === "address") {
-      dispatch(forceStep(2));
-      navigate(`/${id}/${e.target.value}`);
-    } else {
-      dispatch(forceStep(0));
-      navigate(`/`);
-    }
+    // navigate(`/get-started`);
+    // dispatch(forceStep(Number(e.target.value)))
   };
-
+  const handleClearDev = () => {
+    dispatch(clear());
+    navigate("/");
+  };
+  const handlePicker = () => {
+    // navigate({ pathname: "/picker", search: searchParams.toString() });
+  };
   return (
     <div className="progressBarContainer wrapper">
+      <Button onClick={handleClearDev} className="homeButton">
+        CLEAR
+      </Button>
       <div className="progressBarContact">
         <Button
           onClick={handleRevisit}
-          className="milestoneStart milestoneIcon"
-        >
-          <p>home</p>
-          <PlayCircleFilledWhiteTwoToneIcon sx={{ color: "green" }} />
-        </Button>
-        <Button
-          onClick={handleRevisit}
-          value={"name"}
+          value={0}
           className="milestoneName milestoneIcon"
         >
           <p>name</p>
           {progress >= 20 && step > 0 ? (
             <CheckCircleTwoToneIcon sx={{ color: "green" }} />
-          ) : progress === 20 && step === 0 ? (
+          ) : step === 0 ? (
             <HelpTwoToneIcon />
           ) : (
             <CatchingPokemonTwoToneIcon />
@@ -73,13 +57,13 @@ const ProgressBar = () => {
         </Button>
         <Button
           onClick={handleRevisit}
-          value={"phone"}
+          value={1}
           className="milestonePhone milestoneIcon"
         >
           <p>phone</p>
           {progress >= 40 && step > 1 ? (
             <CheckCircleTwoToneIcon sx={{ color: "green" }} />
-          ) : progress === 40 && step === 1 ? (
+          ) : step === 1 ? (
             <HelpTwoToneIcon />
           ) : (
             <CatchingPokemonTwoToneIcon />
@@ -87,44 +71,16 @@ const ProgressBar = () => {
         </Button>
         <Button
           onClick={handleRevisit}
-          value={"address"}
+          value={2}
           className="milestoneAddress milestoneIcon"
         >
           <p>address</p>
-          {progress >= 60 && step > 2 ? (
+          {progress === 100 && user.completed ? (
             <CheckCircleTwoToneIcon sx={{ color: "green" }} />
-          ) : progress === 60 && step === 2 ? (
+          ) : step === 2 ? (
             <HelpTwoToneIcon />
           ) : (
             <CatchingPokemonTwoToneIcon />
-          )}
-        </Button>
-        <Button
-          onClick={handleRevisit}
-          value={"encounter"}
-          className="milestoneQuiz milestoneIcon"
-        >
-          <p>encounter</p>
-          {progress >= 80 && step > 3 ? (
-            <CheckCircleTwoToneIcon sx={{ color: "blue" }} />
-          ) : progress === 80 && step === 3 ? (
-            <HelpTwoToneIcon />
-          ) : (
-            <CatchingPokemonTwoToneIcon sx={{ color: "blue" }} />
-          )}
-        </Button>
-        <Button
-          onClick={handleRevisit}
-          value={"picker"}
-          className="milestoneComplete milestoneIcon"
-        >
-          <p>finish</p>
-          {progress >= 100 && step > 4 ? (
-            <EmojiEventsTwoToneIcon sx={{ color: "green" }} />
-          ) : progress === 100 && step === 4 ? (
-            <HelpTwoToneIcon />
-          ) : (
-            <EmojiEventsTwoToneIcon />
           )}
         </Button>
         <LinearProgress
@@ -133,6 +89,9 @@ const ProgressBar = () => {
           value={useSelector((state) => state.user.progress)}
         />
       </div>
+      <Button onClick={handlePicker} className="pickButton">
+        PICK
+      </Button>
     </div>
   );
 };

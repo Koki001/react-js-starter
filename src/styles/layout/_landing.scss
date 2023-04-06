@@ -4,5 +4,19 @@
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  min-width: 100vh;
+  min-width: 100vw;
+  background: url("../assets/animated/pokemonBackground.gif");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  .landingContainer {
+    max-width: 500px;
+    text-align: center;
+    background: salmon;
+    padding: 50px;
+    border-radius: 10px;
+    p {
+      margin: 30px 0;
+    }
+  }
 }
