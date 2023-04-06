@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { progressCurrent, clear } from "../redux/slices/userSlice";
+import { progressCurrent, clear, firstName, lastName, phone, address } from "../redux/slices/userSlice";
 // MUI imports
 import { Button } from "@mui/material";
 import LinearProgress from "@mui/material/LinearProgress";
@@ -23,14 +23,24 @@ const ProgressBar = () => {
       dispatch(progressCurrent(value));
     }
   }, [step]);
-
-  const handleRevisit = (e) => {
-    // navigate(`/get-started`);
-    // dispatch(forceStep(Number(e.target.value)))
-  };
+  useEffect(() => {
+    if (searchParams.has("first")) {
+      dispatch(firstName(searchParams.get("first")));
+    } else if (searchParams.has("last")) {
+      dispatch(lastName(searchParams.get("last")));
+    } else if (searchParams.has("phone")) {
+      dispatch(phone(searchParams.get("phone")));
+    } else if (searchParams.has("address")) {
+      dispatch(address(searchParams.get("address")));
+    }
+  }, []);
   const handleClearDev = () => {
     dispatch(clear());
     navigate("/");
+  };
+  const handleRevisit = (e) => {
+    // navigate(`/get-started`);
+    // dispatch(forceStep(Number(e.target.value)))
   };
   const handlePicker = () => {
     // navigate({ pathname: "/picker", search: searchParams.toString() });
