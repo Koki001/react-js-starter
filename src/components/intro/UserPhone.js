@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { phone } from "../../redux/slices/userSlice";
-import { useNavigate, useParams, useSearchParams } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { PhonePrompts } from "../../helpers/formMessages";
 import {
@@ -8,6 +8,7 @@ import {
   errorId,
   nextStep,
   prevStep,
+  completePhone,
 } from "../../redux/slices/userSlice";
 // MUI imports
 import Box from "@mui/material/Box";
@@ -44,6 +45,7 @@ const UserPhone = () => {
       dispatch(errorMessage(false));
       dispatch(errorId(0));
       dispatch(nextStep());
+      dispatch(completePhone(true));
       searchParams.set("phone", user.phone);
       setSearchParams(searchParams);
     }
@@ -93,10 +95,11 @@ const UserPhone = () => {
           display: "flex",
           alignSelf: "center",
           justifyContent: "center",
-          width: "auto",
-          backgroundColor: "#ece5ce8c",
-          borderRadius: "10px",
-          padding: "5px",
+          backgroundColor: "#ece5ce",
+          padding: "10px",
+          width: "100%",
+          borderBottomLeftRadius: "10px",
+          borderBottomRightRadius: "10px",
         }}
       >
         <TextField

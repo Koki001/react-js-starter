@@ -78,15 +78,20 @@
     }
   }
   .homeButton {
-    background-image: url("../assets/animated/pokeBlue.gif");
-    background-size: cover;
+    background-image: url("../assets/iconPack/home.png");
+    background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
   }
   .pickButton {
-    background-image: url("../assets/animated/picker.gif");
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.6rem;
+    img {
+      width: 100%;
+      object-fit: contain;
+    }
   }
 }

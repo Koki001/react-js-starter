@@ -12,6 +12,11 @@ const initialState = {
   progress: 0,
   step: 0,
   completed: false,
+  completion: {
+    name: { completed: false },
+    phone: { completed: false },
+    address: { completed: false },
+  },
 };
 
 export const userSlice = createSlice({
@@ -59,6 +64,15 @@ export const userSlice = createSlice({
     completed: (state, action) => {
       state.completed = action.payload;
     },
+    completeName: (state, action) => {
+      state.completion.name.completed = action.payload;
+    },
+    completePhone: (state, action) => {
+      state.completion.phone.completed = action.payload;
+    },
+    completeAddress: (state, action) => {
+      state.completion.address.completed = action.payload;
+    },
     clear: () => initialState,
   },
 });
@@ -77,6 +91,9 @@ export const {
   errorId,
   completed,
   quizPick,
+  completeAddress,
+  completeName,
+  completePhone,
 } = userSlice.actions;
 
 export default userSlice.reducer;

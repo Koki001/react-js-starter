@@ -1,39 +1,66 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { progressCurrent, clear, firstName, lastName, phone, address } from "../redux/slices/userSlice";
+import {
+  progressCurrent,
+  clear,
+  completeAddress,
+  completeName,
+  completePhone,
+} from "../redux/slices/userSlice";
 // MUI imports
 import { Button } from "@mui/material";
 import LinearProgress from "@mui/material/LinearProgress";
 import HelpTwoToneIcon from "@mui/icons-material/HelpTwoTone";
 import CheckCircleTwoToneIcon from "@mui/icons-material/CheckCircleTwoTone";
-import CatchingPokemonTwoToneIcon from "@mui/icons-material/CatchingPokemonTwoTone";
+import Tooltip from "@mui/material/Tooltip";
+import ClickAwayListener from "@mui/material/ClickAwayListener";
 
 const ProgressBar = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
   const [searchParams, setSearchParams] = useSearchParams();
-  const user = useSelector((state) => state.user);
+  const completion = useSelector((state) => state.user.completion);
   const step = useSelector((state) => state.user.step);
-  const progress = useSelector((state) => state.user.progress);
+  const user = useSelector((state) => state.user);
+  const [open, setOpen] = useState(false);
+
+  const handleTooltipClose = () => {
+    setOpen(false);
+  };
+  const handleTooltipOpen = () => {
+    setOpen(true);
+    navigator.clipboard.writeText(window.location.href);
+  };
   useEffect(() => {
-    if (step <= 3) {
-      const weight = 100 / 2;
-      const value = weight * step;
-      dispatch(progressCurrent(value));
+    if (step < 3) {
+      let count = 0;
+      if (searchParams.has("first") && searchParams.has("last")) {
+        dispatch(completeName(true));
+      } else {
+        dispatch(completeName(false));
+      }
+      if (searchParams.has("phone")) {
+        dispatch(completePhone(true));
+      } else {
+        dispatch(completePhone(false));
+      }
+      if (searchParams.has("address")) {
+        dispatch(completeAddress(true));
+      } else {
+        dispatch(completeAddress(false));
+      }
+      Object.keys(completion).forEach((task) => {
+        if (completion[task].completed === true) {
+          count = count + 50;
+        }
+        if (count <= 100) {
+          dispatch(progressCurrent(count));
+        }
+      });
     }
-  }, [step]);
-  useEffect(() => {
-    if (searchParams.has("first")) {
-      dispatch(firstName(searchParams.get("first")));
-    } else if (searchParams.has("last")) {
-      dispatch(lastName(searchParams.get("last")));
-    } else if (searchParams.has("phone")) {
-      dispatch(phone(searchParams.get("phone")));
-    } else if (searchParams.has("address")) {
-      dispatch(address(searchParams.get("address")));
-    }
-  }, []);
+  }, [completion]);
   const handleClearDev = () => {
     dispatch(clear());
     navigate("/");
@@ -43,13 +70,11 @@ const ProgressBar = () => {
     // dispatch(forceStep(Number(e.target.value)))
   };
   const handlePicker = () => {
-    // navigate({ pathname: "/picker", search: searchParams.toString() });
+    navigate({ pathname: "/picker", search: searchParams.toString() });
   };
   return (
     <div className="progressBarContainer wrapper">
-      <Button onClick={handleClearDev} className="homeButton">
-        CLEAR
-      </Button>
+      <Button onClick={handleClearDev} className="homeButton"></Button>
       <div className="progressBarContact">
         <Button
           onClick={handleRevisit}
@@ -57,12 +82,10 @@ const ProgressBar = () => {
           className="milestoneName milestoneIcon"
         >
           <p>name</p>
-          {progress >= 20 && step > 0 ? (
+          {completion.name.completed ? (
             <CheckCircleTwoToneIcon sx={{ color: "green" }} />
-          ) : step === 0 ? (
-            <HelpTwoToneIcon />
           ) : (
-            <CatchingPokemonTwoToneIcon />
+            <HelpTwoToneIcon />
           )}
         </Button>
         <Button
@@ -71,12 +94,10 @@ const ProgressBar = () => {
           className="milestonePhone milestoneIcon"
         >
           <p>phone</p>
-          {progress >= 40 && step > 1 ? (
+          {completion.phone.completed ? (
             <CheckCircleTwoToneIcon sx={{ color: "green" }} />
-          ) : step === 1 ? (
-            <HelpTwoToneIcon />
           ) : (
-            <CatchingPokemonTwoToneIcon />
+            <HelpTwoToneIcon />
           )}
         </Button>
         <Button
@@ -85,12 +106,10 @@ const ProgressBar = () => {
           className="milestoneAddress milestoneIcon"
         >
           <p>address</p>
-          {progress === 100 && user.completed ? (
+          {completion.address.completed ? (
             <CheckCircleTwoToneIcon sx={{ color: "green" }} />
-          ) : step === 2 ? (
-            <HelpTwoToneIcon />
           ) : (
-            <CatchingPokemonTwoToneIcon />
+            <HelpTwoToneIcon />
           )}
         </Button>
         <LinearProgress
@@ -99,9 +118,27 @@ const ProgressBar = () => {
           value={useSelector((state) => state.user.progress)}
         />
       </div>
-      <Button onClick={handlePicker} className="pickButton">
-        PICK
-      </Button>
+      <ClickAwayListener onClickAway={handleTooltipClose}>
+        <div>
+          <Tooltip
+            PopperProps={{
+              disablePortal: true,
+            }}
+            onClose={handleTooltipClose}
+            open={open}
+            disableFocusListener
+            disableHoverListener
+            disableTouchListener
+            title="saved to clipboard"
+          >
+            <Button className="pickButton" onClick={handleTooltipOpen}>
+              {" "}
+              <img src="./assets/animated/picker.gif" />
+              save progress
+            </Button>
+          </Tooltip>
+        </div>
+      </ClickAwayListener>
     </div>
   );
 };

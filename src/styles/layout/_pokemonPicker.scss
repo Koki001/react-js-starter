@@ -5,7 +5,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 100%;
 }
 
 .pokemonContainer {
@@ -15,9 +14,10 @@
   justify-content: center;
   flex-direction: column;
   align-items: flex-end;
-  padding-top: 20px;
+  padding: 20px 0;
   background-color: $color-beige-light;
   border-radius: 10px;
+  animation: fadeInCard 1s ease-in 1;
   .pokemonCount {
     height: 35px;
     width: 9%;
@@ -254,6 +254,7 @@
     align-items: flex-start;
     top: 25%;
     left: 20%;
+    padding-right: 30px;
     * {
       margin-bottom: 10px;
     }
@@ -328,7 +329,90 @@
   }
   .singleButtons {
     display: flex;
+    justify-content: space-evenly;
+    position: relative;
+    button {
+      position: absolute;
+      bottom: 10px;
+      background-color: $color-brown;
+      color: $color-beige-light;
+      width: 250px;
+      margin: 0 20px;
+      &:hover,
+      &:focus {
+        background-color: $color-beige-light;
+        color: $color-brown;
+      }
+    }
+    .backButton {
+      transform: translate(-50%, -50%);
+      left: 25%;
+    }
+    .pickButton {
+      transform: translate(-50%, -50%);
+      left: 75%;
+    }
+  }
+  .loader {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    z-index: 100;
+  }
+}
+.favoriteContainer {
+  position: absolute;
+  z-index: 1000;
+  background: $color-beige-light;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  form {
+    display: flex;
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+  .inputWrapper {
+    display: flex;
+  }
+  .bottomWrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 70px;
+    min-width: 600px;
+  }
+  .choiceView {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-transform: capitalize;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: $color-beige;
+    img {
+      width: 200px;
+    }
+  }
+  .backButton {
+    position: absolute;
+    top: 40px;
+    right: 40px;
+  }
+  .finalSubmit {
+    position: absolute;
+    right: 40px;
+    bottom: 40px;
   }
 }
 
@@ -338,5 +422,16 @@
   }
   100% {
     opacity: 1;
+  }
+}
+@keyframes growShrink {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
   }
 }

@@ -3,12 +3,12 @@ import { Tilt } from "react-tilt";
 import Loader from "../helpers/Loader";
 import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
+import GenButtons from "../components/picker/GenButtons";
 import Sorter from "../components/picker/Sorter";
 import Filter from "../components/picker/Filter";
 import Searcher from "../components/picker/Searcher";
 import ProgressBar from "../components/ProgressBar";
 import SingleCard from "../components/picker/SingleCard";
-
 const PokemonPick = () => {
   // captures the first group of numbers after a forward slash
   // generation list returns names + link pokemon/${id}/
@@ -16,6 +16,7 @@ const PokemonPick = () => {
   const idCheck = /\/(\d+)\/$/;
   const [searchParams, setSearchParams] = useSearchParams();
   const [loader, setLoader] = useState(false);
+  const [blur, setBlur] = useState(false)
   const [visited, setVisited] = useState(false);
   const [pokemon, setPokemon] = useState({
     id: "",
@@ -70,6 +71,7 @@ const PokemonPick = () => {
       genResults: sortBy,
     }));
   };
+  useEffect(() => {}, [searchParams]);
   // sort function from Search.js
   const handleFilter = (e) => {
     setPokemon((prev) => ({
@@ -143,7 +145,7 @@ const PokemonPick = () => {
   };
   // returns a single pokemon with details
   const handlePokemonDetails = (e) => {
-    setLoader(true);
+    setBlur(true);
     axios({
       url: `https://pokeapi.co/api/v2/pokemon/${e.target.id}`,
     }).then((res) => {
@@ -151,7 +153,7 @@ const PokemonPick = () => {
         ...prev,
         single: res.data,
       }));
-      setLoader(false);
+      setBlur(false);
     });
   };
   const handlePokemonDetailsAlt = (search) => {
@@ -175,17 +177,17 @@ const PokemonPick = () => {
         ) : (
           <Loader />
         )}
-        <div
-          style={{ opacity: loader || !visited ? "0" : "1" }}
-          className="pokemonFilters"
-        >
+        <div className="pokemonFilters">
           <Searcher
             callAxios={handlePokemonDetailsAlt}
             search={handleSearch}
             names={pokemon.nameList}
             ids={pokemon.idList}
           />
-          <div className="filterContainer">
+          <div
+            style={{ opacity: loader || !visited ? "0" : "1" }}
+            className="filterContainer"
+          >
             <Filter filter={handleFilter} loaderProp={loader} />
             <Sorter sorter={handleSort} dataProp={pokemon.genResults} />
           </div>
@@ -194,45 +196,24 @@ const PokemonPick = () => {
           {!visited && (
             <div className="pickerMessage">
               <h4>How to use:</h4>
-              <p>1. choose a pokemon generation from the left side</p>
-              <p>2. browse pokemon that appear by scrolling</p>
-              <p>3. use filters above to narrow down your search</p>
-              <p>4. click on a pokemon to see more details</p>
-              <p>5. submit your favorite pokemon!</p>
+              <ul>
+                <li>
+                  1. Search by name or ID by selecting an item from the inputs
+                  above
+                </li>
+                <li>
+                  2. View Pokemon generation by clicking on the "Gen" buttons
+                </li>
+                <li>3. Use the filters to narrow down your search</li>
+                <li>4. Click on one of the Pokemon to see more details</li>
+                <li>
+                  5. Select desired Pokemon and submit selection on detailed
+                  view
+                </li>
+              </ul>
             </div>
           )}
-          <div action="" className="pokeGenButtons">
-            {pokemon.generations?.map((gen, index) => {
-              return (
-                <div key={`generation${index}`} className="genRadio">
-                  <input
-                    id={`generation/${index + 1}`}
-                    className="sr-only"
-                    type="radio"
-                    name="gen"
-                    checked={
-                      `generation/${index + 1}` ===
-                      searchParams.get("generation")
-                    }
-                    value={
-                      searchParams.get("generation")
-                        ? searchParams.get("generation")
-                        : ""
-                    }
-                    onChange={handleGeneration}
-                  />
-                  <label
-                    id={`gen${index + 1}`}
-                    className="genButton"
-                    aria-label={`pokemon generation ${index + 1}`}
-                    htmlFor={`generation/${index + 1}`}
-                  >
-                    Gen {index + 1}
-                  </label>
-                </div>
-              );
-            })}
-          </div>
+          <GenButtons getGen={handleGeneration} names={pokemon.generations} />
           <ul
             style={{ overflowY: loader ? "hidden" : "scroll" }}
             className="pokemonList"
@@ -268,6 +249,7 @@ const PokemonPick = () => {
                         onClick={handlePokemonDetails}
                         src={`./assets/officialArtwork/${match[1]}.png`}
                         alt={`picture of ${item.name} pokemon`}
+                        style={{ cursor: blur ? "wait" : "pointer" }}
                       />
                       <p>{item.name}</p>
                     </Tilt>

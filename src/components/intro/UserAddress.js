@@ -7,6 +7,7 @@ import {
   errorId,
   prevStep,
   progressCurrent,
+  completeAddress,
 } from "../../redux/slices/userSlice";
 import { useNavigate, useSearchParams } from "react-router-dom";
 // MUI imports
@@ -41,7 +42,7 @@ const UserAddress = () => {
       dispatch(errorMessage(false));
       dispatch(errorId(0));
       dispatch(completed(true));
-      dispatch(progressCurrent(101));
+      dispatch(completeAddress(true));
       searchParams.set("address", user.address);
       setSearchParams(searchParams);
       navigate({ pathname: "/encounter", search: searchParams.toString() });
@@ -96,9 +97,10 @@ const UserAddress = () => {
           alignItems: "flex-end",
           justifyContent: "center",
           width: "100%",
-          backgroundColor: "#ece5ce8c",
-          borderRadius: "10px",
-          padding: "5px",
+          backgroundColor: "#ece5ce",
+          padding: "10px",
+          borderBottomLeftRadius: "10px",
+          borderBottomRightRadius: "10px"
         }}
       >
         <Autocomplete

@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { firstName, lastName } from "../../redux/slices/userSlice";
 import { NamePrompts } from "../../helpers/formMessages";
 import { useSearchParams } from "react-router-dom";
-import { errorMessage, errorId, nextStep } from "../../redux/slices/userSlice";
+import { errorMessage, errorId, nextStep, completeName } from "../../redux/slices/userSlice";
 // MUI imports
 import Box from "@mui/material/Box";
 import { Button } from "@mui/material";
@@ -47,6 +47,7 @@ const UserName = () => {
       dispatch(errorMessage(false));
       dispatch(errorId(0));
       dispatch(nextStep());
+      dispatch(completeName(true))
       searchParams.set("first", user.name.first);
       searchParams.set("last", user.name.last);
       setSearchParams(searchParams);
@@ -84,15 +85,16 @@ const UserName = () => {
           display: "flex",
           alignSelf: "center",
           justifyContent: "space-between",
-          backgroundColor: "#ece5ce8c",
-          borderRadius: "10px",
-          padding: "5px",
+          backgroundColor: "#ece5ce",
+          padding: "10px",
           width: "auto",
+          borderBottomLeftRadius: "10px",
+          borderBottomRightRadius: "10px",
         }}
       >
         <TextField
           required
-          inputRef={(input) => input && input.focus()}
+          // inputRef={(input) => input && input.focus()}
           focused={user.errorMessage && name.first === ""}
           sx={{ width: "50%" }}
           id="input-first-name"
@@ -104,6 +106,7 @@ const UserName = () => {
         />
         <TextField
           required
+          // inputRef={(input) => input && input.focus()}
           focused={user.errorMessage && name.last === ""}
           sx={{ marginLeft: "20px", width: "50%" }}
           id="input-last-name"

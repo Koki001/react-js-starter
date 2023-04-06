@@ -12,6 +12,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: rgba(153, 107, 107, 0.99);
+    border-radius: 10px;
+    box-shadow: 10px 10px 10px 5px rgb(0 0 0 / 48%);
   }
 }
 .userNameContainer,
@@ -41,14 +44,19 @@
   height: 450px;
   transition: opacity 0.5s linear;
   img {
-    margin-top: 30px;
+    margin-top: 20px;
+    max-height: 280px;
   }
+}
+.charGif img {
+  width: 200px;
 }
 .pikaGif img {
   margin-left: 100px;
 }
 .politoedGif img {
-  width: 250px;
+  width: 200px;
+  max-height: 300px;
   margin-top: 10px;
 }
 
@@ -56,7 +64,7 @@
   width: 100%;
   max-width: 600px;
   display: flex;
-  justify-content:space-between;
+  justify-content: space-between;
   position: absolute;
   bottom: 100px;
   button {
@@ -67,10 +75,12 @@
     align-items: center;
     color: $color-brown;
     border: 2px solid $color-green;
+    background-color: $color-beige-light;
     font-weight: bold;
     border-radius: 50%;
     height: 100px;
     width: 100px;
+    margin: 0 10px;
     &:hover {
       color: $color-brown;
       background-color: $color-beige;

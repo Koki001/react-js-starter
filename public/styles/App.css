@@ -7,6 +7,8 @@ html {
 }
 
 body {
+  min-height: 100vh;
+  min-width: 100vw;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -363,10 +365,6 @@ body {
   align-items: center;
   min-height: 100vh;
   min-width: 100vw;
-  background: url("../assets/animated/pokemonBackground.gif");
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
 }
 .App .landingContainer {
   max-width: 500px;
@@ -377,6 +375,13 @@ body {
 }
 .App .landingContainer p {
   margin: 30px 0;
+}
+
+body {
+  background: url("../assets/intro/background.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 .progressBarContainer {
@@ -422,7 +427,7 @@ body {
   pointer-events: none;
 }
 .progressBarContainer .milestoneIcon svg:hover {
-  background-color: rgba(236, 229, 206, 0.6980392157);
+  background-color: #ece5ce;
 }
 .progressBarContainer .milestoneIcon:hover {
   background-color: rgb(248, 248, 227);
@@ -442,7 +447,7 @@ body {
 }
 .progressBarContainer button {
   color: black;
-  background-color: rgba(236, 229, 206, 0.6980392157);
+  background-color: #ece5ce;
 }
 .progressBarContainer .homeButton,
 .progressBarContainer .pickButton {
@@ -459,16 +464,21 @@ body {
   height: 100%;
 }
 .progressBarContainer .homeButton {
-  background-image: url("../assets/animated/pokeBlue.gif");
-  background-size: cover;
+  background-image: url("../assets/iconPack/home.png");
+  background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
 }
 .progressBarContainer .pickButton {
-  background-image: url("../assets/animated/picker.gif");
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 0.6rem;
+}
+.progressBarContainer .pickButton img {
+  width: 100%;
+  object-fit: contain;
 }
 
 .formContainer {
@@ -484,6 +494,9 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: rgba(153, 107, 107, 0.99);
+  border-radius: 10px;
+  box-shadow: 10px 10px 10px 5px rgba(0, 0, 0, 0.48);
 }
 
 .userNameContainer,
@@ -520,7 +533,12 @@ body {
 .charGif img,
 .cuboneGif img,
 .politoedGif img {
-  margin-top: 30px;
+  margin-top: 20px;
+  max-height: 280px;
+}
+
+.charGif img {
+  width: 200px;
 }
 
 .pikaGif img {
@@ -528,7 +546,8 @@ body {
 }
 
 .politoedGif img {
-  width: 250px;
+  width: 200px;
+  max-height: 300px;
   margin-top: 10px;
 }
 
@@ -547,15 +566,17 @@ body {
   align-items: center;
   color: #774f38;
   border: 2px solid #c8c8a9;
+  background-color: #f1eddf;
   font-weight: bold;
   border-radius: 50%;
   height: 100px;
   width: 100px;
+  margin: 0 10px;
 }
 .contactButtons button:hover {
   color: #774f38;
-  background-color: rgba(236, 229, 206, 0.6980392157);
-  border: 2px solid rgba(236, 229, 206, 0.6980392157);
+  background-color: #ece5ce;
+  border: 2px solid #ece5ce;
 }
 .contactButtons .testClearButton {
   top: 100px;
@@ -584,7 +605,7 @@ body {
 }
 .contactButtons .quizButton:hover a,
 .contactButtons .skipButton:hover a {
-  color: rgba(236, 229, 206, 0.6980392157);
+  color: #ece5ce;
 }
 
 .userNameContainer p,
@@ -593,7 +614,6 @@ body {
 .infoComplete p {
   transform: translatey(0px);
   animation: float 5s ease-in-out infinite;
-  mix-blend-mode: multiply;
   text-align: center;
   text-transform: uppercase;
   font-weight: bold;
@@ -601,7 +621,7 @@ body {
   line-height: 1.2rem;
   font-size: 15px;
   color: #774f38;
-  background-color: rgba(236, 229, 206, 0.6980392157);
+  background-color: #ece5ce;
   padding: 30px 40px;
   border-radius: 11px;
   position: relative;
@@ -623,7 +643,7 @@ body {
   animation: float2 5s ease-in-out infinite;
   content: ".";
   font-weight: bold;
-  -webkit-text-fill-color: rgba(236, 229, 206, 0.6980392157);
+  -webkit-text-fill-color: #ece5ce;
   text-shadow: 22px 22px rgba(131, 175, 155, 0.6117647059);
   text-align: left;
   font-size: 55px;
@@ -631,7 +651,7 @@ body {
   height: 11px;
   line-height: 30px;
   border-radius: 11px;
-  background-color: rgba(236, 229, 206, 0.6980392157);
+  background-color: #ece5ce;
   position: absolute;
   display: block;
   bottom: -30px;
@@ -700,10 +720,15 @@ body {
 .infoComplete {
   width: 600px;
   min-width: 350px;
-  margin-top: 60px;
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: rgba(153, 107, 107, 0.99);
+  border-radius: 10px;
+  box-shadow: 10px 10px 10px 5px rgba(0, 0, 0, 0.48);
+}
+.infoComplete .contactButtons {
+  bottom: 20px;
 }
 
 .quizContainer {
@@ -731,7 +756,7 @@ body {
   letter-spacing: 3px;
   line-height: 1.2rem;
   color: #774f38;
-  background-color: rgba(236, 229, 206, 0.6980392157);
+  background-color: #ece5ce;
   padding: 30px 40px;
   border-radius: 11px;
   position: relative;
@@ -808,7 +833,6 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 100%;
 }
 
 .pokemonContainer {
@@ -818,9 +842,10 @@ body {
   justify-content: center;
   flex-direction: column;
   align-items: flex-end;
-  padding-top: 20px;
-  background-color: rgba(236, 229, 206, 0.4588235294);
+  padding: 20px 0;
+  background-color: #f1eddf;
   border-radius: 10px;
+  animation: fadeInCard 1s ease-in 1;
 }
 .pokemonContainer .pokemonCount {
   height: 35px;
@@ -851,13 +876,13 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: rgba(236, 229, 206, 0.4588235294);
+  background-color: #f1eddf;
   border-radius: 5px;
   color: #774f38;
 }
 .pokemonContainer .pokemonFilters .searcherButton:hover, .pokemonContainer .pokemonFilters .searcherButton:focus, .pokemonContainer .pokemonFilters .searcherButton:active {
-  border-color: rgba(236, 229, 206, 0.4588235294);
-  color: rgba(236, 229, 206, 0.4588235294);
+  border-color: #f1eddf;
+  color: #f1eddf;
   background-color: #774f38;
 }
 .pokemonContainer .sort {
@@ -883,7 +908,7 @@ body {
   width: 40px;
 }
 .pokemonContainer .sort input:checked + label {
-  border-color: rgba(236, 229, 206, 0.4588235294);
+  border-color: #f1eddf;
   color: white;
   background-color: #774f38;
 }
@@ -895,14 +920,14 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: rgba(236, 229, 206, 0.4588235294);
+  background-color: #f1eddf;
   border-radius: 5px;
   border: 1px solid #774f38;
   color: #774f38;
 }
 .pokemonContainer .sort label:hover, .pokemonContainer .sort label:focus, .pokemonContainer .sort label:active {
-  border-color: rgba(236, 229, 206, 0.4588235294);
-  color: rgba(236, 229, 206, 0.4588235294);
+  border-color: #f1eddf;
+  color: #f1eddf;
   background-color: #774f38;
 }
 .pokemonContainer .searchContainer {
@@ -936,7 +961,7 @@ body {
   align-items: center;
 }
 .pokeGenButtons .genRadio input:checked + label {
-  border-color: rgba(236, 229, 206, 0.4588235294);
+  border-color: #f1eddf;
   color: white;
   background-color: #774f38;
 }
@@ -948,26 +973,26 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: rgba(236, 229, 206, 0.4588235294);
+  background-color: #f1eddf;
   border-radius: 5px;
   border: 1px solid #774f38;
   color: #774f38;
 }
 .pokeGenButtons .genRadio label:hover, .pokeGenButtons .genRadio label:focus, .pokeGenButtons .genRadio label:active {
-  border-color: rgba(236, 229, 206, 0.4588235294);
-  color: rgba(236, 229, 206, 0.4588235294);
+  border-color: #f1eddf;
+  color: #f1eddf;
   background-color: #774f38;
 }
 .pokeGenButtons .selected {
-  border-color: rgba(236, 229, 206, 0.6980392157);
-  color: rgba(236, 229, 206, 0.6980392157);
+  border-color: #ece5ce;
+  color: #ece5ce;
   background-color: #774f38;
 }
 
 .pokemonList {
   width: 90%;
   min-height: 500px;
-  background-color: rgba(236, 229, 206, 0.6980392157);
+  background-color: #ece5ce;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -1016,7 +1041,7 @@ body {
 }
 .pokemonList .pokemonCard img:hover {
   border: 1px solid #774f38;
-  background-color: rgba(236, 229, 206, 0.4588235294);
+  background-color: #f1eddf;
 }
 
 .bottomContainer {
@@ -1034,6 +1059,7 @@ body {
   align-items: flex-start;
   top: 25%;
   left: 20%;
+  padding-right: 30px;
 }
 .bottomContainer .pickerMessage * {
   margin-bottom: 10px;
@@ -1109,7 +1135,90 @@ body {
 }
 .singlePokemon .singleButtons {
   display: flex;
+  justify-content: space-evenly;
+  position: relative;
+}
+.singlePokemon .singleButtons button {
+  position: absolute;
+  bottom: 10px;
+  background-color: #774f38;
+  color: #f1eddf;
+  width: 250px;
+  margin: 0 20px;
+}
+.singlePokemon .singleButtons button:hover, .singlePokemon .singleButtons button:focus {
+  background-color: #f1eddf;
+  color: #774f38;
+}
+.singlePokemon .singleButtons .backButton {
+  transform: translate(-50%, -50%);
+  left: 25%;
+}
+.singlePokemon .singleButtons .pickButton {
+  transform: translate(-50%, -50%);
+  left: 75%;
+}
+.singlePokemon .loader {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  z-index: 100;
+}
+
+.favoriteContainer {
+  position: absolute;
+  z-index: 1000;
+  background: #f1eddf;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   justify-content: center;
+  border-radius: 10px;
+}
+.favoriteContainer form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+.favoriteContainer .inputWrapper {
+  display: flex;
+}
+.favoriteContainer .bottomWrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 70px;
+  min-width: 600px;
+}
+.favoriteContainer .choiceView {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-transform: capitalize;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: #ece5ce;
+}
+.favoriteContainer .choiceView img {
+  width: 200px;
+}
+.favoriteContainer .backButton {
+  position: absolute;
+  top: 40px;
+  right: 40px;
+}
+.favoriteContainer .finalSubmit {
+  position: absolute;
+  right: 40px;
+  bottom: 40px;
 }
 
 @keyframes fadeInCard {
@@ -1118,6 +1227,17 @@ body {
   }
   100% {
     opacity: 1;
+  }
+}
+@keyframes growShrink {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
   }
 }
 

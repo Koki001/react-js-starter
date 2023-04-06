@@ -8,10 +8,15 @@
   width: 100%;
 }
 .infoComplete {
-  width: 600px;
-  min-width: 350px;
-  margin-top: 60px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+    width: 600px;
+    min-width: 350px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(153, 107, 107, 0.99);
+    border-radius: 10px;
+    box-shadow: 10px 10px 10px 5px rgb(0 0 0 / 48%);
+    .contactButtons {
+      bottom: 20px;
+    }
 }
