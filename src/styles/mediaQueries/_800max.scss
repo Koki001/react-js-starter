@@ -17,6 +17,10 @@
   }
 }
 @media (max-width: 800px) {
+  .App .landingContainer {
+    width: 100%;
+    padding: 20px;
+  }
   .progressBarContainer {
     margin: 30px 0;
     max-width: 95%;
