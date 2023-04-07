@@ -59,11 +59,11 @@ const EasterEgg = () => {
           </div>
         ) : count === 3 ? (
           <div className={"third screenView"}>
-            <img
+            {/* <img
               className="snorlax3"
               src="./assets/easterEgg/background3.gif"
               alt=""
-            />
+            /> */}
           </div>
         ) : (
           <div className={"fourth screenView"}>
@@ -89,7 +89,7 @@ const EasterEgg = () => {
                 strings: dialogue[count],
                 autoStart: true,
                 loop: false,
-                delay: 25,
+                delay: 35,
                 deleteSpeed: 1,
               }}
             />

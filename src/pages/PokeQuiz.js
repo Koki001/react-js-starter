@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import ProgressBar from "../components/ProgressBar";
 import { QuizTime } from "../helpers/quizQuestions";
@@ -11,6 +11,7 @@ import { Button } from "@mui/material";
 
 const PokeQuiz = () => {
   const [choice, setChoice] = useState("start");
+  const [searchParams, setSearchParams] = useSearchParams();
   const [count, setCount] = useState(0);
   const [pokeUrl, setPokeUrl] = useState("");
   const [result, setResult] = useState(null);
@@ -49,17 +50,15 @@ const PokeQuiz = () => {
     }
   }, [pokeUrl]);
   const handleNextStep = () => {
-    // dispatch(nextStep());
-    navigate("/picker");
+    navigate({ pathname: "/picker", search: searchParams.toString() });
   };
-  const handleSubmit = () => {};
   return (
     <div className="quizContainer wrapper">
       <ProgressBar />
       <div className="quiz">
         <div className="questions">
           {!load && !result ? (
-            <p>{QuizTime(choice).question}</p>
+            <p>{QuizTime(choice)?.question}</p>
           ) : result ? (
             <h3>
               Here's {result.name ? result.name : "who was this again??"} !!
@@ -88,7 +87,11 @@ const PokeQuiz = () => {
             </div>
           )}
           <img
-            onLoad={() => setLoad(false)}
+            onLoad={() =>
+              setTimeout(() => {
+                setLoad(false);
+              }, 1500)
+            }
             src={
               result?.sprites.other.dream_world.front_default ||
               result?.sprites.other["official-artwork"]["front_default"] ||
@@ -110,11 +113,9 @@ const PokeQuiz = () => {
             );
           })}
         </div>
-
         {result !== null && !load && (
           <div className="completionButtons">
             <button onClick={handleNextStep}>picker</button>
-            <button onClick={handleSubmit}>submit</button>
           </div>
         )}
       </div>

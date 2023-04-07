@@ -48,7 +48,16 @@ const Encounter = () => {
         </div>
 
         <div className="contactButtons">
-          <Button>help me</Button>
+          <Button
+            onClick={() =>
+              navigate({
+                pathname: "/quiz",
+                search: searchParams.toString(),
+              })
+            }
+          >
+            help me
+          </Button>
           <Button
             onClick={() =>
               navigate({

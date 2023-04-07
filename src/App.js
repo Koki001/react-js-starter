@@ -9,7 +9,7 @@ import { Button } from "@mui/material";
 function App() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const [searchParams, setSearchParams] = useSearchParams()
+  const [searchParams, setSearchParams] = useSearchParams();
   const easterEgg = () => {
     navigate({ pathname: "/secret", search: searchParams.toString() });
   };
@@ -24,10 +24,10 @@ function App() {
         <h1>Pick-a-mon</h1>
         <p>
           Welcome to our Pokemon selection application! We're thrilled to help
-          you discover and select your favorite Pokemon. With a vast selection
-          of Pokemon to choose from, we're sure you'll have a blast exploring
-          and discovering new favorites. Let's get started on this exciting
-          journey together!
+          you <strong>discover</strong> and <strong>select</strong> your{" "}
+          <strong>favorite Pokemon</strong>. With a vast selection of Pokemon to
+          choose from, we're sure you'll have a blast exploring and discovering
+          new favorites. Let's get started on this exciting journey together!
         </p>
         <Button onClick={handleStart} variant="outlined">
           Get Started

@@ -7,14 +7,18 @@
   min-height: 100vh;
   min-width: 100vw;
   .landingContainer {
-    max-width: 500px;
+    max-width: 650px;
     text-align: center;
-    background: salmon;
+    background: $color-beige-light;
     padding: 50px;
     border-radius: 10px;
+    box-shadow: 10px 10px 10px 5px rgb(0 0 0 / 48%);
     p {
       margin: 30px 0;
-      font-size: 1.3rem;
+      font-size: 1.5rem;
+    }
+    h1 {
+      font-size: 3rem;
     }
     button {
       font-size: 1.5rem;

@@ -367,15 +367,19 @@ body {
   min-width: 100vw;
 }
 .App .landingContainer {
-  max-width: 500px;
+  max-width: 650px;
   text-align: center;
-  background: salmon;
+  background: #f1eddf;
   padding: 50px;
   border-radius: 10px;
+  box-shadow: 10px 10px 10px 5px rgba(0, 0, 0, 0.48);
 }
 .App .landingContainer p {
   margin: 30px 0;
-  font-size: 1.3rem;
+  font-size: 1.5rem;
+}
+.App .landingContainer h1 {
+  font-size: 3rem;
 }
 .App .landingContainer button {
   font-size: 1.5rem;
@@ -775,45 +779,35 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 120px;
-  width: 600px;
-  min-width: 350px;
-}
-.quizContainer quiz {
   width: 100%;
-  margin-top: 20px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 .quiz {
-  transform: translatey(0px);
-  mix-blend-mode: multiply;
-  text-align: center;
-  font-weight: bold;
-  letter-spacing: 3px;
-  line-height: 1.2rem;
-  color: #774f38;
-  background-color: #ece5ce;
-  padding: 30px 40px;
-  border-radius: 11px;
-  position: relative;
-  box-shadow: 20px 20px rgba(131, 175, 155, 0.6117647059);
-  font-family: "VT323", monospace;
   width: 600px;
-  font-size: 1rem;
-  height: 600px;
-  margin-top: 50px;
+  min-width: 350px;
+  min-height: 500px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
+  padding: 50px;
   align-items: center;
+  background-color: rgba(153, 107, 107, 0.99);
+  border-radius: 10px;
+  box-shadow: 10px 10px 10px 5px rgba(0, 0, 0, 0.48);
+  color: #ece5ce;
+  position: relative;
 }
 .quiz h3 {
   width: 100%;
   border-bottom: 3px solid #774f38;
   padding-bottom: 30px;
+  font-size: 2rem;
+}
+.quiz p {
+  font-size: 1.4rem;
+  background-color: #774f38;
+  padding: 10px;
+  border-radius: 10px;
 }
 .quiz .questions {
   width: 100%;
@@ -824,6 +818,7 @@ body {
   justify-content: center;
   align-items: flex-end;
   width: 100%;
+  margin-top: 100px;
 }
 .quiz .answers button {
   width: calc(50% - 10px);
@@ -831,6 +826,8 @@ body {
   margin: 5px;
   color: black;
   border: 1px solid #774f38;
+  background-color: #ece5ce;
+  font-size: 1.2rem;
 }
 .quiz .answers button:hover {
   background-color: #774f38;
@@ -839,8 +836,9 @@ body {
 .quiz .pokemon {
   width: 100%;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
   max-height: 520px;
+  padding: 25px 0;
 }
 .quiz .pokemon img {
   width: 200px;
@@ -851,6 +849,9 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
+  background-color: #774f38;
+  border-radius: 5px;
+  min-width: 175px;
 }
 .quiz .pokemon .quizStats span {
   margin-left: auto;
@@ -862,9 +863,27 @@ body {
   width: 100%;
 }
 .quiz .loader {
-  transform: translate(-50%, 50%);
+  top: 50%;
   left: 50%;
-  top: 40%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  z-index: 100;
+  color: #f1eddf;
+  background-color: rgba(0, 0, 0, 0.2392156863);
+}
+.quiz .completionButtons button {
+  width: 100px;
+  padding: 10px 10px;
+  margin: 5px;
+  color: black;
+  border: 1px solid #774f38;
+  background-color: #ece5ce;
+  font-size: 1.2rem;
+}
+.quiz .completionButtons button:hover {
+  background-color: #774f38;
+  color: white;
 }
 
 .pickContainer {
@@ -1331,9 +1350,7 @@ body {
   align-items: center;
   margin: 20px;
   background-color: rgba(0, 0, 0, 0.445);
-}
-.konamiSecret .dark {
-  background-color: rgba(0, 0, 0, 0.452);
+  box-shadow: 10px 10px 10px 5px rgba(0, 0, 0, 0.48);
 }
 .konamiSecret .screenView {
   border-top-right-radius: 5px;
@@ -1342,7 +1359,6 @@ body {
   width: 100%;
   height: 67%;
   position: relative;
-  transition: background 1s linear;
 }
 .konamiSecret .screenView .snorlax {
   width: 200px;
@@ -1359,10 +1375,6 @@ body {
   left: 35%;
   animation: fadeIn 3s linear;
 }
-.konamiSecret .screenView .snorlax3 {
-  height: 100%;
-  animation: fadeInEven 1s linear;
-}
 .konamiSecret .first {
   background: url("../assets/easterEgg/background1.jpg");
   background-size: cover;
@@ -1375,6 +1387,7 @@ body {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
+  animation: fadeIn 1s linear;
 }
 .konamiSecret .third {
   background: url("../assets/easterEgg/background3.gif");

@@ -8,10 +8,8 @@
 .infoComplete p {
   transform: translatey(0px);
   animation: float 5s ease-in-out infinite;
-  // mix-blend-mode: multiply;
   text-align: center;
   text-transform: uppercase;
-  // font-weight: bold;
   letter-spacing: 2px;
   line-height: 1.2rem;
   font-size: 15px;
@@ -36,7 +34,6 @@
   transform: translatey(0px);
   animation: float2 5s ease-in-out infinite;
   content: ".";
-  // font-weight: bold;
   -webkit-text-fill-color: $color-beige;
   text-shadow: 22px 22px $color-blue;
   text-align: left;

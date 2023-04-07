@@ -26,6 +26,7 @@ const QuizTime = (choice) => {
       choices: ["a dragon", "powerful mage", "rustic statue", "the void"],
       values: ["drake", "mage", "statue", "void"],
     },
+    // DRAGON QUESTIONS
     drake: {
       question:
         "A dragon?? Nice choice! If you don't mind me asking... What kind of dragon would you want to be?",
@@ -56,6 +57,7 @@ const QuizTime = (choice) => {
       choices: ["show me"],
       values: ["fighting"],
     },
+    // MAGE QUESTIONS
     mage: {
       question:
         "Ah a practitioner of magic and skilled in supernatural and mystical powers! ... What will you do with those powers?",
@@ -67,25 +69,96 @@ const QuizTime = (choice) => {
       ],
       values: ["water", "fire", "ice", "electric"],
     },
+    water: {
+      question:
+        "Mage placeholder text. I think I have enough information to pick just the right Pokemon for you!",
+      choices: ["show me"],
+      values: ["water"],
+    },
+    fire: {
+      question:
+        "Mage placeholder text. I think I have enough information to pick just the right Pokemon for you!",
+      choices: ["show me"],
+      values: ["fire"],
+    },
+    ice: {
+      question:
+        "Mage placeholder text. I think I have enough information to pick just the right Pokemon for you!",
+      choices: ["show me"],
+      values: ["ice"],
+    },
+    electric: {
+      question:
+        "Mage placeholder text. I think I have enough information to pick just the right Pokemon for you!",
+      choices: ["show me"],
+      values: ["electric"],
+    },
+    // STATUE QUESTIONS
     statue: {
       question:
         "Finally! Somebody who is down to earth and not power hungry! Sitting atop a hill, what grabbed your attention and made you smile?",
       choices: [
-        "the mountains",
+    "the mountains",
         "bugs everywhere!",
         "distant factory",
         "day off work",
       ],
-      // testing
-      values: ["rock", "bug", "steel", "normal"],
-      // actual
-      // values: ["rock, ground", "bug, grass", "steel, poison", "normal"],
+      values: ["rock", "bug", "steel", "steel"],
     },
+    rock: {
+      question:
+        "Statue placeholder text. I think I have enough information to pick just the right Pokemon for you!",
+      choices: ["show me"],
+      values: ["rock"],
+    },
+    bug: {
+      question:
+        "Statue placeholder text. I think I have enough information to pick just the right Pokemon for you!",
+      choices: ["show me"],
+      values: ["bug"],
+    },
+    steel: {
+      question:
+        "Statue placeholder text. I think I have enough information to pick just the right Pokemon for you!",
+      choices: ["show me"],
+      values: ["steel"],
+    },
+    notmal: {
+      question:
+        "Statue placeholder text. I think I have enough information to pick just the right Pokemon for you!",
+      choices: ["show me"],
+      values: ["notmal"],
+    },
+    // VOID QUESTIONS
     void: {
       question:
         "... Well... it was an option! This void... if it speaks, what would it say?",
       choices: ["something ominous", "i know you", "hello there", "boo!!!"],
       values: ["dark", "psychic", "psychic", "ghost"],
+    },
+    dark: {
+      question:
+        "Void placeholder text. I think I have enough information to pick just the right Pokemon for you!",
+      choices: ["show me"],
+      values: ["dark"],
+    },
+    psychic: {
+      question:
+        "Void placeholder text. I think I have enough information to pick just the right Pokemon for you!",
+      choices: ["show me"],
+      values: ["psychic"],
+    },
+    psychic: {
+      question:
+        "Void placeholder text. I think I have enough information to pick just the right Pokemon for you!",
+      choices: ["show me"],
+      values: ["psychic"],
+    },
+    ghost: {
+      question:
+        "Void placeholder text. I think I have enough information to pick just the right Pokemon for you!",
+      choices: ["show me"],
+      values: ["ghost"],
     },
   };
 
