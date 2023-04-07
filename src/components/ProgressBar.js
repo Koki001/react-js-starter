@@ -110,7 +110,7 @@ const ProgressBar = () => {
         <DialogContent>
           <DialogContentText id="alert-dialog-description">
             Going to the home screen will clear all progress.
-            {saved === 0
+            {user.saved === 0
               ? "Save your progress by clicking the pokeball on the top right of your screen."
               : ` You last saved your progress ${saved.toFixed()} seconds ago.`}
           </DialogContentText>
