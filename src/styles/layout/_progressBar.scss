@@ -87,6 +87,8 @@
     background-position: center;
     padding: 5px;
     border: 1px solid transparent;
+    position: relative;
+    top: 19px;
     &:hover {
       border: 1px solid $color-beige-light;
     }
@@ -99,10 +101,12 @@
     font-size: 1rem;
     height: auto;
     width: auto;
+    position: relative;
+    top: 17px;
     img {
       width: 100%;
       object-fit: contain;
-      height: 50px;
+      height: 40px;
     }
   }
 }

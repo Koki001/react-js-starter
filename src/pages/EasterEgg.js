@@ -43,7 +43,7 @@ const EasterEgg = () => {
         {count <= 1 ? (
           <div className={"first screenView"}>
             <img
-              style={{ opacity: count === 1 ? "1" : "0" }}
+              style={{ display: count === 1 ? "block" : "none" }}
               className="snorlax"
               src="./assets/animated/snorlaxSleeping.gif"
               alt=""

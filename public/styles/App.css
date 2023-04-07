@@ -487,6 +487,8 @@ body {
   background-position: center;
   padding: 5px;
   border: 1px solid transparent;
+  position: relative;
+  top: 19px;
 }
 .progressBarContainer .homeButton:hover {
   border: 1px solid #f1eddf;
@@ -499,11 +501,13 @@ body {
   font-size: 1rem;
   height: auto;
   width: auto;
+  position: relative;
+  top: 17px;
 }
 .progressBarContainer .pickButton img {
   width: 100%;
   object-fit: contain;
-  height: 50px;
+  height: 40px;
 }
 
 .formContainer {
