@@ -11,8 +11,8 @@
   // mix-blend-mode: multiply;
   text-align: center;
   text-transform: uppercase;
-  font-weight: bold;
-  letter-spacing: 3px;
+  // font-weight: bold;
+  letter-spacing: 2px;
   line-height: 1.2rem;
   font-size: 15px;
   color: $color-brown;
@@ -21,9 +21,9 @@
   border-radius: 11px;
   position: relative;
   box-shadow: 20px 20px $color-blue;
-  font-family: "Baloo 2", cursive;
+  font-family: 'VT323', monospace;
   max-width: 500px;
-  font-size: 0.77rem;
+  font-size: 1.2rem;
 }
 .infoComplete p {
   padding: 20px 30px;
@@ -36,7 +36,7 @@
   transform: translatey(0px);
   animation: float2 5s ease-in-out infinite;
   content: ".";
-  font-weight: bold;
+  // font-weight: bold;
   -webkit-text-fill-color: $color-beige;
   text-shadow: 22px 22px $color-blue;
   text-align: left;

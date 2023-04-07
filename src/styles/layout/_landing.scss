@@ -1,3 +1,4 @@
+@use "../base//variables" as *;
 .App {
   display: flex;
   flex-direction: column;
@@ -13,6 +14,20 @@
     border-radius: 10px;
     p {
       margin: 30px 0;
+      font-size: 1.3rem;
+    }
+    button {
+      font-size: 1.5rem;
+      color: $color-brown;
+      border: 2px solid $color-brown;
+      border-radius: 5px;
+      background-color: $color-beige-light;
+      &:hover,
+      &:focus {
+        background-color: $color-brown;
+        color: $color-beige-light;
+        border-color: $color-beige-light;
+      }
     }
   }
 }

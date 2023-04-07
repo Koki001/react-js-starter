@@ -52,7 +52,7 @@ const Searcher = (props) => {
         fullWidth
         freeSolo
         options={props.ids?.map((id) => id)}
-        sx={{ width: "160px", minWidth: "160px" }}
+        sx={{ width: "160px", minWidth: "160px"}}
         renderInput={(params) => (
           <TextField {...params} label="Search by ID" variant="outlined" />
         )}

@@ -1,8 +1,8 @@
 import { useSelector } from "react-redux";
 
 const completionPrompts = [
-  `Thanks for the information! Fun is just around the corner, I promise. If you know your Pokemon, select "pick" below...`,
-  `Otherwise, choose 'quiz' and depending on your answers there, we will try to match you with an appropriate Pokemon...`,
+  `Thanks for the information! Fun is just around the corner, I promise. If you know your Pokemon, select "pick now" below...`,
+  `Otherwise, choose 'help me', we'll ask you some questions, and try to match you with an appropriate Pokemon depending on your answers...`,
   `The ultimate goal here, aside from having fun, is to see which pokemon will have the honour of being your favourite!...`,
   `No one ever picks me. That's okay though. My name is Politoed if you were wondering... for whatever reason... Well, have fun!`,
 ];

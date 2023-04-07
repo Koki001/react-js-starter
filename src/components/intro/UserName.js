@@ -84,10 +84,10 @@ const UserName = () => {
         sx={{
           display: "flex",
           alignSelf: "center",
-          justifyContent: "space-between",
+          justifyContent: "space-evenly",
           backgroundColor: "#ece5ce",
           padding: "10px",
-          width: "auto",
+          width: "100%",
           borderBottomLeftRadius: "10px",
           borderBottomRightRadius: "10px",
         }}
@@ -96,7 +96,7 @@ const UserName = () => {
           required
           // inputRef={(input) => input && input.focus()}
           focused={user.errorMessage && name.first === ""}
-          sx={{ width: "50%" }}
+          sx={{ width: "auto" }}
           id="input-first-name"
           label="First name"
           variant="outlined"
@@ -108,7 +108,7 @@ const UserName = () => {
           required
           // inputRef={(input) => input && input.focus()}
           focused={user.errorMessage && name.last === ""}
-          sx={{ marginLeft: "20px", width: "50%" }}
+          sx={{ marginLeft: "20px", width: "auto" }}
           id="input-last-name"
           label="Last name"
           variant="outlined"

@@ -1,0 +1,186 @@
+@use "../base//variables" as *;
+
+.konamiSecret {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.521);
+  p {
+    font-size: 1rem;
+  }
+  .secretScreen {
+    border: 1px solid $color-beige;
+    border-radius: 5px;
+    height: 80%;
+    min-height: 500px;
+    max-width: 800px;
+    min-width: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 20px;
+    background-color: rgba(0, 0, 0, 0.445);
+  }
+  .dark {
+    background-color: rgba(0, 0, 0, 0.452);
+  }
+  .screenView {
+    // border: 2px solid green;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+    padding: 10px;
+    width: 100%;
+    height: 67%;
+    position: relative;
+    transition: background 1s linear;
+    .snorlax {
+      width: 200px;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      transition: all 1s linear;
+    }
+    .snorlax2 {
+      width: 60px;
+      height: 65px;
+      position: absolute;
+      top: 66%;
+      left: 35%;
+      animation: fadeIn 1s linear;
+    }
+    .snorlax3 {
+      animation: fadeIn 1s linear;
+      height: 100%;
+    }
+  }
+  .first {
+    background: url("../assets/easterEgg/background1.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: left bottom;
+    animation: fadeInEven 1s linear;
+  }
+  .second {
+    background: url("../assets/easterEgg/background2.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    // animation: fadeIn 1s linear;
+  }
+  .third {
+    background: url("../assets/easterEgg/background3.gif");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    animation: fadeInEven 1s linear;
+    // transition: none;
+  }
+  .screenText {
+    // border: 2px solid blue;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    background-color: $color-beige-light;
+    color: $color-brown;
+    font-weight: bolder;
+    padding: 10px 20px 50px;
+    width: 100%;
+    height: 33%;
+    font-size: 1.45rem;
+    position: relative;
+    .overflowText {
+      overflow-y: auto;
+      height: 100%;
+      line-height: 1.4rem;
+    }
+  }
+  .continue {
+    font-family: "VT323", monospace;
+    border: 2px solid $color-brown;
+    background-color: $color-beige-light;
+    color: $color-brown;
+    border-radius: 5px;
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    cursor: pointer;
+    &:hover {
+      color: $color-beige-light;
+      background-color: $color-brown;
+      border-color: $color-beige-light;
+    }
+  }
+  .snorlax4 {
+    position: absolute;
+    width: 500px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: snorlaxFlash 2s linear infinite;
+  }
+  .fourth {
+    background-color: #00000052;
+  }
+  .croppedContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+    p {
+      font-size: 1.2rem;
+      color: $color-beige-light;
+    }
+    h3 {
+      font-size: 1.5rem;
+      color: $color-beige-light;
+    }
+  }
+}
+
+@keyframes float {
+  0% {
+    transform: translatey(0px);
+  }
+  50% {
+    transform: translatey(-20px);
+  }
+  100% {
+    transform: translatey(0px);
+  }
+}
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  70% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes fadeInEven {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes snorlaxFlash {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.3;
+  }
+  100% {
+    opacity: 0;
+  }
+}

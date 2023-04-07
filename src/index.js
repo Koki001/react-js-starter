@@ -12,6 +12,7 @@ import Intro from "./pages/Intro";
 import PokeQuiz from "./pages/PokeQuiz";
 import Encounter from "./pages/Encounter";
 import PokemonPick from "./pages/PokemonPick";
+import EasterEgg from "./pages/EasterEgg";
 import PageNotFound from "./components/Errors/PageNotFound";
 // MUI imports
 import theme from "./theme/muiStyles";
@@ -41,6 +42,11 @@ const router = createBrowserRouter([
   {
     path: "/picker",
     element: <PokemonPick />,
+    errorElement: <PageNotFound />,
+  },
+  {
+    path: "/secret",
+    element: <EasterEgg />,
     errorElement: <PageNotFound />,
   },
 ]);

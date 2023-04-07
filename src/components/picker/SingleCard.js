@@ -123,7 +123,9 @@ const SingleCard = (props) => {
           <div className="favoriteContainer">
             <h4>Please confirm your contact infromation before submitting!</h4>
             <div className="bottomWrapper">
-              <Button className="backButton" onClick={handleGoBack}>Back</Button>
+              <Button className="backButton" onClick={handleGoBack}>
+                Back
+              </Button>
               <div className="choiceView">
                 <img
                   src={`./assets/officialArtwork/${props.pokemon.single.id}.png`}
@@ -143,6 +145,7 @@ const SingleCard = (props) => {
                     variant="standard"
                     value={searchParams.get("first")}
                     disabled={!edit}
+                   
                   />
                 </div>
                 <div className="inputWrapper">

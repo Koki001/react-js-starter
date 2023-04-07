@@ -48,7 +48,7 @@ const Encounter = () => {
         </div>
 
         <div className="contactButtons">
-          <Button>quiz</Button>
+          <Button>help me</Button>
           <Button
             onClick={() =>
               navigate({
@@ -57,7 +57,7 @@ const Encounter = () => {
               })
             }
           >
-            pick
+            pick now
           </Button>
         </div>
       </div>

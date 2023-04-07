@@ -31,6 +31,13 @@
   img {
     width: 250px;
   }
+  input {
+    font-size: 1.4rem;
+    font-weight: bold;
+  }
+  label {
+    font-size: 1rem;
+  }
 }
 .pikaGif,
 .charGif,
@@ -77,6 +84,7 @@
     border: 2px solid $color-green;
     background-color: $color-beige-light;
     font-weight: bold;
+    font-size: 1.2rem;
     border-radius: 50%;
     height: 100px;
     width: 100px;

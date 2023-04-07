@@ -4,7 +4,7 @@ const Filter = (props) => {
   return (
     <div className="search">
       <TextField
-        label="Filter by name"
+        label="Filter name / ID"
         variant="outlined"
         size="small"
         placeholder="Pokemon name or ID"

@@ -11,6 +11,7 @@ const initialState = {
   errorId: 0,
   progress: 0,
   step: 0,
+  saved: 0,
   completed: false,
   completion: {
     name: { completed: false },
@@ -58,6 +59,9 @@ export const userSlice = createSlice({
     errorMessage: (state, action) => {
       state.errorMessage = action.payload;
     },
+    saveStamp: (state) => {
+      state.saved = Date.now()
+    },
     errorId: (state, action) => {
       state.errorId = action.payload;
     },
@@ -94,6 +98,7 @@ export const {
   completeAddress,
   completeName,
   completePhone,
+  saveStamp,
 } = userSlice.actions;
 
 export default userSlice.reducer;

@@ -2,7 +2,7 @@ import { createTheme } from "@mui/material/styles";
 
 const theme = createTheme({
   typography: {
-    fontFamily: `"Baloo 2", cursive`,
+    fontFamily: '"VT323", monospace',
   },
   components: {
     MuiFormLabel: {
@@ -31,6 +31,7 @@ const theme = createTheme({
         root: {
           color: "#774f38",
           minWidth: "100px",
+          fontSize: "1.5rem",
           "&::after": {
             border: "none",
           },

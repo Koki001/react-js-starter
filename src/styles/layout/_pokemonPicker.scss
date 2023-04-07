@@ -109,6 +109,11 @@
   .searchContainer {
     display: flex;
     justify-content: flex-start;
+
+    text-transform: capitalize;
+    input {
+      text-transform: capitalize !important;
+    }
   }
   .filterContainer {
     display: flex;
@@ -134,6 +139,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
+
   .genRadio {
     margin: 0;
     height: calc(100% / 9);
@@ -154,6 +160,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
+      font-size: 1.2rem;
       background-color: $color-beige-light;
       border-radius: 5px;
       border: 1px solid $color-brown;
@@ -184,6 +191,7 @@
   max-height: 500px;
   overflow-y: scroll;
   padding: 10px;
+
   margin: 0;
   .loader {
     border-radius: 10px;
@@ -212,6 +220,10 @@
     min-width: 140px;
     p {
       text-transform: capitalize;
+      font-size: 1rem;
+    }
+    span {
+      font-size: 1rem;
     }
     .tiltStyles {
       width: 100%;
@@ -255,6 +267,7 @@
     top: 25%;
     left: 20%;
     padding-right: 30px;
+    font-size: 1.2rem;
     * {
       margin-bottom: 10px;
     }
@@ -338,6 +351,7 @@
       color: $color-beige-light;
       width: 250px;
       margin: 0 20px;
+      font-size: 1.2rem;
       &:hover,
       &:focus {
         background-color: $color-beige-light;
@@ -360,6 +374,7 @@
     width: 100%;
     height: 100%;
     z-index: 100;
+    color: $color-beige-light;
   }
 }
 .favoriteContainer {
@@ -381,6 +396,13 @@
     justify-content: center;
     align-items: center;
     width: 100%;
+    font-size: 1.2rem;
+    background: white;
+    border-radius: 10px;
+  }
+  h4 {
+    font-size: 2rem;
+    text-align: center;
   }
   .inputWrapper {
     display: flex;
@@ -388,7 +410,7 @@
   .bottomWrapper {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: stretch;
     margin-top: 70px;
     min-width: 600px;
   }
@@ -400,6 +422,7 @@
     padding: 10px;
     border-radius: 10px;
     background-color: $color-beige;
+    margin-right: 50px;
     img {
       width: 200px;
     }
@@ -413,6 +436,11 @@
     position: absolute;
     right: 40px;
     bottom: 40px;
+  }
+  button {
+    font-size: 1.3rem;
+    color: black;
+    border: 1px solid $color-brown;
   }
 }
 

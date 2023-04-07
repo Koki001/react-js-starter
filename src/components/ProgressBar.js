@@ -7,7 +7,9 @@ import {
   completeAddress,
   completeName,
   completePhone,
+  saveStamp,
 } from "../redux/slices/userSlice";
+import { useKonami } from "react-konami-code";
 // MUI imports
 import { Button } from "@mui/material";
 import LinearProgress from "@mui/material/LinearProgress";
@@ -15,22 +17,32 @@ import HelpTwoToneIcon from "@mui/icons-material/HelpTwoTone";
 import CheckCircleTwoToneIcon from "@mui/icons-material/CheckCircleTwoTone";
 import Tooltip from "@mui/material/Tooltip";
 import ClickAwayListener from "@mui/material/ClickAwayListener";
+import Dialog from "@mui/material/Dialog";
+import DialogActions from "@mui/material/DialogActions";
+import DialogContent from "@mui/material/DialogContent";
+import DialogContentText from "@mui/material/DialogContentText";
+import DialogTitle from "@mui/material/DialogTitle";
 
 const ProgressBar = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
   const [searchParams, setSearchParams] = useSearchParams();
   const completion = useSelector((state) => state.user.completion);
   const step = useSelector((state) => state.user.step);
   const user = useSelector((state) => state.user);
   const [open, setOpen] = useState(false);
-
+  const [popup, setPopup] = useState(false);
+  const [saved, setSaved] = useState(0);
+  const easterEgg = () => {
+    navigate({ pathname: "/secret", search: searchParams.toString() });
+  };
+  useKonami(easterEgg);
   const handleTooltipClose = () => {
     setOpen(false);
   };
   const handleTooltipOpen = () => {
     setOpen(true);
+    dispatch(saveStamp());
     navigator.clipboard.writeText(window.location.href);
   };
   useEffect(() => {
@@ -62,8 +74,19 @@ const ProgressBar = () => {
     }
   }, [completion]);
   const handleClearDev = () => {
+    // alert(`last saved ${seconds.toFixed(0)} seconds ago`);
     dispatch(clear());
     navigate("/");
+  };
+  const handleClose = () => {
+    setPopup(false);
+  };
+  const handleOpen = () => {
+    setPopup(true);
+    let now = new Date();
+    let saved = new Date(Number(user.saved));
+    let seconds = (now.getTime() - saved.getTime()) / 1000;
+    setSaved(seconds);
   };
   const handleRevisit = (e) => {
     // navigate(`/get-started`);
@@ -74,7 +97,31 @@ const ProgressBar = () => {
   };
   return (
     <div className="progressBarContainer wrapper">
-      <Button onClick={handleClearDev} className="homeButton"></Button>
+      <Button onClick={handleOpen} className="homeButton"></Button>
+      <Dialog
+        open={popup}
+        onClose={handleClose}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+      >
+        <DialogTitle id="alert-dialog-title">
+          {"Use Google's location service?"}
+        </DialogTitle>
+        <DialogContent>
+          <DialogContentText id="alert-dialog-description">
+            Going to the home screen will clear all progress.
+            {saved === 0
+              ? "Save your progress by clicking the pokeball on the top right of your screen."
+              : ` You last saved your progress ${saved.toFixed()} seconds ago.`}
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleClose}>Cancel</Button>
+          <Button onClick={handleClearDev} autoFocus>
+            Exit
+          </Button>
+        </DialogActions>
+      </Dialog>
       <div className="progressBarContact">
         <Button
           onClick={handleRevisit}
@@ -129,7 +176,7 @@ const ProgressBar = () => {
             disableFocusListener
             disableHoverListener
             disableTouchListener
-            title="saved to clipboard"
+            title="copied to clipboard"
           >
             <Button className="pickButton" onClick={handleTooltipOpen}>
               {" "}
