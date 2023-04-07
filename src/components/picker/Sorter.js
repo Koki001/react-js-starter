@@ -43,7 +43,7 @@ const Sorter = (props) => {
           <div className="azBtn">
             <input
               onChange={handleSort}
-              checked={searchParams.get("sort") === "az-ascending"}
+              // checked={searchParams.get("sort") === "az-ascending"}
               className="sr-only"
               type="radio"
               id="asc"
@@ -56,7 +56,7 @@ const Sorter = (props) => {
           <div className="azBtn">
             <input
               onChange={handleSort}
-              checked={searchParams.get("sort") === "az-descending"}
+              // checked={searchParams.get("sort") === "az-descending"}
               className="sr-only"
               type="radio"
               id="desc"
@@ -78,7 +78,7 @@ const Sorter = (props) => {
               type="radio"
               id="ascid"
               name="sort"
-              checked={searchParams.get("sort") === "id-ascending"}
+              // checked={searchParams.get("sort") === "id-ascending"}
             />
             <label htmlFor="ascid" id="ascID">
               <KeyboardDoubleArrowUpIcon />
@@ -87,7 +87,7 @@ const Sorter = (props) => {
           <div className="azBtn">
             <input
               onChange={handleSort}
-              checked={searchParams.get("sort") === "id-descending"}
+              // checked={searchParams.get("sort") === "id-descending"}
               className="sr-only"
               type="radio"
               id="descid"
