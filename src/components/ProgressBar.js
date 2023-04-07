@@ -94,7 +94,7 @@ const ProgressBar = () => {
   };
   return (
     <div className="progressBarContainer wrapper">
-      <Button onClick={handleOpen} className="homeButton"></Button>
+      <Button onClick={handleOpen} className="homeButton"><img src="./assets/intro/home.png" alt="" /><p>home</p></Button>
       <Dialog
         open={popup}
         onClose={handleClose}
@@ -175,7 +175,7 @@ const ProgressBar = () => {
           >
             <Button className="pickButton" onClick={handleTooltipOpen}>
               {" "}
-              <img src="./assets/animated/picker.gif" />
+              <img src="./assets/intro/pokeball.png" />
               <p>save</p>
             </Button>
           </Tooltip>

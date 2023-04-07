@@ -13,6 +13,7 @@
     justify-content: center;
     .homeButton {
       position: absolute;
+      flex-direction: row;
       left: 15px;
       top: 50px;
     }
@@ -22,7 +23,7 @@
     .pickButton {
       position: absolute;
       top: 50px;
-      right: 21px;
+      right: 15px;
       flex-direction: row-reverse;
     }
   }
@@ -95,5 +96,9 @@
     .choiceView {
       margin: 20px auto;
     }
+  }
+  .bottomContainer .pickerMessage {
+    left: 10%;
+    top: 30%;
   }
 }
