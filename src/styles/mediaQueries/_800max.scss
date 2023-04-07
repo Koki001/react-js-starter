@@ -1,0 +1,92 @@
+@use "../base//variables" as *;
+// EXCEPTION
+@media (max-width: 1100px) {
+
+  .pokemonContainer {
+    .pokemonFilters {
+      flex-direction: column;
+    }
+    .searchContainer {
+      width: 100%;
+      margin-bottom: 10px;
+    }
+    .filterContainer {
+      justify-content: space-between;
+      width: 100%;
+    }
+  }
+}
+@media (max-width: 800px) {
+  .progressBarContainer {
+    margin: 30px 0;
+    max-width: 95%;
+    .progressBarContact {
+      width: 65%;
+    }
+    .homeButton {
+      background-size: 40px;
+      top: 0;
+      max-width: 30px;
+    }
+    .pickButton {
+      top: -2px;
+      flex-direction: row;
+      img {
+        height: 35px;
+        width: 40px;
+      }
+      p {
+        margin-top: 10px;
+      }
+    }
+  }
+  .pokemonContainer {
+    margin-top: 30px;
+  }
+  .formContainer {
+    form {
+      width: 100%;
+    }
+  }
+  .infoComplete {
+    width: 100%;
+  }
+  .bottomContainer {
+    .pickerMessage {
+      left: 15%;
+      top: 20%;
+      ul {
+        padding: 0;
+      }
+    }
+  }
+  .pokemonList {
+    padding: 5px;
+    max-height: 670px;
+    .pokemonCard {
+      width: calc(100% / 3 - 10px);
+      margin: 5px;
+    }
+  }
+  .singlePokemon {
+    .singleStats {
+      padding: 15px;
+    }
+    .singleTop {
+      flex-direction: column-reverse;
+    }
+    .singleImage {
+      max-width: 50%;
+    }
+  }
+  .konamiSecret {
+    .secretScreen {
+      max-width: auto;
+      min-width: auto;
+      height: 90%;
+    }
+  }
+  .wrapper {
+    max-width: 95%;
+  }
+}

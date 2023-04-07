@@ -101,9 +101,7 @@ const ProgressBar = () => {
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
       >
-        <DialogTitle id="alert-dialog-title">
-          {"Clear progress?"}
-        </DialogTitle>
+        <DialogTitle id="alert-dialog-title">{"Clear progress?"}</DialogTitle>
         <DialogContent>
           <DialogContentText id="alert-dialog-description">
             Going to the home screen will clear all progress.
@@ -178,7 +176,7 @@ const ProgressBar = () => {
             <Button className="pickButton" onClick={handleTooltipOpen}>
               {" "}
               <img src="./assets/animated/picker.gif" />
-              save progress
+              <p>save</p>
             </Button>
           </Tooltip>
         </div>

@@ -1,0 +1,99 @@
+@use "../base//variables" as *;
+// EXCEPTION
+@media (max-width: 600px) {
+  .formContainer {
+    form {
+      margin-top: 30px;
+      width: 100%;
+    }
+  }
+  .progressBarContainer {
+    display: flex;
+    margin-top: 115px;
+    justify-content: center;
+    .homeButton {
+      position: absolute;
+      left: 15px;
+      top: 50px;
+    }
+    .progressBarContact {
+      width: 90%;
+    }
+    .pickButton {
+      position: absolute;
+      top: 50px;
+      right: 21px;
+      flex-direction: row-reverse;
+    }
+  }
+  .infoComplete {
+    margin-top: 30px;
+    p {
+      padding: 15px;
+      width: 350px;
+    }
+  }
+  .pokemonContainer {
+    .pokemonFilters {
+      width: 100%;
+    }
+    .searchContainer,
+    .filterContainer {
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
+  }
+  .bottomContainer {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .pokeGenButtons {
+    flex-direction: row;
+    width: auto;
+    position: static;
+    flex-wrap: wrap;
+    .genRadio {
+      width: 100px;
+      height: 50px;
+    }
+  }
+  .pokemonList {
+    width: 100%;
+    margin-top: 20px;
+    .pokemonCard {
+      width: calc(100% / 2 - 10px);
+    }
+  }
+  .singlePokemon {
+    justify-content: space-evenly;
+    .singleStats {
+      min-width: 310px;
+    }
+    .singleButtons {
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      button {
+        position: static;
+        margin-bottom: 30px;
+      }
+      .pickButton,
+      .backButton {
+        transform: none;
+      }
+    }
+  }
+  .favoriteContainer {
+    .bottomWrapper {
+      flex-direction: column;
+      min-width: auto;
+      align-items: center;
+      justify-content: center;
+      width: 90%;
+    }
+    .choiceView {
+      margin: 20px auto;
+    }
+  }
+}
