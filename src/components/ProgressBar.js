@@ -74,7 +74,6 @@ const ProgressBar = () => {
     }
   }, [completion]);
   const handleClearDev = () => {
-    // alert(`last saved ${seconds.toFixed(0)} seconds ago`);
     dispatch(clear());
     navigate("/");
   };
@@ -89,8 +88,6 @@ const ProgressBar = () => {
     setSaved(seconds);
   };
   const handleRevisit = (e) => {
-    // navigate(`/get-started`);
-    // dispatch(forceStep(Number(e.target.value)))
   };
   const handlePicker = () => {
     navigate({ pathname: "/picker", search: searchParams.toString() });

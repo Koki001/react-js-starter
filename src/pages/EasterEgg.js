@@ -10,8 +10,8 @@ const EasterEgg = () => {
   const dialogue = [
     ".....",
     "As the sun was setting, Snorlax lay sprawled on the grassy bank of a serene lake, sound asleep. Deep snores echoed through the peaceful surroundings, and a smile began to form on Snorlax's face as snippets of thoughts and images began to coalesce into a nascent dream...",
-    "There was a single, majestic, tree, standing tall atop a hill, silhouetted against the starry sky. As Snorlax gazed in wonder at the tree, it noticed a small door carved into the trunk - barely visible, and just big enough to enter. With its leaves transforming into stars themselves, Snorlax, while still in awe, felt a sense of destiny calling from within...",
-    "Snorlax thought it saw Pikachu inside, but a great Canadian appeared with a warm welcome. Kings and queens were dancing alongside pirates and chefs. Beings crafted from plastic mingled with those sporting wings, while deadly robots and emissaries of peace shared drinks with travelers from the stars and sea...",
+    "There was a single, majestic, tree, standing tall atop a hill, silhouetted against the starry sky. As Snorlax gazed in wonder at the tree, with its leaves transforming into stars themselves, he noticed a small door carved into the trunk - barely visible, and just big enough to enter.  Snorlax, while still in awe, felt a sense of destiny calling from within...",
+    "Snorlax thought he saw Pikachu inside, but a great Canadian appeared with a warm welcome. Within, kings and queens were dancing alongside pirates and chefs. Beings crafted from plastic mingled with those sporting wings, while deadly robots and emissaries of peace shared drinks with travelers from the stars and sea...",
     "In a moment of clarity, Snorlax felt an immense sense of belonging. The stars above seemed to twinkle with approval, as if to say that anything was possible with enough hard work, good company, and a little bit of magic.",
   ];
 
@@ -59,11 +59,6 @@ const EasterEgg = () => {
           </div>
         ) : count === 3 ? (
           <div className={"third screenView"}>
-            {/* <img
-              className="snorlax3"
-              src="./assets/easterEgg/background3.gif"
-              alt=""
-            /> */}
           </div>
         ) : (
           <div className={"fourth screenView"}>
@@ -84,7 +79,6 @@ const EasterEgg = () => {
               onAnimationEnd={(e) => {
                 console.log(e);
               }}
-              // ref={stringRef}
               options={{
                 strings: dialogue[count],
                 autoStart: true,
