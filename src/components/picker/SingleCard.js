@@ -32,6 +32,7 @@ const SingleCard = (props) => {
   const handleGoBack = () => {
     props.exit([]);
     setLoader(true);
+    setSubmit(false);
   };
   const handlePickPokemon = () => {
     setSubmit(true);
