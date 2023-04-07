@@ -12,7 +12,7 @@ const EasterEgg = () => {
     "As the sun was setting, Snorlax lay sprawled on the grassy bank of a serene lake, sound asleep. Deep snores echoed through the peaceful surroundings, and a smile began to form on Snorlax's face as snippets of thoughts and images began to coalesce into a nascent dream...",
     "There was a single, majestic, tree, standing tall atop a hill, silhouetted against the starry sky. As Snorlax gazed in wonder at the tree, with its leaves transforming into stars themselves, he noticed a small door carved into the trunk - barely visible, and just big enough to enter.  Snorlax, while still in awe, felt a sense of destiny calling from within...",
     "Snorlax thought he saw Pikachu inside, but a great Canadian appeared with a warm welcome. Within, kings and queens were dancing alongside pirates and chefs. Beings crafted from plastic mingled with those sporting wings, while deadly robots and emissaries of peace shared drinks with travelers from the stars and sea...",
-    "In a moment of clarity, Snorlax felt an immense sense of belonging. The stars above seemed to twinkle with approval, as if to say that anything was possible with enough hard work, good company, and a little bit of magic.",
+    "In a moment of clarity, aware of the dream, Snorlax felt an immense sense of belonging. The stars above seemed to twinkle with approval, as if to say that anything was possible with enough hard work, good company, and a little bit of magic.",
   ];
 
   useEffect(() => {
