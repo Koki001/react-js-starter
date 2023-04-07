@@ -44,7 +44,7 @@
       position: absolute;
       bottom: 0;
       left: 0;
-      transition: all 1s linear;
+      animation: fadeInEven 2s linear;
     }
     .snorlax2 {
       width: 60px;
@@ -52,11 +52,11 @@
       position: absolute;
       top: 66%;
       left: 35%;
-      animation: fadeIn 1s linear;
+      animation: fadeIn 3s linear;
     }
     .snorlax3 {
-      animation: fadeIn 1s linear;
       height: 100%;
+      animation: fadeInEven 1s linear;
     }
   }
   .first {

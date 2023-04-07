@@ -1349,7 +1349,7 @@ body {
   position: absolute;
   bottom: 0;
   left: 0;
-  transition: all 1s linear;
+  animation: fadeInEven 2s linear;
 }
 .konamiSecret .screenView .snorlax2 {
   width: 60px;
@@ -1357,11 +1357,11 @@ body {
   position: absolute;
   top: 66%;
   left: 35%;
-  animation: fadeIn 1s linear;
+  animation: fadeIn 3s linear;
 }
 .konamiSecret .screenView .snorlax3 {
-  animation: fadeIn 1s linear;
   height: 100%;
+  animation: fadeInEven 1s linear;
 }
 .konamiSecret .first {
   background: url("../assets/easterEgg/background1.jpg");

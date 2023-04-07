@@ -105,7 +105,7 @@ const ProgressBar = () => {
         aria-describedby="alert-dialog-description"
       >
         <DialogTitle id="alert-dialog-title">
-          {"Use Google's location service?"}
+          {"Clear progress?"}
         </DialogTitle>
         <DialogContent>
           <DialogContentText id="alert-dialog-description">

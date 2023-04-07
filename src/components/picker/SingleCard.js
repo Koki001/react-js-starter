@@ -1,17 +1,27 @@
 // single pokemon detailed view
 import { useState } from "react";
 import Loader from "../../helpers/Loader";
+import { clear } from "../../redux/slices/userSlice";
+import { useDispatch } from "react-redux";
+import { useNavigate, useSearchParams } from "react-router-dom";
 // MUI imports
 import { Button } from "@mui/material";
 import TextField from "@mui/material/TextField";
 import Box from "@mui/material/Box";
-import { useSearchParams } from "react-router-dom";
+import Dialog from "@mui/material/Dialog";
+import DialogActions from "@mui/material/DialogActions";
+import DialogContent from "@mui/material/DialogContent";
+import DialogContentText from "@mui/material/DialogContentText";
+import DialogTitle from "@mui/material/DialogTitle";
 
 const SingleCard = (props) => {
   const [loader, setLoader] = useState(true);
   const [submit, setSubmit] = useState(false);
+  const [popup, setPopup] = useState(false);
   const [searchParams, setSearchParams] = useSearchParams();
   const [edit, setEdit] = useState(false);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
   const regexName = /^[a-zA-Z\b]*$/;
   const regexPhone = /^[0-9\b]{0,10}$/;
   const handleFakeLoader = () => {
@@ -44,6 +54,10 @@ const SingleCard = (props) => {
       searchParams.set(`${e.target.id}`, e.target.value);
       setSearchParams(searchParams);
     }
+  };
+  const handleFinalSubmit = () => {
+    dispatch(clear());
+    navigate("/");
   };
   if (props.pokemon.single.name) {
     return (
@@ -145,7 +159,6 @@ const SingleCard = (props) => {
                     variant="standard"
                     value={searchParams.get("first")}
                     disabled={!edit}
-                   
                   />
                 </div>
                 <div className="inputWrapper">
@@ -180,7 +193,30 @@ const SingleCard = (props) => {
                 <Button onClick={handleEdit} className="edit">
                   Edit
                 </Button>
-                <Button className="submit">Submit</Button>
+                <Button onClick={() => setPopup(true)} className="submit">
+                  Submit
+                </Button>
+                <Dialog
+                  open={popup}
+                  onClose={() => setPopup(false)}
+                  aria-labelledby="alert-dialog-title"
+                  aria-describedby="alert-dialog-description"
+                >
+                  <DialogTitle id="alert-dialog-title">
+                    {"Official Pokemon Submission"}
+                  </DialogTitle>
+                  <DialogContent>
+                    <DialogContentText id="alert-dialog-description">
+                      Your submission has been received! Thanks for the
+                      adventure, Trainer! Catch you later!
+                    </DialogContentText>
+                  </DialogContent>
+                  <DialogActions>
+                    <Button onClick={handleFinalSubmit} autoFocus>
+                      Exit
+                    </Button>
+                  </DialogActions>
+                </Dialog>
               </div>
             </div>
           </div>
