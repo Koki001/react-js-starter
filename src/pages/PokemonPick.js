@@ -140,6 +140,8 @@ const PokemonPick = () => {
         })
         .catch((error) => {
           console.log(error);
+          alert("Sorry, GEN 2 has a bug!")
+          searchParams.set("generation", "generation/2")
         });
     }
   };
@@ -248,7 +250,7 @@ const PokemonPick = () => {
                         id={match[1]}
                         onClick={handlePokemonDetails}
                         src={`./assets/officialArtwork/${match[1]}.png`}
-                        alt={`picture of ${item.name} pokemon`}
+                        alt={`${item.name} pokemon`}
                         style={{ cursor: blur ? "wait" : "pointer" }}
                       />
                       <p>{item.name}</p>
